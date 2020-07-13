@@ -1,43 +1,43 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using static Tests.Test;
+using System.Linq;
+using JM.LinqFaster;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class MinTests
     {
         public void HelperMin<T>(T[] array)
         {
-            T a = array.MinF();
-            T b = array.Min();
+            var a = array.MinF();
+            var b = array.Min();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T>(List<T> list)
         {
-            T a = list.MinF();
-            T b = list.Min();
+            var a = list.MinF();
+            var b = list.Min();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T, U>(T[] array, Func<T, U> selector)
         {
-            U a = array.MinF(selector);
-            U b = array.Min(selector);
+            var a = array.MinF(selector);
+            var b = array.Min(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T, U>(List<T> list, Func<T, U> selector)
         {
-            U a = list.MinF(selector);
-            U b = list.Min(selector);
+            var a = list.MinF(selector);
+            var b = list.Min(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }

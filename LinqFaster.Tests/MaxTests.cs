@@ -1,43 +1,43 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System;
-using static Tests.Test;
+using System.Linq;
+using JM.LinqFaster;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class MaxTests
     {        
         public void HelperMax<T>(T[] array)
         {
-            T a = array.MaxF();
-            T b = array.Max();
+            var a = array.MaxF();
+            var b = array.Max();
 
             Assert.That(a, Is.EqualTo(b));            
         }
 
         public void HelperMax<T>(List<T> list)
         {
-            T a = list.MaxF();
-            T b = list.Max();
+            var a = list.MaxF();
+            var b = list.Max();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMax<T,U>(T[] array, Func<T, U> selector)
         {
-            U a = array.MaxF(selector);
-            U b = array.Max(selector);
+            var a = array.MaxF(selector);
+            var b = array.Max(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMax<T,U>(List<T> list, Func<T,U> selector)
         {
-            U a = list.MaxF(selector);
-            U b = list.Max(selector);
+            var a = list.MaxF(selector);
+            var b = list.Max(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }

@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.Parallel;
-using System.Linq;
-using static Tests.Test;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using JM.LinqFaster.Parallel;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests.ParallelTests
 {
     [TestFixture]
     class MinParallel
@@ -13,32 +13,32 @@ namespace Tests
 
         public void HelperMin<T>(T[] array)
         {
-            T a = array.MinP();
-            T b = array.Min();
+            var a = array.MinP();
+            var b = array.Min();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T>(List<T> list)
         {
-            T a = list.MinP();
-            T b = list.Min();
+            var a = list.MinP();
+            var b = list.Min();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T, U>(T[] array, Func<T, U> selector)
         {
-            U a = array.MinP(selector);
-            U b = array.Min(selector);
+            var a = array.MinP(selector);
+            var b = array.Min(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMin<T, U>(List<T> list, Func<T, U> selector)
         {
-            U a = list.MinP(selector);
-            U b = list.Min(selector);
+            var a = list.MinP(selector);
+            var b = list.Min(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }

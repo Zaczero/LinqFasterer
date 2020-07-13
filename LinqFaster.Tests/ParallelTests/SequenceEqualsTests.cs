@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.Parallel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using static Tests.Test;
-using System.Collections.Generic;
+using JM.LinqFaster.Parallel;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests {
+namespace LinqFaster.Tests.ParallelTests {
     [TestFixture]
     class SequenceEqualsParallelTests {
 

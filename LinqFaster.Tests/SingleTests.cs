@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using static Tests.Test;
+﻿using System;
 using System.Collections.Generic;
-using System;
+using JM.LinqFaster;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class SingleTests {
@@ -83,7 +83,7 @@ namespace Tests
 
         [Test]
         public void SingleListOne() {
-            List<int> test = new List<int>();
+            var test = new List<int>();
             test.Add(4);
             var a = test.SingleF();
             var b = test.SingleF(onlyEvenInts);
@@ -94,7 +94,7 @@ namespace Tests
 
         [Test]
         public void SingleListDefaultOne() {
-            List<int> test = new List<int>();
+            var test = new List<int>();
             test.Add(4);
 
             var a = test.SingleOrDefaultF();
@@ -106,7 +106,7 @@ namespace Tests
 
         [Test]
         public void SingleListDefaultEmpty() {
-            List<int> test = new List<int>();            
+            var test = new List<int>();            
 
             var a = test.SingleOrDefaultF();
             var b = test.SingleOrDefaultF(onlyEvenInts);

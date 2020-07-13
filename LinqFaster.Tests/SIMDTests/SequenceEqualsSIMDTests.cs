@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
 using JM.LinqFaster.SIMD;
-using System.Linq;
-using static Tests.Test;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests {
+namespace LinqFaster.Tests.SIMDTests {
     [TestFixture]
     class SequenceEqualsSIMDTests {
 

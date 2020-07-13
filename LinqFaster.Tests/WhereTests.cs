@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
+﻿using System;
 using System.Linq;
-using System;
-using static Tests.Test;
+using JM.LinqFaster;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class WhereTests

@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
 using JM.LinqFaster.Parallel;
-using System.Linq;
-using static Tests.Test;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests.ParallelTests
 {
     [TestFixture]
     class SelectParallel

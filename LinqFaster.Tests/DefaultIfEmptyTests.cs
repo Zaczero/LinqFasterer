@@ -1,9 +1,10 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
+﻿using System;
 using System.Linq;
-using static Tests.Test;
+using JM.LinqFaster;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class DefaultIfEmptyTests {
@@ -14,6 +15,14 @@ namespace Tests
             var b = intArray.DefaultIfEmpty();
 
             Assert.That(a, Is.EqualTo(b));
+        }
+
+        [Test]
+        public void DefaultIfEmptySpan() {
+            var a = intArray.AsSpan().DefaultIfEmptyF();
+            var b = intArray.DefaultIfEmpty();
+
+            Assert.That(a.ToArray(), Is.EqualTo(b));
         }
 
         [Test]

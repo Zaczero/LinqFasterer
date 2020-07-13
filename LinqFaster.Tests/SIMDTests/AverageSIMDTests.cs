@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.SIMD;
+﻿using System;
 using System.Linq;
-using System;
 using System.Numerics;
+using JM.LinqFaster.SIMD;
+using NUnit.Framework;
 
-namespace Tests
+namespace LinqFaster.Tests.SIMDTests
 {
     [TestFixture]
     class AverageSIMDTests
@@ -15,7 +15,7 @@ namespace Tests
         {
             var a = Test.intArray.Average();
             var b = Test.intArray.AverageS();
-            double diff = Math.Abs(a - b);
+            var diff = Math.Abs(a - b);
             Assert.That(diff, Is.LessThan(0.1));
         }
 
@@ -33,7 +33,7 @@ namespace Tests
         {
             var a = Test.intArray.Average(x => x - 1);
             var b = Test.intArray.AverageS(x => x - new Vector<int>(1));
-            double diff = Math.Abs(a - b);
+            var diff = Math.Abs(a - b);
             Assert.That(diff, Is.LessThan(0.1));
         }
 

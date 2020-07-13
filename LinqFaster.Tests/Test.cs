@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [SetUpFixture]
     public class Test
@@ -52,8 +52,8 @@ namespace Tests
             doubleList = new List<double>(TEST_SIZE);
             longArray = new long[TEST_SIZE];
             longList = new List<long>(TEST_SIZE);
-            Random rand = new Random();
-            for (int i = 0; i < intArray.Length;i++)
+            var rand = new Random();
+            for (var i = 0; i < intArray.Length;i++)
             {
                 intArray[i] = rand.Next(-100, 100);
                 intList.Add(intArray[i]);

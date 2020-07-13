@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
     class DistinctTests {

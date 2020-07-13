@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.Parallel;
-using System.Linq;
-using static Tests.Test;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using JM.LinqFaster.Parallel;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests.ParallelTests
 {
     [TestFixture]
     class MaxParallel
@@ -13,32 +13,32 @@ namespace Tests
 
         public void HelperMax<T>(T[] array)
         {
-            T a = array.MaxP();
-            T b = array.Max();
+            var a = array.MaxP();
+            var b = array.Max();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMax<T>(List<T> list)
         {
-            T a = list.MaxP();
-            T b = list.Max();
+            var a = list.MaxP();
+            var b = list.Max();
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMax<T, U>(T[] array, Func<T, U> selector)
         {
-            U a = array.MaxP(selector);
-            U b = array.Max(selector);
+            var a = array.MaxP(selector);
+            var b = array.Max(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }
 
         public void HelperMax<T, U>(List<T> list, Func<T, U> selector)
         {
-            U a = list.MaxP(selector);
-            U b = list.Max(selector);
+            var a = list.MaxP(selector);
+            var b = list.Max(selector);
 
             Assert.That(a, Is.EqualTo(b));
         }

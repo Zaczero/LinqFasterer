@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
 using JM.LinqFaster.SIMD.Parallel;
-using System.Linq;
+using NUnit.Framework;
 
-namespace Tests
+namespace LinqFaster.Tests.ParallelSIMDTests
 {
     [TestFixture]
     class SumSIMDP
