@@ -9,7 +9,7 @@ namespace Tests
     [TestFixture]
     class AggregateTests
     {
-        [Test, Category("TEST")]
+        [Test]
         public void AggregateArray()
         {
             
