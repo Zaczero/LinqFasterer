@@ -5,198 +5,56 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-
-        // --------------------------  ARRAYS --------------------------------------------
-
-        /// <summary>
-        /// Determines whether an array contains any elements
-        /// </summary>        
-        /// <param name="source">The array to check for emptiness</param>
-        /// <returns>true if the source array contains any elements, otherwise, false/</returns>
-        public static bool AnyF<T>(this T[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            return source.Length > 0;
-        }
-
-    
-
-        /// <summary>
-        /// Determines whether any element of an array satisfies a condition.
-        /// </summary>        
-        /// <param name="source">An array whose elements to apply the predicate to.</param>
+        /// <summary>Determines whether all elements of a sequence satisfy a condition.</summary>
+        /// <returns>true if every element of the source sequence passes the test in the specified predicate, or if the sequence is empty; otherwise, false.</returns>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements to apply the predicate to.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if any elements in the source array pass the test in the specified predicate; otherwise, false.</returns>
-        public static bool AnyF<TSource>(this TSource[] source, Predicate<TSource> predicate)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static bool AllF<TSource>(this IReadOnlyList<TSource> source, Predicate<TSource> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            return Array.Exists(source, predicate);
-        }
+            foreach (var v in source)
+                if (!predicate(v))
+                    return false;
 
-     
-        /// <summary>
-        /// Determines whether all elements of an array satisfy a condition.
-        /// </summary>        
-        /// <param name="source">An array that contains the elements to apply the predicate to.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if every element of the source array passes the test in the specified
-        /// predicate, or if the array is empty; otherwise, false</returns>
-        public static bool AllF<TSource>(this TSource[] source, Predicate<TSource> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            return Array.TrueForAll(source, predicate);
-        }
-
-        // --------------------------  this SpanS --------------------------------------------
-
-        /// <summary>
-        /// Determines whether an array contains any elements
-        /// </summary>        
-        /// <param name="source">The array to check for emptiness</param>
-        /// <returns>true if the source array contains any elements, otherwise, false/</returns>
-        public static bool AnyF<T>(this Span<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            return source.Length > 0;
-        }
-
-
-
-        /// <summary>
-        /// Determines whether any element of an array satisfies a condition.
-        /// </summary>        
-        /// <param name="source">An array whose elements to apply the predicate to.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if any elements in the source array pass the test in the specified predicate; otherwise, false.</returns>
-        public static bool AnyF<TSource>(this Span<TSource> source, Predicate<TSource> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i])) return true;
-            }
-            return false;
-        }
-
-
-        /// <summary>
-        /// Determines whether all elements of an array satisfy a condition.
-        /// </summary>        
-        /// <param name="source">An array that contains the elements to apply the predicate to.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if every element of the source array passes the test in the specified
-        /// predicate, or if the array is empty; otherwise, false</returns>
-        public static bool AllF<TSource>(this Span<TSource> source, Predicate<TSource> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (!predicate(source[i])) return false;
-            }
             return true;
         }
 
-
-
-
-        // --------------------------  Lists --------------------------------------------
-        /// <summary>
-        /// Determines whether a list contains any elements
-        /// </summary>        
-        /// <param name="source">The list to check for emptiness</param>
-        /// <returns>true if the source list contains any elements, otherwise, false/</returns>
-        public static bool AnyF<T>(this List<T> source)
+        /// <summary>Determines whether a sequence contains any elements.</summary>
+        /// <returns>true if the source sequence contains any elements; otherwise, false.</returns>
+        /// <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to check for emptiness.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static bool AnyF<TSource>(this IReadOnlyList<TSource> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
+
             return source.Count > 0;
         }
 
-        /// <summary>
-        /// Determines whether any element of an array satisfies a condition.
-        /// </summary>        
-        /// <param name="source">An array whose elements to apply the predicate to.</param>
+        /// <summary>Determines whether any element of a sequence satisfies a condition.</summary>
+        /// <returns>true if any elements in the source sequence pass the test in the specified predicate; otherwise, false.</returns>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements to apply the predicate to.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if any elements in the source array pass the test in the specified predicate; otherwise, false.</returns>
-        public static bool AnyF<TSource>(this List<TSource> source, Predicate<TSource> predicate)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static bool AnyF<TSource>(this IReadOnlyList<TSource> source, Predicate<TSource> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            return source.Exists(predicate);
-        }
+            foreach (var v in source)
+                if (predicate(v))
+                    return true;
 
-        /// <summary>
-        /// Determines whether all elements of a list satisfy a condition.
-        /// </summary>        
-        /// <param name="source">A list that contains the elements to apply the predicate to.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>true if every element of the source array passes the test in the specified
-        /// predicate, or if the list is empty; otherwise, false</returns>
-        public static bool AllF<TSource>(this List<TSource> source, Predicate<TSource> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            return source.TrueForAll(predicate);
+            return false;
         }
     }
 }

@@ -27,7 +27,9 @@ namespace JM.LinqFaster
         /// <typeparam name="T">The type of the elements of <paramref name="source" />.</typeparam>
         public static Span<T> DefaultIfEmptyF<T>(this Span<T> source, T defaultValue = default)
         {
-            return source.AnyF() ? source : new Span<T> {[0] = defaultValue};
+            // TODO: fix
+            return source;
+            //return source.AnyF() ? source : new Span<T> {[0] = defaultValue};
         }
 
         // ------------------------------ Lists ---------------------
