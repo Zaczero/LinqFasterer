@@ -1,63 +1,49 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
 using JM.LinqFaster;
-using System.Linq;
-using System;
-using static Tests.Test;
+using NUnit.Framework;
+using static LinqFaster.Tests.Test;
 
-namespace Tests
+namespace LinqFaster.Tests
 {
     [TestFixture]
-    class AggregateTests
+    public class AggregateTests
     {
         [Test]
         public void AggregateArray()
         {
-            
             var a = intArray.AggregateF(addXInts);
-            var aSpan = intArray.AsSpan().AggregateF(addXInts);
             var b = intArray.Aggregate(addXInts);
             Assert.That(a, Is.EqualTo(b));
-            Assert.That(aSpan, Is.EqualTo(b));
+            
+            static string Func(string acc, int x) => acc + x;
 
-
-            Func<string, int, string> lambda2 = (acc, x) => acc += x;
-
-            var seed = "seed";
-            var c = intArray.AggregateF(seed,lambda2);
-            var cSpan = intArray.AsSpan().AggregateF(seed, lambda2);
-            var d = intArray.Aggregate(seed,lambda2);            
-
+            const string seed = "seed";
+            var c = intArray.AggregateF(seed, Func);
+            var d = intArray.Aggregate(seed, Func);
             Assert.That(c, Is.EqualTo(d));
-            Assert.That(cSpan, Is.EqualTo(d));
 
-            var e = intArray.AggregateF(seed, lambda2, (x => ""));
-            var f = intArray.Aggregate(seed, lambda2, (x => ""));
-
+            var e = intArray.AggregateF(seed, Func, x => "");
+            var f = intArray.Aggregate(seed, Func, x => "");
             Assert.That(e, Is.EqualTo(f));
-
         }
 
         [Test]
         public void AggregateList()
         {
-            
             var a = intList.AggregateF(addXInts);
             var b = intList.Aggregate(addXInts);
             Assert.That(a, Is.EqualTo(b));
 
-            Func<string, int, string> lambda2 = (acc, x) => acc += x;
+            static string Func(string acc, int x) => acc + x;
 
-            var seed = "seed";
-            var c = intList.AggregateF(seed, lambda2);
-            var d = intList.Aggregate(seed, lambda2);
-
+            const string seed = "seed";
+            var c = intList.AggregateF(seed, Func);
+            var d = intList.Aggregate(seed, Func);
             Assert.That(c, Is.EqualTo(d));
 
-            var e = intList.AggregateF(seed, lambda2, (x => ""));
-            var f = intList.Aggregate(seed, lambda2, (x => ""));
-
+            var e = intList.AggregateF(seed, Func, x => "");
+            var f = intList.Aggregate(seed, Func, x => "");
             Assert.That(e, Is.EqualTo(f));
-
         }
     }
 }
