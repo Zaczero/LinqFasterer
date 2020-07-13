@@ -66,6 +66,7 @@
     <Compile Include="AverageTests.cs" />
     <Compile Include="ContainsTests.cs" />
     <Compile Include="CountTests.cs" />
+    <Compile Include="DefaultIfEmptyTests.cs" />
     <Compile Include="DistinctTests.cs" />
     <Compile Include="FirstTests.cs" />
     <Compile Include="LastTests.cs" />
