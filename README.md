@@ -1,3 +1,29 @@
+# Z.LinqFaster
+
+### This small fork is trying to achieve the following goals:
+
+* Quality of code improvements
+* Use of generic types
+* Extended type support over JM.LinqFaster
+* Complete removal of Span support (it's not really a part of LINQ)
+* Reduced framework requirements
+* Addition of SourceLink
+* Use of the latest C# language features
+
+### Fork update progress:
+
+* [x] Implement `DefaultIfEmptyF`
+* [ ] *LinqFaster update (work in progress)*
+* [ ] LinqFasterParallel update
+* [ ] LinqFasterParallelSIMD update
+* [ ] LinqFasterSIMD update
+* [ ] Extended type support
+* [ ] Reduced framework requirements
+* [ ] Addition of SourceLink
+* [ ] README & LICENSE update
+
+---
+
 ![Build Status](https://ci.appveyor.com/api/projects/status/github/jackmott/LinqFaster "Build Status")
 
 # LinqFaster  
@@ -241,10 +267,3 @@ This gets you the best of both worlds.  The speed of memory locality and no allo
 In short, think about how you are transforming your data. In some cases normal Linq may be the better choice.
 
 While most of the functions strive to provide indentical results to Linq, the OrderBy methods are not a stable sort, while in Linq they are.
-
-
-
-
-
-
-
