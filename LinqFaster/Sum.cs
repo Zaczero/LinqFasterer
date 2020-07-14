@@ -1,751 +1,205 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-        // --------------------------  ARRAYS  --------------------------------------------
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static int SumF(this int[] source)
+        /// <summary>Computes the sum of a sequence of <see cref="T:System.Int32" /> values.</summary>
+        /// <returns>The sum of the values in the sequence.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int32" /> values to calculate the sum of.</param>
+        public static int SumF(this IReadOnlyList<int> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            int sum = 0;
+                throw Error.ArgumentNull(nameof(source));
+
+            var sum = 0;
+
             checked
             {
                 foreach (var v in source)
-                {
                     sum += v;
-                }
             }
+
             return sum;
         }
 
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static int SumF<T>(this T[] source, Func<T, int> selector)
+        /// <summary>Computes the sum of a sequence of <see cref="T:System.Int64" /> values.</summary>
+        /// <returns>The sum of the values in the sequence.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int64" /> values to calculate the sum of.</param>
+        public static long SumF(this IReadOnlyList<long> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+            var sum = 0L;
 
-            int sum = 0;
             checked
             {
                 foreach (var v in source)
-                {
-                    sum += selector(v);
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static long SumF(this long[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            long sum = 0;
-            checked
-            {
-                foreach (var v in source)
-                {
                     sum += v;
-                }
             }
+
             return sum;
         }
 
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static long SumF<T>(this T[] source, Func<T, long> selector)
+        /// <summary>Computes the sum of a sequence of <see cref="T:System.Single" /> values.</summary>
+        /// <returns>The sum of the values in the sequence.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int64" /> values to calculate the sum of.</param>
+        public static float SumF(this IReadOnlyList<float> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
+
+            var sum = 0.0;
+
+            foreach (var v in source)
+                sum += v;
+
+            return (float) sum;
+        }
+
+        /// <summary>Computes the sum of a sequence of <see cref="T:System.Double" /> values.</summary>
+        /// <returns>The sum of the values in the sequence.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int64" /> values to calculate the sum of.</param>
+        public static double SumF(this IReadOnlyList<double> source)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            var sum = 0.0;
+
+            foreach (var v in source)
+                sum += v;
+
+            return sum;
+        }
+
+        /// <summary>Computes the sum of a sequence of <see cref="T:System.Decimal" /> values.</summary>
+        /// <returns>The sum of the values in the sequence.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Decimal" /> values to calculate the sum of.</param>
+        public static decimal SumF(this IReadOnlyList<decimal> source)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            var sum = 0M;
+
+            foreach (var v in source)
+                sum += v;
+
+            return sum;
+        }
+
+        /// <summary>Computes the sum of the sequence of <see cref="T:System.Int32" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The sum of the projected values.</returns>
+        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static int SumF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, int> selector)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            long sum = 0;
+            var sum = 0;
+
             checked
             {
                 foreach (var v in source)
-                {
                     sum += selector(v);
-                }
             }
+
             return sum;
         }
 
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static float SumF(this float[] source)
+        /// <summary>Computes the sum of the sequence of <see cref="T:System.Int64" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The sum of the projected values.</returns>
+        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static long SumF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, long> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return (float)sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static float SumF<T>(this T[] source, Func<T, float> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            double sum = 0;
-            foreach (var v in source)
-            {
-                sum += selector(v);
-            }
+            var sum = 0L;
 
-            return (float)sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static double SumF(this double[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static double SumF<T>(this T[] source, Func<T, double> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-            foreach (var v in source)
-            {
-                sum += selector(v);
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static decimal SumF(this decimal[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            decimal sum = 0;
-
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static decimal SumF<T>(this T[] source, Func<T, decimal> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            decimal sum = 0;
-            foreach (var v in source)
-            {
-                sum += selector(v);
-            }
-
-            return sum;
-        }
-
-        /*---- Spans ---*/
-        
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static int SumF(this Span<int> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            int sum = 0;
             checked
             {
                 foreach (var v in source)
-                {
-                    sum += v;
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static int SumF<T>(this Span<T> source, Func<T, int> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            int sum = 0;
-            checked
-            {
-                foreach (var v in source)
-                {
                     sum += selector(v);
-                }
             }
+
             return sum;
         }
 
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static long SumF(this Span<long> source)
+        /// <summary>Computes the sum of the sequence of <see cref="T:System.Single" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The sum of the projected values.</returns>
+        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static float SumF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, float> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            long sum = 0;
-            checked
-            {
-                foreach (var v in source)
-                {
-                    sum += v;
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static long SumF<T>(this Span<T> source, Func<T, long> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            long sum = 0;
-            checked
-            {
-                foreach (var v in source)
-                {
-                    sum += selector(v);
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static float SumF(this Span<float> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
+            var sum = 0.0;
 
             foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return (float)sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static float SumF<T>(this Span<T> source, Func<T, float> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-            foreach (var v in source)
-            {
                 sum += selector(v);
-            }
 
-            return (float)sum;
+            return (float) sum;
         }
 
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static double SumF(this Span<double> source)
+        /// <summary>Computes the sum of the sequence of <see cref="T:System.Double" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The sum of the projected values.</returns>
+        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static double SumF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, double> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static double SumF<T>(this Span<T> source, Func<T, double> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            double sum = 0;
+            var sum = 0.0;
+
             foreach (var v in source)
-            {
                 sum += selector(v);
-            }
 
             return sum;
         }
 
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static decimal SumF(this Span<decimal> source)
+        /// <summary>Computes the sum of the sequence of <see cref="T:System.Decimal" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The sum of the projected values.</returns>
+        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static decimal SumF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, decimal> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            decimal sum = 0;
-
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static decimal SumF<T>(this Span<T> source, Func<T, decimal> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            decimal sum = 0;
+            var sum = 0M;
+
             foreach (var v in source)
-            {
                 sum += selector(v);
-            }
 
             return sum;
         }
-
-        // --------------------------  LISTS  --------------------------------------------
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static int SumF(this List<int> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            int sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static int SumF<T>(this List<T> source, Func<T, int> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            int sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static long SumF(this List<long> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static long SumF<T>(this List<T> source, Func<T, long> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static float SumF(this List<float> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return (float)sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static float SumF<T>(this List<T> source, Func<T, float> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return (float)sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static double SumF(this List<double> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static double SumF<T>(this List<T> source, Func<T, double> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static decimal SumF(this List<decimal> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        /// Adds the transformed sequence of elements.
-        /// </summary>        
-        /// <param name="source">The sequence of values to transform then sum.</param>
-        /// <param name="selector">A transformation function.</param>
-        /// <returns>The sum of the transformed elements.</returns>
-        public static decimal SumF<T>(this List<T> source, Func<T, decimal> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            decimal sum = 0;
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum;
-        }
-
     }
 }

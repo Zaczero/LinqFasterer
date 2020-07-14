@@ -5,942 +5,177 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-        // --------------------------  ARRAYS  --------------------------------------------
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this int[] source)
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Int32" /> values.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int32" /> values to calculate the average of.</param>
+        public static double AverageF(this IReadOnlyList<int> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this T[] source, Func<T, int> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this long[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this T[] source, Func<T, long> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static float AverageF(this float[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return (float)(sum / source.Length);
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static float AverageF<T>(this T[] source, Func<T, float> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return (float)(sum / source.Length);
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this double[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this T[] source, Func<T, double> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static decimal AverageF(this decimal[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static decimal AverageF<T>(this T[] source, Func<T, decimal> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Length;
-        }
-
-        // --------------------------  this SpanS  --------------------------------------------
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this Span<int> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this Span<T> source, Func<T, int> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this Span<long> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this Span<T> source, Func<T, long> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Length; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static float AverageF(this Span<float> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return (float)(sum / source.Length);
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static float AverageF<T>(this Span<T> source, Func<T, float> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return (float)(sum / source.Length);
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF(this Span<double> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this Span<T> source, Func<T, double> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of an array
-        /// </summary>
-        /// <param name="source">The array to calculate the average of.</param>
-        /// <returns>The average of the array.</returns>
-        public static decimal AverageF(this Span<decimal> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Length;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static decimal AverageF<T>(this Span<T> source, Func<T, decimal> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Length;
-        }
-
-        // --------------------------  Lists  --------------------------------------------
-
-        /// <summary>
-        /// Computes the average of a list.
-        /// </summary>
-        /// <param name="source">The list to calculate the average of.</param>
-        /// <returns>The average of the list.</returns>
-        public static double AverageF(this List<int> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
 
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Count;
+            return (double) source.SumF() / source.Count;
         }
 
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this List<T> source, Func<T, int> selector)
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Int64" /> values.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Int64" /> values to calculate the average of.</param>
+        public static double AverageF(this IReadOnlyList<long> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
+
+            return (double) source.SumF() / source.Count;
+        }
+
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Single" /> values.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Single" /> values to calculate the average of.</param>
+        public static float AverageF(this IReadOnlyList<float> source)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            if (source.Count == 0)
+                throw Error.NoElements();
+
+            var sum = 0.0;
+
+            foreach (var v in source)
+                sum += v;
+
+            return (float) (sum / source.Count);
+        }
+
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Double" /> values.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Double" /> values to calculate the average of.</param>
+        public static double AverageF(this IReadOnlyList<double> source)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            if (source.Count == 0)
+                throw Error.NoElements();
+
+            return source.SumF() / source.Count;
+        }
+
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Decimal" /> values.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of <see cref="T:System.Decimal" /> values to calculate the average of.</param>
+        public static decimal AverageF(this IReadOnlyList<decimal> source)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            if (source.Count == 0)
+                throw Error.NoElements();
+
+            return source.SumF() / source.Count;
+        }
+
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Int32" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of values to calculate the average of.</param>
+        /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static double AverageF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, int> selector)
+        {
+            if (source == null)
+                throw Error.ArgumentNull(nameof(source));
+
+            if (source.Count == 0)
+                throw Error.NoElements();
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Count;
+            return (double) source.SumF(selector) / source.Count;
         }
 
-        /// <summary>
-        /// Computes the average of a list.
-        /// </summary>
-        /// <param name="source">The list to calculate the average of.</param>
-        /// <returns>The average of the list.</returns>
-        public static double AverageF(this List<long> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += source[i];
-                }
-            }
-            return (double)sum / source.Count;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Int64" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of values to calculate the average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this List<T> source, Func<T, long> selector)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static double AverageF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, long> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            long sum = 0;
-            checked
-            {
-                for (int i = 0; i < source.Count; i++)
-                {
-                    sum += selector(source[i]);
-                }
-            }
-            return (double)sum / source.Count;
+            return (double) source.SumF(selector) / source.Count;
         }
 
-        /// <summary>
-        /// Computes the average of a list.
-        /// </summary>
-        /// <param name="source">The list to calculate the average of.</param>
-        /// <returns>The average of the list.</returns>
-        public static float AverageF(this List<float> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return (float)(sum / source.Count);
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Single" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of values to calculate the average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static float AverageF<T>(this List<T> source, Func<T, float> selector)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static float AverageF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, float> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            double sum = 0;
+            var sum = 0.0;
 
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
+            foreach (var v in source)
+                sum += selector(v);
 
-            return (float)(sum / source.Count);
+            return (float) (sum / source.Count);
         }
-
-        /// <summary>
-        /// Computes the average of a list.
-        /// </summary>
-        /// <param name="source">The list to calculate the average of.</param>
-        /// <returns>The average of the list.</returns>
-        public static double AverageF(this List<double> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            double sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Count;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Double" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of values to calculate the average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static double AverageF<T>(this List<T> source, Func<T, double> selector)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static double AverageF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, double> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-            double sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Count;
+            return source.SumF(selector) / source.Count;
         }
-
-        /// <summary>
-        /// Computes the average of a list.
-        /// </summary>
-        /// <param name="source">The list to calculate the average of.</param>
-        /// <returns>The average of the list.</returns>
-        public static decimal AverageF(this List<decimal> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += source[i];
-            }
-
-            return sum / source.Count;
-        }
-
-        /// <summary>
-        /// Computes the average of values obtained by invoking a transform function on
-        /// each element of the input array.
-        /// </summary>
-        /// <param name="source">The array to calculate the transformed average of.</param>
+        /// <summary>Computes the average of a sequence of <see cref="T:System.Decimal" /> values that are obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <returns>The average of the sequence of values.</returns>
+        /// <param name="source">A sequence of values to calculate the average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The average of the array.</returns>
-        public static decimal AverageF<T>(this List<T> source, Func<T, decimal> selector)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        public static decimal AverageF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, decimal> selector)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (source.Count == 0)
-            {
                 throw Error.NoElements();
-            }
 
             if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+                throw Error.ArgumentNull(nameof(selector));
 
-
-            decimal sum = 0;
-
-            for (int i = 0; i < source.Count; i++)
-            {
-                sum += selector(source[i]);
-            }
-
-            return sum / source.Count;
+            return source.SumF(selector) / source.Count;
         }
     }
 }
