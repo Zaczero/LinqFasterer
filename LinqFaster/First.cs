@@ -5,299 +5,86 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-
-        // --------------------------  Arrays --------------------------------------------
-
-        /// <summary>
-        /// Returns the first element of an array.
-        /// </summary>        
-        /// <param name="source">The array to return the first element of.</param>
-        /// <returns>The first element in the specified array.</returns>
-        public static T FirstF<T>(this T[] source)
+        /// <summary>Returns the first element of a sequence.</summary>
+        /// <returns>The first element in the specified sequence.</returns>
+        /// <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return the first element of.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException">The source sequence is empty.</exception>
+        public static TSource FirstF<TSource>(this IReadOnlyList<TSource> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (source.Length == 0)
-            {
+                throw Error.ArgumentNull(nameof(source));
+
+            if (source.Count == 0)
                 throw Error.NoElements();
-            }
+
             return source[0];
         }
 
-        /// <summary>
-        /// Returns the first element in an array that satisfies a specified condition.
-        /// </summary>        
-        /// <param name="source">An array to return an element from.</param>
-        /// <param name="predicate">A function to teast each element for a condition.</param>
-        /// <returns>The first element that satisfies the condition.</returns>
-        public static T FirstF<T>(this T[] source, Func<T, bool> predicate)
+        /// <summary>Returns the first element in a sequence that satisfies a specified condition.</summary>
+        /// <returns>The first element in the sequence that passes the test in the specified predicate function.</returns>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
+        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> or <paramref name="predicate" /> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException">No element satisfies the condition in <paramref name="predicate" />.-or-The source sequence is empty.</exception>
+        public static TSource FirstF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    return source[i];
-                }
-            }
+            foreach (var v in source)
+                if (predicate(v))
+                    return v;
 
             throw Error.NoMatch();
         }
-
-       
-
-
-        /// <summary>
-        /// Returns the first element of an array, or a default value if the
-        /// array contains no elements.
-        /// </summary>             
-        /// <param name="source">The array to return the first element of.</param>
-        /// <returns>default value if source is empty, otherwise, the first element
-        /// in source.</returns>        
-        public static T FirstOrDefaultF<T>(this T[] source)
+        
+        /// <summary>Returns the first element of a sequence, or a default value if the sequence contains no elements.</summary>
+        /// <returns>The first element in the specified sequence.</returns>
+        /// <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return the first element of.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException">The source sequence is empty.</exception>
+        public static TSource FirstOrDefaultF<TSource>(this IReadOnlyList<TSource> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (source.Length == 0)
-            {
-                return default(T);
-            }
-            return source[0];
-        }
+                throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Returns the first element of the sequence that satisfies a condition or a 
-        /// default value if no such element is found.
-        /// </summary>        
-        /// <param name="source">An IEnumerable to return an element from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns></returns>
-        public static T FirstOrDefaultF<T>(this T[] source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    return source[i];
-                }
-            }
-
-            return default(T);
-        }
-        // --------------------------  this Span --------------------------------------------
-
-        /// <summary>
-        /// Returns the first element of an array.
-        /// </summary>        
-        /// <param name="source">The array to return the first element of.</param>
-        /// <returns>The first element in the specified array.</returns>
-        public static T FirstF<T>(this Span<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the first element in an array that satisfies a specified condition.
-        /// </summary>        
-        /// <param name="source">An array to return an element from.</param>
-        /// <param name="predicate">A function to teast each element for a condition.</param>
-        /// <returns>The first element that satisfies the condition.</returns>
-        public static T FirstF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    return source[i];
-                }
-            }
-
-            throw Error.NoMatch();
-        }
-
-
-
-
-        /// <summary>
-        /// Returns the first element of an array, or a default value if the
-        /// array contains no elements.
-        /// </summary>             
-        /// <param name="source">The array to return the first element of.</param>
-        /// <returns>default value if source is empty, otherwise, the first element
-        /// in source.</returns>        
-        public static T FirstOrDefaultF<T>(this Span<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (source.Length == 0)
-            {
-                return default(T);
-            }
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the first element of the sequence that satisfies a condition or a 
-        /// default value if no such element is found.
-        /// </summary>        
-        /// <param name="source">An IEnumerable to return an element from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns></returns>
-        public static T FirstOrDefaultF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    return source[i];
-                }
-            }
-
-            return default(T);
-        }
-
-        // --------------------------  Lists --------------------------------------------
-
-        /// <summary>
-        /// Returns the first element of a list
-        /// </summary>        
-        /// <param name="source">The list to return the first element of.</param>
-        /// <returns>The first element in the specified list.</returns>   
-        public static T FirstF<T>(this List<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
             if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
+                return default;
+
             return source[0];
         }
 
-        /// <summary>
-        /// Returns the first element in a list that satisfies a specified condition.
-        /// </summary>        
-        /// <param name="source">An list to return an element from.</param>
-        /// <param name="predicate">A function to teast each element for a condition.</param>
-        /// <returns>The first element in the list that satisfies the condition.</returns>       
-        public static T FirstF<T>(this List<T> source, Predicate<T> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            var firstIndex = source.FindIndex(predicate);
-            if (firstIndex == -1)
-                throw Error.NoMatch();
-            else
-                return source[firstIndex];
-        }
-
-        /// <summary>
-        /// Returns the first element of an array, or a default value if the
-        /// array contains no elements.
-        /// </summary>             
-        /// <param name="source">The array to return the first element of.</param>
-        /// <returns>default value if source is empty, otherwise, the first element
-        /// in source.</returns>      
-        public static T FirstOrDefaultF<T>(this List<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (source.Count == 0)
-            {
-                return default(T);
-            }
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the first element of the sequence that satisfies a condition or a 
-        /// default value if no such element is found.
-        /// </summary>        
-        /// <param name="source">An IEnumerable to return an element from.</param>
+        /// <summary>Returns the first element of a sequence, or a default value if the sequence contains no elements.</summary>
+        /// <returns>The first element in the sequence that passes the test in the specified predicate function.</returns>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns></returns>
-        public static T FirstOrDefaultF<T>(this List<T> source, Predicate<T> predicate)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> or <paramref name="predicate" /> is null.</exception>
+        /// <exception cref="T:System.InvalidOperationException">No element satisfies the condition in <paramref name="predicate" />.-or-The source sequence is empty.</exception>
+        public static TSource FirstOrDefaultF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            var firstIndex = source.FindIndex(predicate);
-            if (firstIndex == -1)
-                return default(T);
-            else
-                return source[firstIndex];
+            foreach (var v in source)
+                if (predicate(v))
+                    return v;
+
+            return default;
         }
     }
 }

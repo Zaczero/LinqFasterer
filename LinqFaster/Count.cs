@@ -5,119 +5,83 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-
-        // --------------------------  Arrays --------------------------------------------
-
-        /// <summary>
-        /// Returns a number that represents how many elements in the specified
-        /// array satisfy a condition.
-        /// </summary>        
-        /// <param name="source">An array that contains elements to be tested and counted.</param>
+        /// <summary>Returns a number that represents how many elements in the specified sequence satisfy a condition.</summary>
+        /// <returns>A number that represents how many elements in the sequence satisfy the condition in the predicate function.</returns>
+        /// <param name="source">A sequence that contains elements to be tested and counted.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A number that represents how many elements in the array satisfy the condition
-        /// in the predicate function.</returns>
-        public static int CountF<T>(this T[] source, Func<T, bool> predicate)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> or <paramref name="predicate" /> is null.</exception>
+        /// <exception cref="T:System.OverflowException">The number of elements in <paramref name="source" /> is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
+        public static int CountF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            int count = 0;
-            for (int i = 0; i < source.Length; i++)
+            var count = 0;
+
+            checked
             {
-                checked
-                {
-                    if (predicate(source[i]))
-                    {
+                foreach (var v in source)
+                    if (predicate(v))
                         count++;
-                    }
-                }
             }
 
             return count;
         }
 
-        // --------------------------  this Spans --------------------------------------------
-
-        /// <summary>
-        /// Returns a number that represents how many elements in the specified
-        /// array satisfy a condition.
-        /// </summary>        
-        /// <param name="source">An array that contains elements to be tested and counted.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A number that represents how many elements in the array satisfy the condition
-        /// in the predicate function.</returns>
-        public static int CountF<T>(this Span<T> source, Func<T, bool> predicate)
+        /// <summary>Returns an <see cref="T:System.Int64" /> that represents the total number of elements in a sequence.</summary>
+        /// <returns>The number of elements in the source sequence.</returns>
+        /// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements to be counted.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> is null.</exception>
+        /// <exception cref="T:System.OverflowException">The number of elements exceeds <see cref="F:System.Int64.MaxValue" />.</exception>
+        public static long LongCountF<TSource>(this IReadOnlyList<TSource> source)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+            var count = 0L;
 
-            int count = 0;
-            for (int i = 0; i < source.Length; i++)
+            checked
             {
-                checked
-                {
-                    if (predicate(source[i]))
-                    {
-                        count++;
-                    }
-                }
+                foreach (var _ in source)
+                    count++;
             }
 
             return count;
         }
 
-
-        // ------------------------------ Lists ---------------------
-
-        /// <summary>
-        /// Returns a number that represents how many elements in the specified
-        /// list satisfy a condition.
-        /// </summary>        
-        /// <param name="source">A list that contains elements to be tested and counted.</param>
+        /// <summary>Returns a number that represents how many elements in the specified sequence satisfy a condition.</summary>
+        /// <returns>A number that represents how many elements in the sequence satisfy the condition in the predicate function.</returns>
+        /// <param name="source">A sequence that contains elements to be tested and counted.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A number that represents how many elements in the list satisfy the condition
-        /// in the predicate function.</returns>
-        public static int CountF<T>(this List<T> source, Func<T, bool> predicate)
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <exception cref="T:System.ArgumentNullException">
+        ///   <paramref name="source" /> or <paramref name="predicate" /> is null.</exception>
+        /// <exception cref="T:System.OverflowException">The number of elements in <paramref name="source" /> is larger than <see cref="F:System.Int64.MaxValue" />.</exception>
+        public static long LongCountF<TSource>(this IReadOnlyList<TSource> source, Func<TSource, bool> predicate)
         {
             if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+                throw Error.ArgumentNull(nameof(source));
 
             if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+                throw Error.ArgumentNull(nameof(predicate));
 
-            int count = 0;
-            for (int i = 0; i < source.Count; i++)
+            var count = 0L;
+
+            checked
             {
-                checked
-                {
-                    if (predicate(source[i]))
-                    {
+                foreach (var v in source)
+                    if (predicate(v))
                         count++;
-                    }
-                }
             }
 
             return count;
         }
-
-
     }
 }

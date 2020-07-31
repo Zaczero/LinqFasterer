@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using JM.LinqFaster;
+﻿using JM.LinqFaster;
 using NUnit.Framework;
+using System.Linq;
 using static LinqFaster.Tests.Test;
 
 namespace LinqFaster.Tests
