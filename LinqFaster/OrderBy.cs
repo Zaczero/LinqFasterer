@@ -1,145 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using JM.LinqFaster.Utils;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
-        /// <summary>
-        /// Sorts the elements of a sequence in ascending order according to a key.
-        /// Unlike standard Linq NOT a stable sort.
-        /// </summary>        
-        /// <param name="source">A sequence of values to order.</param>
-        /// <param name="keySelector">A function to extract a key from an element.</param>
-        /// <param name="comparer">A Comparer to compare keys.</param>
-        /// <returns>A sequence whose elements are ordered according to a key</returns>
-        public static TSource[] OrderByF<TSource, TKey>(this TSource[] source, Func<TSource, TKey> keySelector,IComparer<TKey> comparer = null)
-        {
-            
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+	public static partial class LinqFaster
+	{
+		/// <summary>Sorts the elements of a sequence in ascending order by using a specified comparer.</summary>
+		/// <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted according to a key.</returns>
+		/// <param name="source">A sequence of values to order.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare keys.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector" />.</typeparam>
+		public static IList<TSource> OrderByF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-            if (keySelector == null)
-            {
-                throw Error.ArgumentNull("keySelector");
-            }
+			if (keySelector == null)
+				throw Error.ArgumentNull(nameof(keySelector));
 
-            if (comparer == null)
-            {
-                comparer = Comparer<TKey>.Default;
-            }
+			if (comparer == null)
+				comparer = Comparer<TKey>.Default;
 
-            var keys = new TKey[source.Length];
-            for (int i = 0; i < keys.Length; i++)
-            {
-                keys[i] = keySelector(source[i]);
-            }            
-            var result = (TSource[])source.Clone();
-            Array.Sort(keys,result,comparer);            
-            return result;
-        }
+			var keys = new TKey[source.Count];
+			var result = new TSource[source.Count];
 
-        /// <summary>
-        /// Sorts the elements of a sequence in descending order according to a key.
-        /// Unlike standard Linq NOT a stable sort.
-        /// </summary>        
-        /// <param name="source">A sequence of values to order.</param>
-        /// <param name="keySelector">A function to extract a key from an element.</param>
-        /// <param name="comparer">A Comparer to compare keys.</param>
-        /// <returns>A sequence whose elements are ordered according to a key</returns>
-        public static TSource[] OrderByDescendingF<TSource, TKey>(this TSource[] source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null) {
-            if (source == null) {
-                throw Error.ArgumentNull("source");
-            }
+			for (var i = 0; i < source.Count; i++)
+			{
+				keys[i] = keySelector(source[i]);
+				result[i] = source[i];
+			}
 
-            if (keySelector == null) {
-                throw Error.ArgumentNull("keySelector");
-            }
+			Array.Sort(keys, result, comparer);
 
-            if (comparer == null) {
-                comparer = Comparer<TKey>.Default;
-            }
+			return result;
+		}
 
-            var keys = new TKey[source.Length];
-            for (int i = 0; i < keys.Length; i++) {
-                keys[i] = keySelector(source[i]);
-            }
-            var result = (TSource[])source.Clone();
-            Array.Sort(keys, result, comparer.Reverse());
-            return result;
-        }
-
-
-        // ---------------------- Lists
-
-        /// <summary>
-        /// Sorts the elements of a sequence in ascending order according to a key.
-        /// Unlike standard Linq NOT a stable sort.
-        /// </summary>        
-        /// <param name="source">A sequence of values to order.</param>
-        /// <param name="keySelector">A function to extract a key from an element.</param>
-        /// <param name="comparer">A Comparer to compare keys.</param>
-        /// <returns>A sequence whose elements are ordered according to a key</returns>
-        public static List<TSource> OrderByF<TSource, TKey>(this List<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (keySelector == null)
-            {
-                throw Error.ArgumentNull("keySelector");
-            }
-
-            if (comparer == null)
-            {
-                comparer = Comparer<TKey>.Default;
-            }
-
-            var result = new List<TSource>(source);
-            var lambdaComparer = new LambdaComparer<TSource, TKey>(keySelector, comparer);          
-            result.Sort(lambdaComparer);
-            return result;
-        }
-
-        /// <summary>
-        /// Sorts the elements of a sequence in descending order according to a key.
-        /// Unlike standard Linq NOT a stable sort.
-        /// </summary>        
-        /// <param name="source">A sequence of values to order.</param>
-        /// <param name="keySelector">A function to extract a key from an element.</param>
-        /// <param name="comparer">A Comparer to compare keys.</param>
-        /// <returns>A sequence whose elements are ordered according to a key</returns>
-        public static List<TSource> OrderByDescendingF<TSource, TKey>(this List<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null) {
-            if (source == null) {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (keySelector == null) {
-                throw Error.ArgumentNull("keySelector");
-            }
-
-            if (comparer == null) {
-                comparer = Comparer<TKey>.Default;
-            }
-
-            var result = new List<TSource>(source);
-            var lambdaComparer = new ReverseLambdaComparer<TSource, TKey>(keySelector, comparer);
-            result.Sort(lambdaComparer);
-            return result;
-        }
-
-
-
-    }
+		/// <summary>Sorts the elements of a sequence in descending order by using a specified comparer.</summary>
+		/// <returns>An <see cref="T:System.Linq.IOrderedEnumerable`1" /> whose elements are sorted in descending order according to a key.</returns>
+		/// <param name="source">A sequence of values to order.</param>
+		/// <param name="keySelector">A function to extract a key from an element.</param>
+		/// <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to compare keys.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector" />.</typeparam>
+		public static IList<TSource> OrderByDescendingF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+		{
+			return source.OrderByF(keySelector, comparer).ReverseInPlaceF();
+		}
+	}
 }
-
-
-
-
-
-

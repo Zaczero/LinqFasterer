@@ -3,197 +3,60 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
-        // --------------------------  Arrays --------------------------------------------
+	public static partial class LinqFaster
+	{
+		/// <summary>Projects each element of a sequence to an <see cref="T:System.Collections.Generic.IEnumerable`1" /> and flattens the resulting sequences into one sequence.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
+		/// <param name="source">A sequence of values to project.</param>
+		/// <param name="selector">A transform function to apply to each element.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <typeparam name="TResult">The type of the elements of the sequence returned by <paramref name="selector" />.</typeparam>
+		public static IList<TResult> SelectManyF<TSource, TResult>(this IList<TSource> source, Func<TSource, IList<TResult>> selector)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence.
-        /// Yo dawg, I heard you like sequences.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
-        public static TResult[] SelectManyF<TSource, TResult>(this TSource[] source, Func<TSource, TResult[]> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			if (selector == null)
+				throw Error.ArgumentNull(nameof(selector));
 
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+			var result = new List<TResult>();
 
-            var result = new List<TResult>(source.Length);
-            for (int i = 0; i < source.Length; i++)
-            {
-                var va = selector(source[i]);
-                for (int j = 0; j < va.Length; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result.ToArray();
-        }
+			for (var i = 0; i < source.Count; i++)
+			{
+				var valueArray = selector(source[i]);
 
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence
-        /// utilizing the index of each element.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element and it's index.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element and index of the input sequence.</returns>
-        public static TResult[] SelectManyF<TSource, TResult>(this TSource[] source, Func<TSource, int, TResult[]> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+				for (var j = 0; j < valueArray.Count; j++)
+					result.Add(valueArray[j]);
+			}
 
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+			return result;
+		}
 
-            var result = new List<TResult>(source.Length);
-            for (int i = 0; i < source.Length; i++)
-            {
-                var va = selector(source[i], i);
-                for (int j = 0; j < va.Length; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result.ToArray();
-        }
+		/// <summary>Projects each element of a sequence to an <see cref="T:System.Collections.Generic.IEnumerable`1" /> and flattens the resulting sequences into one sequence.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
+		/// <param name="source">A sequence of values to project.</param>
+		/// <param name="selector">A transform function to apply to each element.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <typeparam name="TResult">The type of the elements of the sequence returned by <paramref name="selector" />.</typeparam>
+		public static IList<TResult> SelectManyF<TSource, TResult>(this IList<TSource> source, Func<TSource, int, IList<TResult>> selector)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        // --------------------------  this Spans --------------------------------------------
+			if (selector == null)
+				throw Error.ArgumentNull(nameof(selector));
 
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence.
-        /// Yo dawg, I heard you like sequences.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
-        public static TResult[] SelectManyF<TSource, TResult>(this Span<TSource> source, Func<TSource, TResult[]> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			var result = new List<TResult>();
 
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+			for (var i = 0; i < source.Count; i++)
+			{
+				var valueArray = selector(source[i], i);
 
-            var result = new List<TResult>(source.Length);
-            for (int i = 0; i < source.Length; i++)
-            {
-                var va = selector(source[i]);
-                for (int j = 0; j < va.Length; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result.ToArray();
-        }
+				for (var j = 0; j < valueArray.Count; j++)
+					result.Add(valueArray[j]);
+			}
 
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence
-        /// utilizing the index of each element.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element and it's index.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element and index of the input sequence.</returns>
-        public static TResult[] SelectManyF<TSource, TResult>(this Span<TSource> source, Func<TSource, int, TResult[]> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            var result = new List<TResult>(source.Length);
-            for (int i = 0; i < source.Length; i++)
-            {
-                var va = selector(source[i], i);
-                for (int j = 0; j < va.Length; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result.ToArray();
-        }
-        // --------------------------  LISTS --------------------------------------------
-
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence.
-        /// Yo dawg, I heard you like sequences.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
-        public static List<TResult> SelectManyF<TSource, TResult>(this List<TSource> source, Func<TSource, List<TResult>> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            var result = new List<TResult>(source.Count);
-            for (int i = 0; i < source.Count; i++)
-            {
-                var va = selector(source[i]);
-                for (int j = 0; j < va.Count; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Projects each element of a sequence to another sequence and flattens the resulting sequences into one sequence
-        /// utilizing the index of each element.
-        /// </summary>                    
-        /// <param name="source">A sequence of values to project.</param>
-        /// <param name="selector">A transform function to apply to each element and it's index.</param>
-        /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element and index of the input sequence.</returns>
-        public static List<TResult> SelectManyF<TSource, TResult>(this List<TSource> source, Func<TSource, int, List<TResult>> selector)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            var result = new List<TResult>(source.Count);
-            for (int i = 0; i < source.Count; i++)
-            {
-                var va = selector(source[i], i);
-                for (int j = 0; j < va.Count; j++)
-                {
-                    result.Add(va[j]);
-                }
-            }
-            return result;
-        }
-    }
+			return result;
+		}
+	}
 }

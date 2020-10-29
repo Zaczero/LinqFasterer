@@ -3,407 +3,104 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
-        // --------------------------- Arrays ----------------------------
+	public static partial class LinqFaster
+	{
+		/// <summary>Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.</summary>
+		/// <returns>The single element of the input sequence.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return the single element of.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static TSource SingleF<TSource>(this IList<TSource> source)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence or default if no elements exist.</returns>
-        public static T SingleF<T>(this T[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			if (source.Count == 0)
+				throw Error.NoElements();
 
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
+			if (source.Count > 1)
+				throw Error.MoreThanOneElement();
 
-            if (source.Length > 1) {
-                throw Error.MoreThanOneElement();
-            }
+			return source[0];
+		}
 
-            return source[0];
-        }
+		/// <summary>Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.</summary>
+		/// <returns>The single element of the input sequence that satisfies a condition.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return a single element from.</param>
+		/// <param name="predicate">A function to test an element for a condition.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static TSource SingleF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Returns the only element of a sequence, or the default if no elements exist, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence</returns>
-        public static T SingleOrDefaultF<T>(this T[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
-            if (source.Length == 0)
-            {
-                return default(T);
-            }
+			if (source.Count == 0)
+				throw Error.NoElements();
 
-            if (source.Length > 1) {
-                throw Error.MoreThanOneElement();
-            }
+			var foundAtIndex = -1;
 
-            return source[0];
-        }
+			for (var i = 0; i < source.Count; i++)
+				if (predicate(source[i]))
+					if (foundAtIndex == -1)
+						foundAtIndex = i;
+					else
+						throw Error.MoreThanOneElement();
 
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition.</returns>
-        public static T SingleF<T>(this T[] source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			if (foundAtIndex == -1)
+				throw Error.NoElements();
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			return source[foundAtIndex];
+		}
 
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
+		/// <summary>Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.</summary>
+		/// <returns>The single element of the input sequence, or default(<paramref name="TSource" />) if the sequence contains no elements.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return the single element of.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
+			if (source.Count == 0)
+				return default;
 
-            if (foundMatch)
-            {
-                return result;
-            }
-            else
-            {
-                throw Error.NoMatch();
-            }
-        }
+			if (source.Count > 1)
+				throw Error.MoreThanOneElement();
 
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, or a default value if
-        /// no such element exists, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition or default value if no such element is found.</returns>
-        public static T SingleOrDefaultF<T>(this T[] source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			return source[0];
+		}
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-          
+		/// <summary>Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists; this method throws an exception if more than one element satisfies the condition.</summary>
+		/// <returns>The single element of the input sequence that satisfies the condition, or default(<paramref name="TSource" />) if no such element is found.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return a single element from.</param>
+		/// <param name="predicate">A function to test an element for a condition.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
+			if (source.Count == 0)
+				return default;
 
-            return result;
-        }
-       
-        // --------------------------- Spans ----------------------------
+			var foundAtIndex = -1;
 
-        /// <summary>
-        /// Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence or default if no elements exist.</returns>
-        public static T SingleF<T>(this Span<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			for (var i = 0; i < source.Count; i++)
+				if (predicate(source[i]))
+					if (foundAtIndex == -1)
+						foundAtIndex = i;
+					else
+						throw Error.MoreThanOneElement();
 
-            if (source.Length == 0)
-            {
-                throw Error.NoElements();
-            }
+			if (foundAtIndex == -1)
+				return default;
 
-            if (source.Length > 1)
-            {
-                throw Error.MoreThanOneElement();
-            }
-
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence, or the default if no elements exist, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence</returns>
-        public static T SingleOrDefaultF<T>(this Span<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Length == 0)
-            {
-                return default(T);
-            }
-
-            if (source.Length > 1)
-            {
-                throw Error.MoreThanOneElement();
-            }
-
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition.</returns>
-        public static T SingleF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
-
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
-
-            if (foundMatch)
-            {
-                return result;
-            }
-            else
-            {
-                throw Error.NoMatch();
-            }
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, or a default value if
-        /// no such element exists, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition or default value if no such element is found.</returns>
-        public static T SingleOrDefaultF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
-
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
-
-            return result;
-        }
-
-        // --------------------------- Lists ----------------------------
-
-        /// <summary>
-        /// Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence</returns>
-        public static T SingleF<T>(this List<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                throw Error.NoElements();
-            }
-
-            if (source.Count > 1) {
-                throw Error.MoreThanOneElement();
-            }
-
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence, or default if no elements exist, and throws an exception if there is not exactly one element in the sequence.
-        /// </summary>        
-        /// <param name="source">A sequence to return the single element of</param>
-        /// <returns>The single element of the input sequence or default if no elements exist.</returns>
-        public static T SingleOrDefaultF<T>(this List<T> source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (source.Count == 0)
-            {
-                return default(T);
-            }
-
-            if (source.Count > 1) {
-                throw Error.MoreThanOneElement();
-            }
-
-            return source[0];
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition.</returns>
-        public static T SingleF<T>(this List<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
-
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
-
-            if (foundMatch)
-            {
-                return result;
-            }
-            else
-            {
-                throw Error.NoMatch();
-            }
-        }
-
-        /// <summary>
-        /// Returns the only element of a sequence that satisfies a specified condition, or a default value if
-        /// no such element exists, and throws an exception if more than one such element exists.
-        /// </summary>        
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
-        /// <returns>The single element of the input sequence that satisfies a condition or default value if no such element is found.</returns>
-        public static T SingleOrDefaultF<T>(this List<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            T result = default(T);
-            bool foundMatch = false;
-            for (int i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    if (foundMatch)
-                    {
-                        throw Error.MoreThanOneMatch();
-                    }
-
-                    result = source[i];
-                    foundMatch = true;
-                }
-            }
-
-            return result;
-        }
-
-    }
+			return source[foundAtIndex];
+		}
+	}
 }

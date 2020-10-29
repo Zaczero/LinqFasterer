@@ -3,278 +3,100 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
+	public static partial class LinqFaster
+	{
+		/// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the specified number of elements from the start of the input sequence.</returns>
+		/// <param name="source">The sequence to return elements from.</param>
+		/// <param name="count">The number of elements to return.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> TakeF<TSource>(this IList<TSource> source, int count)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Returns a specified number of contiguous elements from the start of a sequence.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="count">The number of elements to return.</param>
-        /// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>
-        public static T[] TakeF<T>(this T[] source, int count)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (count < 0)
-            {
-                count = 0;
-            }
-            else if (count > source.Length)
-            {
-                count = source.Length;
-            }
+			if (count < 0)
+				return new TSource[0];
 
-            var result = new T[count];
-            Array.Copy(source, 0, result, 0, count);
-            return result;
-        }
+			if (count > source.Count)
+				count = source.Count;
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true.
-        /// </summary>        
-        /// <param name="source">A sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static T[] TakeWhileF<T>(this T[] source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			var result = new TSource[count];
 
-            int count = 0;
-            for (; count < source.Length; count++)
-            {
-                if (!predicate(source[count]))
-                    break;                
-            }
-            var result = new T[count];
-            Array.Copy(source, 0, result, 0, count);
-            return result;
-        }
+			for (var i = 0; i < count; i++)
+				result[i] = source[i];
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true. The element's index is used in the logic of the predicate function.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
-        /// <returns>A sequence that contains elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static T[] TakeWhileF<T>(this T[] source, Func<T,int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			return result;
+		}
 
-            int count = 0;
-            for (; count < source.Length; count++)
-            {
-                if (!predicate(source[count], count))
-                    break;                
-            }
-            var result = new T[count];
-            Array.Copy(source, 0, result, 0, count);
-            return result;
-        }
+		/// <summary>Returns a specified number of contiguous elements from the end of a sequence.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the specified number of elements from the end of the input sequence.</returns>
+		/// <param name="source">The sequence to return elements from.</param>
+		/// <param name="count">The number of elements to return.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> TakeLastF<TSource>(this IList<TSource> source, int count)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /*---- spans ---- */
-        /// <summary>
-        /// Returns a specified number of contiguous elements from the start of a sequence.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="count">The number of elements to return.</param>
-        /// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>
-        public static T[] TakeF<T>(this Span<T> source, int count)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (count < 0)
-            {
-                count = 0;
-            }
-            else if (count > source.Length)
-            {
-                count = source.Length;
-            }
+			if (count < 0)
+				return new TSource[0];
 
-            var result = new T[count];
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = source[i];
-            }            
-            return result;
-        }
+			if (count > source.Count)
+				count = source.Count;
 
+			var result = new TSource[count];
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true.
-        /// </summary>        
-        /// <param name="source">A sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static T[] TakeWhileF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			for (var i = 0; i < count; i++)
+				result[i] = source[source.Count - count + i];
 
-            int count = 0;
-            for (; count < source.Length; count++)
-            {
-                if (!predicate(source[count]))
-                    break;
-            }
-            var result = new T[count];
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = source[i];
-            }
-            return result;
-        }
+			return result;
+		}
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true. The element's index is used in the logic of the predicate function.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
-        /// <returns>A sequence that contains elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static T[] TakeWhileF<T>(this Span<T> source, Func<T, int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+		/// <summary>
+		/// Returns elements from a sequence as long as a specified condition is true.
+		/// </summary>
+		/// <param name="source">A sequence to return elements from.</param>
+		/// <param name="predicate">A function to test each element for a condition.</param>
+		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
+		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-            int count = 0;
-            for (; count < source.Length; count++)
-            {
-                if (!predicate(source[count], count))
-                    break;
-            }
-            var result = new T[count];
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = source[i];
-            }
-            return result;
-        }
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
+			var count = 0;
 
-        // ------------- Lists ----------------
+			for (; count < source.Count; count++)
+				if (!predicate(source[count]))
+					break;
 
-        /// <summary>
-        /// Returns a specified number of contiguous elements from the start of a sequence.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="count">The number of elements to return.</param>
-        /// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>
-        public static List<T> TakeF<T>(this List<T> source, int count)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (count < 0)
-            {
-                count = 0;
-            }
-            else if (count > source.Count)
-            {
-                count = source.Count;
-            }
+			return source.TakeF(count);
+		}
 
-            var result = new List<T>(count);
-            for (int i = 0; i < count; i++)
-            {
-                result.Add(source[i]);
-            }
-            return result;
-        }
+		/// <summary>
+		/// Returns elements from a sequence as long as a specified condition is true.
+		/// </summary>
+		/// <param name="source">A sequence to return elements from.</param>
+		/// <param name="predicate">A function to test each element for a condition.</param>
+		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
+		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true.
-        /// </summary>        
-        /// <param name="source">A sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static List<T> TakeWhileF<T>(this List<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
-            var result = new List<T>();
-            for (int i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    result.Add(source[i]);
-                }
-                else
-                {
-                    return result;
-                }
-            }
+			var count = 0;
 
-            return result;
-        }
+			for (; count < source.Count; count++)
+				if (!predicate(source[count], count))
+					break;
 
-        /// <summary>
-        /// Returns elements from a sequence as long as a specified condition is true. The element's index is used in the logic of the predicate function.
-        /// </summary>        
-        /// <param name="source">The sequence to return elements from.</param>
-        /// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
-        /// <returns>A sequence that contains elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-        public static List<T> TakeWhileF<T>(this List<T> source, Func<T, int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            var result = new List<T>();
-            for (int i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i], i))
-                    result.Add(source[i]);
-                else
-                    return result;
-            }
-            return result;
-        }
-
-
-
-    }
+			return source.TakeF(count);
+		}
+	}
 }

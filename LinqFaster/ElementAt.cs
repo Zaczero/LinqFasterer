@@ -9,11 +9,7 @@ namespace JM.LinqFaster
 		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
 		/// <param name="index">The zero-based index of the element to retrieve.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <exception cref="T:System.ArgumentNullException">
-		///   <paramref name="source" /> is null.</exception>
-		/// <exception cref="T:System.ArgumentOutOfRangeException">
-		///   <paramref name="index" /> is less than 0 or greater than or equal to the number of elements in <paramref name="source" />.</exception>
-		public static TSource ElementAtF<TSource>(this IReadOnlyList<TSource> source, int index)
+		public static TSource ElementAtF<TSource>(this IList<TSource> source, int index)
 		{
 			if (source == null)
 				throw Error.ArgumentNull(nameof(source));
@@ -26,19 +22,15 @@ namespace JM.LinqFaster
 		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
 		/// <param name="index">The zero-based index of the element to retrieve.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <exception cref="T:System.ArgumentNullException">
-		///   <paramref name="source" /> is null.</exception>
-		/// <exception cref="T:System.ArgumentOutOfRangeException">
-		///   <paramref name="index" /> is less than 0 or greater than or equal to the number of elements in <paramref name="source" />.</exception>
-		public static TSource ElementAtOrDefaultF<TSource>(this IReadOnlyList<TSource> source, int index)
+		public static TSource ElementAtOrDefaultF<TSource>(this IList<TSource> source, int index)
 		{
 			if (source == null)
 				throw Error.ArgumentNull(nameof(source));
 
-			if (index > -1 && index < source.Count)
-				return source[index];
+			if (index < 0 || index >= source.Count)
+				return default;
 
-			return default;
+			return source[index];
 		}
 	}
 }

@@ -3,304 +3,69 @@ using System;
 
 namespace JM.LinqFaster
 {
+	public static partial class LinqFaster
+	{
+		/// <summary>Determines whether two sequences are equal by comparing their elements by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.</summary>
+		/// <returns>true if the two source sequences are of equal length and their corresponding elements compare equal according to <paramref name="comparer" />; otherwise, false.</returns>
+		/// <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare to <paramref name="second" />.</param>
+		/// <param name="second">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare to the first sequence.</param>
+		/// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> to use to compare elements.</param>
+		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
+		public static bool SequenceEqualF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource> comparer = null)
+		{
+			if (first == null)
+				throw Error.ArgumentNull(nameof(first));
 
-    public static partial class LinqFaster
-    {
+			if (second == null)
+				throw Error.ArgumentNull(nameof(second));
 
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>     
-        public static bool SequenceEqualF<T>(this T[] first, T[] second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
+			if (comparer == null)
+				comparer = EqualityComparer<TSource>.Default;
 
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
+			if (first.Count != second.Count)
+				return false;
 
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
+			// ReSharper disable once PossibleUnintendedReferenceComparison
+			if (first == second)
+				return true;
 
-            if (first.Length != second.Length) return false;
-            if (first == second) return true;
+			for (var i = 0; i < first.Count; i++)
+				if (!comparer.Equals(first[i], second[i]))
+					return false;
 
-            for (int i = 0; i < first.Length; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
+			return true;
+		}
 
-            return true;
-        }
+		/// <summary>Determines whether two sequences are equal by comparing their elements by using a specified <see cref="T:System.Collections.Generic.IComparer`1" />.</summary>
+		/// <returns>An array of integers, where the value corresponds to IComparer.Compare indicating less than, greater than, or equals</returns>
+		/// <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare to <paramref name="second" />.</param>
+		/// <param name="second">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to compare to the first sequence.</param>
+		/// <param name="comparer">An <see cref="T:System.Collections.Generic.IComparer`1" /> to use to compare elements.</param>
+		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
+		public static int[] SequenceCompareF<TSource>(this IList<TSource> first, IList<TSource> second, IComparer<TSource> comparer = null)
+		{
+			if (first == null)
+				throw Error.ArgumentNull(nameof(first));
 
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>An array of integers, where the value corresponds to IComparer.Compare indicating less than, greater than, or equals</returns>     
-        public static int[] SequenceCompareF<T>(this T[] first, T[] second, IComparer<T> comparer = null)
-        {
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
+			if (second == null)
+				throw Error.ArgumentNull(nameof(second));
 
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
+			if (comparer == null)
+				comparer = Comparer<TSource>.Default;
 
-            if (comparer == null)
-            {
-                comparer = Comparer<T>.Default;
-            }
-            if (first.Length != second.Length) throw Error.NotSupported();
+			if (first.Count != second.Count)
+				throw Error.NotSupported();
 
-            var result = new int[first.Length];
-            for (int i = 0; i < first.Length; i++)
-            {
-                result[i] = comparer.Compare(first[i], second[i]);               
-            }
-            return result;
-        }
+			var result = new int[first.Count];
 
+			// ReSharper disable once PossibleUnintendedReferenceComparison
+			if (first == second)
+				return result;
 
+			for (var i = 0; i < first.Count; i++)
+				result[i] = comparer.Compare(first[i], second[i]);
 
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>
-        public static bool SequenceEqualF<T>(this T[] first, List<T> second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Length != second.Count) return false;
-
-            for (int i = 0; i < first.Length; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>
-        public static bool SequenceEqualF<T>(this List<T> first, T[] second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Count != second.Length) return false;
-
-            for (int i = 0; i < first.Count; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-
-        /*---- Spans ----*/
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>     
-        public static bool SequenceEqualF<T>(this Span<T> first, Span<T> second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Length != second.Length) return false;
-            if (first == second) return true;
-
-            for (int i = 0; i < first.Length; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-
-
-
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>
-        public static bool SequenceEqualF<T>(this Span<T> first, List<T> second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Length != second.Count) return false;
-
-            for (int i = 0; i < first.Length; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>
-        public static bool SequenceEqualF<T>(this List<T> first, Span<T> second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Count != second.Length) return false;
-
-            for (int i = 0; i < first.Count; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-
-        /* ------------ List ---------------- */
-
-        /// <summary>
-        /// Determines whether two sequences are equal by comparing the elements by using the 
-        /// provided comparer or the default equality comparer for their type if none is provided.
-        /// </summary>        
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to first.</param>
-        /// <param name="comparer">An optional Comparer to use for the comparison.</param>
-        /// <returns>true of the two sources are of equal length and their corresponding 
-        /// elements are equal according to the equality comparer. Otherwise, false.</returns>
-        public static bool SequenceEqualF<T>(this List<T> first, List<T> second, IEqualityComparer<T> comparer = null)
-        {
-            if (comparer == null)
-            {
-                comparer = EqualityComparer<T>.Default;
-            }
-
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-
-            if (first.Count != second.Count) return false;
-            if (first == second) return true;
-
-            for (int i = 0; i < first.Count; i++)
-            {
-                if (!comparer.Equals(first[i], second[i])) return false;
-            }
-
-            return true;
-        }
-    }
+			return result;
+		}
+	}
 }

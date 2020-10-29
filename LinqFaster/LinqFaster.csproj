@@ -15,7 +15,7 @@
     <AssemblyName>JM.LinqFaster</AssemblyName>
     <RootNamespace>JM.LinqFaster</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>

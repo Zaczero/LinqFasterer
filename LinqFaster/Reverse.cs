@@ -3,84 +3,38 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
-        /// <summary>
-        /// Inverts the order of the elements in a sequence.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>
-        /// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>
-        public static T[] ReverseF<T>(this T[] source)
-        {
-            var result = new T[source.Length];
-            int lenLessOne = source.Length - 1;
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = source[lenLessOne - i];
-            }            
-            return result;
-        }
+	public static partial class LinqFaster
+	{
+		/// <summary>Inverts the order of the elements in a sequence.</summary>
+		/// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>
+		/// <param name="source">A sequence of values to reverse.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> ReverseF<TSource>(this IList<TSource> source)
+		{
+			var result = new TSource[source.Count];
 
-      
+			for (var i = 0; i < source.Count; i++)
+				result[i] = source[source.Count - i - 1];
 
+			return result;
+		}
 
-        /// <summary>
-        /// Inverts the order of the elements in a sequence in place.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>        
-        public static void ReverseInPlaceF<T>(this T[] source)
-        {
-            Array.Reverse(source);
-        }
+		/// <summary>Inverts the order of the elements in a sequence.</summary>
+		/// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>
+		/// <param name="source">A sequence of values to reverse.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> ReverseInPlaceF<TSource>(this IList<TSource> source)
+		{
+			for (var i = 0; i < source.Count / 2; i++)
+			{
+				var iReversed = source.Count - i - 1;
 
+				var tmp = source[i];
+				source[i] = source[iReversed];
+				source[iReversed] = tmp;
+			}
 
-
-        /// <summary>
-        /// Inverts the order of the elements in a sequence.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>
-        /// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>
-        public static T[] ReverseF<T>(this Span<T> source)
-        {
-            var result = new T[source.Length];
-            int lenLessOne = source.Length - 1;
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = source[lenLessOne - i];
-            }
-            return result;
-        }
-        /// <summary>
-        /// Inverts the order of the elements in a sequence in place.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>        
-        public static void ReverseInPlaceF<T>(this Span<T> source)
-        {
-            source.Reverse();
-        }
-
-        /// <summary>
-        /// Inverts the order of the elements in a sequence.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>
-        /// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>
-        public static List<T> ReverseF<T>(this List<T> source)
-        {
-            var result = new List<T>(source.Count);
-            for (int i = source.Count - 1; i >= 0; i--)
-            {
-                result.Add(source[i]);
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Inverts the order of the elements in a sequence in place.
-        /// </summary>        
-        /// <param name="source">A sequence of values to reverse.</param>        
-        public static void ReverseInPlaceF<T>(this List<T> source)
-        {
-            source.Reverse();            
-        }
-    }
+			return source;
+		}
+	}
 }
