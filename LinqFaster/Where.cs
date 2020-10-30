@@ -3,192 +3,56 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
+	public static partial class LinqFaster
+	{
+		/// <summary>Filters a sequence of values based on a predicate.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains elements from the input sequence that satisfy the condition.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to filter.</param>
+		/// <param name="predicate">A function to test each element for a condition.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-    public static partial class LinqFaster
-    {
-        // --------------------------  ARRAYS --------------------------------------------
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
-        /// <summary>
-        /// Filters a sequence of values based on a predicate.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>        
-        public static T[] WhereF<T>(this T[] source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			var result = new TSource[source.Count];
+			var resultSize = 0;
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			for (var i = 0; i < source.Count; i++)
+				if (predicate(source[i]))
+					result[resultSize++] = source[i];
 
-            T[] result = new T[source.Length];
-            int idx = 0;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    result[idx] = source[i];
-                    idx++;
-                }
-            }
-            Array.Resize(ref result, idx);
-            return result;
-        }
+			Array.Resize(ref result, resultSize);
 
-        /// <summary>
-        /// Filters a sequence of values based on a predicate that includes the index in it's logic.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition along with the element's index.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
-        public static T[] WhereF<T>(this T[] source, Func<T, int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			return result;
+		}
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-            
-            
-            T[] result = new T[source.Length];
-            int idx = 0;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i], i))
-                {
-                    result[idx] = source[i];
-                    idx++;
-                }
-            }
-            Array.Resize(ref result, idx);
-            return result;
-        }
+		/// <summary>Filters a sequence of values based on a predicate. Each element's index is used in the logic of the predicate function.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains elements from the input sequence that satisfy the condition.</returns>
+		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to filter.</param>
+		/// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
+		{
+			if (source == null)
+				throw Error.ArgumentNull(nameof(source));
 
-        // --------------------------  Spans --------------------------------------------
+			if (predicate == null)
+				throw Error.ArgumentNull(nameof(predicate));
 
-        /// <summary>
-        /// Filters a sequence of values based on a predicate.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>        
-        public static T[] WhereF<T>(this Span<T> source, Func<T, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
+			var result = new TSource[source.Count];
+			var resultSize = 0;
 
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
+			for (var i = 0; i < source.Count; i++)
+				if (predicate(source[i], i))
+					result[resultSize++] = source[i];
 
-            T[] result = new T[source.Length];
-            int idx = 0;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i]))
-                {
-                    result[idx] = source[i];
-                    idx++;
-                }
-            }
-            Array.Resize(ref result, idx);
-            return result;
-        }
+			Array.Resize(ref result, resultSize);
 
-        /// <summary>
-        /// Filters a sequence of values based on a predicate that includes the index in it's logic.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition along with the element's index.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
-        public static T[] WhereF<T>(this Span<T> source, Func<T, int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-
-            T[] result = new T[source.Length];
-            int idx = 0;
-            for (int i = 0; i < source.Length; i++)
-            {
-                if (predicate(source[i], i))
-                {
-                    result[idx] = source[i];
-                    idx++;
-                }
-            }
-            Array.Resize(ref result, idx);
-            return result;
-        }
-        
-        // --------------------------  LISTS --------------------------------------------
-
-        /// <summary>
-        /// Filters a sequence of values based on a predicate.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
-        public static List<T> WhereF<T>(this List<T> source, Predicate<T> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }            
-
-            return source.FindAll(predicate);            
-        }
-
-
-        /// <summary>
-        /// Filters a sequence of values based on a predicate that includes the index in it's logic.
-        /// </summary>        
-        /// <param name="source">A sequence to filter.</param>
-        /// <param name="predicate">A function to test each element for a condition along with the element's index.</param>
-        /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
-        public static List<T> WhereF<T>(this List<T> source, Func<T, int, bool> predicate)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-
-            if (predicate == null)
-            {
-                throw Error.ArgumentNull("predicate");
-            }
-
-            List<T> r = new List<T>();
-            for (int i = 0; i < source.Count; i++)
-            {
-                if (predicate(source[i], i)) r.Add(source[i]);
-            }
-            return r;
-        }
-
-    }
+			return result;
+		}
+	}
 }

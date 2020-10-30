@@ -3,142 +3,34 @@ using System.Collections.Generic;
 
 namespace JM.LinqFaster
 {
-    public static partial class LinqFaster
-    {
+	public static partial class LinqFaster
+	{
+		/// <summary>Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.</summary>
+		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains merged elements of two input sequences.</returns>
+		/// <param name="first">The first sequence to merge.</param>
+		/// <param name="second">The second sequence to merge.</param>
+		/// <param name="resultSelector">A function that specifies how to merge the elements from the two sequences.</param>
+		/// <typeparam name="TFirst">The type of the elements of the first input sequence.</typeparam>
+		/// <typeparam name="TSecond">The type of the elements of the second input sequence.</typeparam>
+		/// <typeparam name="TResult">The type of the elements of the result sequence.</typeparam>
+		public static IList<TResult> ZipF<TFirst, TSecond, TResult>(this IList<TFirst> first, IList<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
+		{
+			if (first == null)
+				throw Error.ArgumentNull(nameof(first));
 
-        /// <summary>
-        /// Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
-        /// </summary>
-        /// <param name="first">The first sequence to merge.</param>
-        /// <param name="second">The second sequence to merge.</param>
-        /// <param name="selector">A function that specifies how to merge the elements from the two sequences.</param>
-        /// <returns>A sequence that contains merged elements of two input sequences.</returns>
-        public static R[] ZipF<T, U, R>(this T[] first, U[] second, Func<T, U, R> selector)
-        {
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
+			if (second == null)
+				throw Error.ArgumentNull(nameof(second));
 
-            //maintain array bounds elision
-            if (first.Length < second.Length)
-            {
-                var result = new R[first.Length];
-                for (int i = 0; i < first.Length; i++)
-                {
-                    result[i] = selector(first[i], second[i]);
-                }
-                return result;
+			if (resultSelector == null)
+				throw Error.ArgumentNull(nameof(resultSelector));
 
-            }
-            else
-            {
-                var result = new R[second.Length];
-                for (int i = 0; i < second.Length; i++)
-                {
-                    result[i] = selector(first[i], second[i]);
-                }
-                return result;
-            }
+			var resultSize = Math.Min(first.Count, second.Count);
+			var result = new TResult[resultSize];
 
-        }
+			for (var i = 0; i < resultSize; i++)
+				result[i] = resultSelector(first[i], second[i]);
 
-        /// <summary>
-        /// Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
-        /// </summary>
-        /// <param name="first">The first sequence to merge.</param>
-        /// <param name="second">The second sequence to merge.</param>
-        /// <param name="selector">A function that specifies how to merge the elements from the two sequences.</param>
-        /// <returns>A sequence that contains merged elements of two input sequences.</returns>
-        public static R[] ZipF<T, U, R>(this Span<T> first, Span<U> second, Func<T, U, R> selector)
-        {
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            //maintain array bounds elision
-            if (first.Length < second.Length)
-            {
-                var result = new R[first.Length];
-                for (int i = 0; i < first.Length; i++)
-                {
-                    result[i] = selector(first[i], second[i]);
-                }
-                return result;
-
-            }
-            else
-            {
-                var result = new R[second.Length];
-                for (int i = 0; i < second.Length; i++)
-                {
-                    result[i] = selector(first[i], second[i]);
-                }
-                return result;
-            }
-
-        }
-
-        /// <summary>
-        /// Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
-        /// </summary>
-        /// <param name="first">The first sequence to merge.</param>
-        /// <param name="second">The second sequence to merge.</param>
-        /// <param name="selector">A function that specifies how to merge the elements from the two sequences.</param>
-        /// <returns>A sequence that contains merged elements of two input sequences.</returns>
-        public static List<R> ZipF<T, U, R>(this List<T> first, List<U> second, Func<T, U, R> selector)
-        {
-            if (first == null)
-            {
-                throw Error.ArgumentNull("first");
-            }
-            if (second == null)
-            {
-                throw Error.ArgumentNull("second");
-            }
-            if (selector == null)
-            {
-                throw Error.ArgumentNull("selector");
-            }
-
-            //maintain array bounds elision
-            if (first.Count < second.Count)
-            {
-                var result = new List<R>(first.Count);
-                for (int i = 0; i < first.Count; i++)
-                {
-                    result.Add(selector(first[i], second[i]));
-                }
-                return result;
-
-            }
-            else
-            {
-                var result = new List<R>(second.Count);
-                for (int i = 0; i < second.Count; i++)
-                {
-                    result.Add(selector(first[i], second[i]));
-                }
-                return result;
-            }
-
-        }
-    }
+			return result;
+		}
+	}
 }
