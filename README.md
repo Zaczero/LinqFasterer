@@ -1,4 +1,4 @@
-# Z.LinqFaster
+# LinqFasterer
 
 ### This small fork is trying to achieve the following goals:
 
@@ -20,6 +20,7 @@
 * [ ] Extended type support
 * [ ] Reduced framework requirements
 * [ ] Addition of SourceLink
+* [ ] Benchmark code update (switch to NuGet library)
 * [ ] README & LICENSE update
 
 ---
