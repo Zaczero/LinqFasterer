@@ -25,6 +25,8 @@ namespace JM.LinqFaster
 			{
 				var valueArray = selector(source[i]);
 
+				// TODO: benchmark array with resize
+
 				for (var j = 0; j < valueArray.Count; j++)
 					result.Add(valueArray[j]);
 			}

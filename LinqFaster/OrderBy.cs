@@ -32,6 +32,8 @@ namespace JM.LinqFaster
 				result[i] = source[i];
 			}
 
+			// TODO: benchmark with source.CopyTo()
+
 			Array.Sort(keys, result, comparer);
 
 			return result;

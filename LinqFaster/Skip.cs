@@ -16,7 +16,7 @@ namespace JM.LinqFaster
 				throw Error.ArgumentNull(nameof(source));
 
 			if (count > source.Count)
-				return new TSource[0];
+				return EmptyF<TSource>();
 
 			if (count < 0)
 				count = 0;
@@ -40,13 +40,15 @@ namespace JM.LinqFaster
 				throw Error.ArgumentNull(nameof(source));
 
 			if (count > source.Count)
-				return new TSource[0];
+				return EmptyF<TSource>();
 
 			if (count < 0)
 				count = 0;
 
 			var resultLenght = source.Count - count;
 			var result = new TSource[resultLenght];
+
+			// TODO: test source.CopyTo() with overflow
 
 			for (var i = 0; i < resultLenght; i++)
 				result[i] = source[i];

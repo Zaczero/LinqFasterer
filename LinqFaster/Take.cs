@@ -16,7 +16,7 @@ namespace JM.LinqFaster
 				throw Error.ArgumentNull(nameof(source));
 
 			if (count < 0)
-				return new TSource[0];
+				return EmptyF<TSource>();
 
 			if (count > source.Count)
 				count = source.Count;
@@ -40,7 +40,7 @@ namespace JM.LinqFaster
 				throw Error.ArgumentNull(nameof(source));
 
 			if (count < 0)
-				return new TSource[0];
+				return EmptyF<TSource>();
 
 			if (count > source.Count)
 				count = source.Count;
