@@ -7,15 +7,14 @@ namespace LinqFasterer.Tests
 	public partial class Test
 	{
 		[Theory]
-		[Trait(nameof(LinqFasterer.CountF), null)]
+		[Trait(nameof(LinqFasterer.PrependF), null)]
 		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 2)]
-		public void CountTest_Int(IList<int> source)
+		public void PrependTest_Int(IList<int> source)
 		{
 			var (first, second) = SplitArray(source, source.Count - 1);
 
-			var expected = first.Count(v => v == second[0]);
-			var actual = first.CountF(v => v == second[0]);
+			var expected = first.Prepend(second[0]);
+			var actual = first.PrependF(second[0]);
 
 			Assert.Equal(expected, actual);
 		}

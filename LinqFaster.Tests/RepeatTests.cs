@@ -1,26 +1,18 @@
 ﻿using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
-namespace LinqFaster.Tests
+namespace LinqFasterer.Tests
 {
-    [TestFixture]
-    class RepeatTests
-    {
-        [Test]
-        public void RepeatArray() {
-            var a = JM.LinqFaster.LinqFaster.RepeatArrayF(2.0f, 10);
-            var b = Enumerable.Repeat(2.0f, 10).ToList();
+	public partial class Test
+	{
+		[Fact]
+		[Trait(nameof(LinqFasterer.RepeatF), null)]
+		public void RepeatTest_Int()
+		{
+			var expected = Enumerable.Repeat(5, 100);
+			var actual = LinqFasterer.RepeatF(5, 100);
 
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void RepeatList()
-        {
-            var a = JM.LinqFaster.LinqFaster.RepeatListF(2.0f, 10);
-            var b = Enumerable.Repeat(2.0f, 10).ToList();
-
-            Assert.That(a, Is.EqualTo(b));
-        }
-    }
+			Assert.Equal(expected, actual);
+		}
+	}
 }

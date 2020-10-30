@@ -7,12 +7,14 @@ namespace LinqFasterer.Tests
 	public partial class Test
 	{
 		[Theory]
-		[Trait(nameof(LinqFasterer.LastF), null)]
+		[Trait(nameof(LinqFasterer.AppendF), null)]
 		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		public void LastTest_Int(IList<int> source)
+		public void AppendTest_Int(IList<int> source)
 		{
-			var expected = source.Last();
-			var actual = source.LastF();
+			var (first, second) = SplitArray(source, source.Count - 1);
+
+			var expected = first.Append(second[0]);
+			var actual = first.AppendF(second[0]);
 
 			Assert.Equal(expected, actual);
 		}

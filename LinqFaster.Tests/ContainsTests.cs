@@ -1,44 +1,22 @@
-﻿using JM.LinqFaster;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using static LinqFaster.Tests.Test;
+﻿using System.Collections.Generic;
+using Xunit;
 
-namespace LinqFaster.Tests
+namespace LinqFasterer.Tests
 {
-    [TestFixture]
-    public class ContainsTests
-    {
-        [Test]
-        public void ContainsStringArrayTrue()
-        {
-            var a = stringArray.ContainsF("0", EqualityComparer<string>.Default);
-            var b = stringArray.Contains("0", EqualityComparer<string>.Default);
-            Assert.That(a, Is.EqualTo(b));
-        }
+	public partial class Test
+	{
+		[Theory]
+		[Trait(nameof(LinqFasterer.ContainsF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
+		public void ContainsTest_Int(IList<int> source)
+		{
+			var (first, second) = SplitArray(source, source.Count - 1);
 
-        [Test]
-        public void ContainsStringArrayFalse()
-        {
-            var a = stringArray.ContainsF("no Match", EqualityComparer<string>.Default);
-            var b = stringArray.Contains("no Match", EqualityComparer<string>.Default);
-            Assert.That(a, Is.EqualTo(b));
-        }
+			var expected = first.Contains(second[0]);
+			var actual = first.ContainsF(second[0]);
 
-        [Test]
-        public void ContainsStringListTrue()
-        {
-            var a = stringList.ContainsF("0", EqualityComparer<string>.Default);
-            var b = stringList.Contains("0", EqualityComparer<string>.Default);
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void ContainsStringListFalse()
-        {
-            var a = stringList.ContainsF("no match", EqualityComparer<string>.Default);
-            var b = stringList.Contains("no match", EqualityComparer<string>.Default);
-            Assert.That(a, Is.EqualTo(b));
-        }
-    }
+			Assert.Equal(expected, actual);
+		}
+	}
 }

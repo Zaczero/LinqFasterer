@@ -1,59 +1,35 @@
-﻿using System;
-using JM.LinqFaster;
-using NUnit.Framework;
-using static LinqFaster.Tests.Test;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
-namespace LinqFaster.Tests
+namespace LinqFasterer.Tests
 {
-    [TestFixture]
-    class OrderByTests
-    {
-        [Test]
-        public void OrderByArray()
-        {
-            Func<int,int> lambda1 = (x => x*x);
-            var a = intArray.OrderByF(lambda1);
-            for (var i = 0; i < a.Length-1;i++)
-            {
-                Assert.That(lambda1(a[i]), Is.LessThanOrEqualTo(lambda1(a[i+1])));
-            }
-            
-        }
+	public partial class Test
+	{
+		[Theory]
+		[Trait(nameof(LinqFasterer.OrderByF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
+		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		public void OrderByTest_Int(IList<int> source)
+		{
+			var expected = source.OrderBy(v => v);
+			var actual = source.OrderByF(v => v);
 
-        [Test]
-        public void OrderByDescendingArray() {
-            Func<int, int> lambda1 = (x => x * x);
-            var a = intArray.OrderByDescendingF(lambda1);
-          
-            for (var i = 0; i < a.Length - 1; i++) {                
-                Assert.That(lambda1(a[i]), Is.GreaterThanOrEqualTo(lambda1(a[i + 1])));
-            }
-            
+			Assert.Equal(expected, actual);
+		}
 
-        }
+		[Theory]
+		[Trait(nameof(LinqFasterer.OrderByDescendingF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
+		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		public void OrderByDescendingTest_Int(IList<int> source)
+		{
+			var expected = source.OrderByDescending(v => v);
+			var actual = source.OrderByDescendingF(v => v);
 
-        [Test]
-        public void OrderByList() {
-            Func<int, int> lambda1 = (x => x * x);
-            var a = intList.OrderByF(lambda1);
-            for (var i = 0; i < a.Count - 1; i++) {
-                Assert.That(lambda1(a[i]), Is.LessThanOrEqualTo(lambda1(a[i + 1])));
-            }
-
-        }
-
-        [Test]
-        public void OrderByDescendingList() {
-            Func<int, int> lambda1 = (x => x * x);
-            var a = intList.OrderByDescendingF(lambda1);
-            for (var i = 0; i < a.Count - 1; i++) {
-                Assert.That(lambda1(a[i]), Is.GreaterThanOrEqualTo(lambda1(a[i + 1])));
-            }
-
-        }
-
-
-
-
-    }
+			Assert.Equal(expected, actual);
+		}
+	}
 }

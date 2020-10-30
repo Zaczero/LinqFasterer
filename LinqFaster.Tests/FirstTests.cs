@@ -1,59 +1,20 @@
-﻿using JM.LinqFaster;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using System.Linq;
-using static LinqFaster.Tests.Test;
+using Xunit;
 
-namespace LinqFaster.Tests
+namespace LinqFasterer.Tests
 {
-    [TestFixture]
-    public class FirstTests
-    {
-        [Test]
-        public void FirstArray()
-        {
-            var a = intArray.FirstF();
-            var b = intArray.First();
-            Assert.That(a, Is.EqualTo(b));
-        }
+	public partial class Test
+	{
+		[Theory]
+		[Trait(nameof(LinqFasterer.FirstF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		public void FirstTest_Int(IList<int> source)
+		{
+			var expected = source.First();
+			var actual = source.FirstF();
 
-        [Test]
-        public void FirstArrayPredicate()
-        {
-            var a = intArray.FirstF(x => x > 0);
-            var b = intArray.First(x => x > 0);
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void FirstOrDefaultArray()
-        {
-            var a = intArray.FirstOrDefaultF(x => x > 99999);
-            var b = intArray.FirstOrDefault(x => x >  99999);
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void FirstList()
-        {
-            var a = intList.FirstF();
-            var b = intList.First();
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void FirstListPredicate()
-        {
-            var a = intList.FirstF(x => x > 0);
-            var b = intList.First(x => x > 0);
-            Assert.That(a, Is.EqualTo(b));
-        }
-
-        [Test]
-        public void FirstOrDefaultList()
-        {
-            var a = intList.FirstOrDefaultF(x => x > 99999);
-            var b = intList.FirstOrDefault(x => x > 99999);
-            Assert.That(a, Is.EqualTo(b));
-        }
-    }
+			Assert.Equal(expected, actual);
+		}
+	}
 }

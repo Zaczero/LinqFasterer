@@ -7,12 +7,14 @@ namespace LinqFasterer.Tests
 	public partial class Test
 	{
 		[Theory]
-		[Trait(nameof(LinqFasterer.LastF), null)]
+		[Trait(nameof(LinqFasterer.ConcatF), null)]
 		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		public void LastTest_Int(IList<int> source)
+		public void ConcatTest_Int(IList<int> source)
 		{
-			var expected = source.Last();
-			var actual = source.LastF();
+			var (first, second) = SplitArray(source, source.Count / 2);
+
+			var expected = first.Concat(second);
+			var actual = first.ConcatF(second);
 
 			Assert.Equal(expected, actual);
 		}

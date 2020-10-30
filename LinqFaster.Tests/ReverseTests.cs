@@ -1,30 +1,31 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq;
-using JM.LinqFaster;
-using NUnit.Framework;
-using static LinqFaster.Tests.Test;
+using Xunit;
 
-namespace LinqFaster.Tests
+namespace LinqFasterer.Tests
 {
-    [TestFixture]
-    class ReverseTests {
+	public partial class Test
+	{
+		[Theory]
+		[Trait(nameof(LinqFasterer.ReverseF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		public void ReverseTest_Int(IList<int> source)
+		{
+			var expected = source.Reverse();
+			var actual = source.ReverseF();
 
-        [Test]
-        public void ReverseArray() {
-            var a = intArray.ReverseF();
-            var aSpan = intArray.AsSpan().ReverseF();
-            var b = intArray.Reverse();
+			Assert.Equal(expected, actual);
+		}
 
-            Assert.That(a, Is.EqualTo(b));
-            Assert.That(aSpan, Is.EqualTo(b));
-        }
+		[Theory]
+		[Trait(nameof(LinqFasterer.ReverseInPlaceF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		public void ReverseInPlaceTest_Int(IList<int> source)
+		{
+			var expected = source.Reverse().ToArray();
+			source.ReverseInPlaceF();
 
-        [Test]
-        public void ReverseList() {
-            var a = intList.ReverseF();
-            var b = intList.Select(x => x).ToList();
-            b.Reverse();
-            Assert.That(a, Is.EqualTo(b));
-        }
-    }
+			Assert.Equal(expected, source);
+		}
+	}
 }
