@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Generates a sequence of integral numbers within a specified range.</summary>
 		/// <returns>An IEnumerable&lt;Int32&gt; in C# or IEnumerable(Of Int32) in Visual Basic that contains a range of sequential integral numbers.</returns>

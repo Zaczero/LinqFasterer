@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
 		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the specified number of elements from the start of the input sequence.</returns>

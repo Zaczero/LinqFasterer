@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Returns the last element in a sequence that satisfies a specified condition.</summary>
 		/// <returns>The last element in the sequence that passes the test in the specified predicate function.</returns>

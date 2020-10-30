@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Determines whether two sequences are equal by comparing their elements by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.</summary>
 		/// <returns>true if the two source sequences are of equal length and their corresponding elements compare equal according to <paramref name="comparer" />; otherwise, false.</returns>

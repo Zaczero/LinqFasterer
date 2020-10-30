@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Computes the average of a sequence of <see cref="T:System.Int32" /> values.</summary>
 		/// <returns>The average of the sequence of values.</returns>

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Returns the maximum value in a generic sequence.</summary>
 		/// <returns>The maximum value in the sequence.</returns>

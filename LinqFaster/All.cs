@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Determines whether all elements of a sequence satisfy a condition.</summary>
 		/// <returns>true if every element of the source sequence passes the test in the specified predicate, or if the sequence is empty; otherwise, false.</returns>

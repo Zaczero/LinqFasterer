@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Returns the element at a specified index in a sequence.</summary>
 		/// <returns>The element at the specified position in the source sequence.</returns>

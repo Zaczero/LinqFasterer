@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
 	/// <summary>
 	/// Provides faster array and list specific extension methods with the same semantics as the Linq extensions methods.
 	/// </summary>
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Applies an accumulator function over a sequence.</summary>
 		/// <returns>The final accumulator value.</returns>

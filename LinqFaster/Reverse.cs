@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Inverts the order of the elements in a sequence.</summary>
 		/// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>

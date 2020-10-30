@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using LinqFasterer.Utils;
 
-namespace JM.LinqFaster
+namespace LinqFasterer
 {
-	public static partial class LinqFaster
+	public static partial class LinqFasterer
 	{
 		/// <summary>Returns a number that represents how many elements in the specified sequence satisfy a condition.</summary>
 		/// <returns>A number that represents how many elements in the sequence satisfy the condition in the predicate function.</returns>

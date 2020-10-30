@@ -3,7 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
-namespace JM.LinqFaster.Utils
+namespace LinqFasterer.Utils
 {
     public class EmptyOrderablePartitioner<T> : OrderablePartitioner<T>
     {
@@ -50,8 +50,8 @@ namespace JM.LinqFaster.Utils
         {
             if (len == 0) return new EmptyOrderablePartitioner<Tuple<int, int>>();
 
-            int chunkLen = len - len % chunkSize;
-            int numChunks = chunkLen / chunkSize;
+            var chunkLen = len - len % chunkSize;
+            var numChunks = chunkLen / chunkSize;
             if (batchSize == null)
             {                
                 return Partitioner.Create(0, numChunks,numChunks/Environment.ProcessorCount);
