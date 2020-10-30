@@ -11,18 +11,13 @@ namespace JM.LinqFaster
 		/// <param name="change">The value change between individual elements of a sequence.</param>
 		public static IList<int> RangeF(int start, int count, int change = 1)
 		{
-			if (count < 0 || (long) start + count - 1 > int.MaxValue)
-				throw Error.ArgumentOutOfRange(nameof(count));
-
 			var result = new int[count];
 
-			if (count == 0)
-				return result;
-
-			result[0] = start;
-
-			for (var i = 1; i < count; i++)
-				result[i] = result[i - 1] + change;
+			checked
+			{
+				for (var i = 0; i < count; i++)
+					result[i] = start + i * change;
+			}
 
 			return result;
 		}
