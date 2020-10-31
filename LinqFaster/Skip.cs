@@ -49,8 +49,6 @@ namespace LinqFasterer
 			var resultLenght = source.Count - count;
 			var result = new TSource[resultLenght];
 
-			// TODO: test source.CopyTo() with overflow
-
 			for (var i = 0; i < resultLenght; i++)
 				result[i] = source[i];
 

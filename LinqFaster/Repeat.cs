@@ -13,7 +13,7 @@ namespace LinqFasterer
 		{
 			var result = new TResult[count];
 
-			for (var i = 0; i < result.Length; i++)
+			for (var i = 0; i < count; i++)
 				result[i] = element;
 
 			return result;

@@ -22,27 +22,25 @@ namespace LinqFasterer
 			if (comparer == null)
 				comparer = EqualityComparer<TSource>.Default;
 
-			// TODO: benchmark both versions
-			if (first.Count > second.Count)
-			{
-				var tmp = first;
-
-				first = second;
-				second = tmp;
-			}
-
 			var secondHashSet = new HashSet<TSource>(second, comparer);
+			var resultHashSet = new HashSet<TSource>(comparer);
 			var result = new TSource[first.Count];
 			var resultSize = 0;
 
 			for (var i = 0; i < first.Count; i++)
-				if (secondHashSet.Contains(first[i]))
-					result[resultSize++] = first[i];
+			{
+				var value = first[i];
 
+				if (secondHashSet.Contains(value) && !resultHashSet.Contains(value))
+				{
+					result[resultSize++] = value;
+					resultHashSet.Add(value);
+				}
+			}
 
 			Array.Resize(ref result, resultSize);
 
-			return result.DistinctF(comparer);
+			return result;
 		}
 	}
 }

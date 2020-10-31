@@ -18,4 +18,4 @@ namespace LinqFasterer.Utils
 
 		internal static Exception NotSupported() { return new NotSupportedException(); }
 	}
-} 
+}

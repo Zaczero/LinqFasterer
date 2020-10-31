@@ -18,5 +18,18 @@ namespace LinqFasterer.Tests
 
 			Assert.Equal(expected, actual);
 		}
+
+		[Theory]
+		[Trait(nameof(LinqFasterer.MinF), null)]
+		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
+		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		public void MinTest_IntSelector(IList<int> source)
+		{
+			var expected = source.Min(v => -v);
+			var actual = source.MinF(v => -v);
+
+			Assert.Equal(expected, actual);
+		}
 	}
 }
