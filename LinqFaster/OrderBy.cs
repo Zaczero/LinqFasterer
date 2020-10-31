@@ -28,10 +28,9 @@ namespace LinqFasterer
 			var result = new TSource[source.Count];
 
 			for (var i = 0; i < source.Count; i++)
-			{
 				keys[i] = keySelector(source[i]);
-				result[i] = source[i];
-			}
+
+			source.CopyTo(result, 0);
 
 			// TODO: benchmark with source.CopyTo()
 
