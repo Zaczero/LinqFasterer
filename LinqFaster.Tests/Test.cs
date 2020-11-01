@@ -7,13 +7,6 @@ namespace LinqFasterer.Tests
 {
 	public partial class Test
 	{
-		//public static Func<int, bool> onlyEvenInts;
-		//public static Func<int, int> squaredInts;
-		//public static Func<int, int, int> addXInts;
-
-		//public static Func<float, bool> onlyPositiveFloats;
-		//public static Func<float, float> squaredFloats;
-
 		public const int RandomSeed = 0;
 
 		public static (IList<TSource>, IList<TSource>) SplitArray<TSource>(IList<TSource> source, int firstSize)
