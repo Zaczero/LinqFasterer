@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
+		/// <summary>Produces a sequence of tuples with elements from the two specified sequences.</summary>
+		/// <returns>A sequence of tuples with elements taken from the first and second sequences, in that order.</returns>
+		/// <param name="first">The first sequence to merge.</param>
+		/// <param name="second">The second sequence to merge.</param>
+		public static IList<ValueTuple<TFirst,TSecond>> ZipF<TFirst, TSecond>(this IList<TFirst> first, IList<TSecond> second)
+		{
+			var result = new ValueTuple<TFirst,TSecond>[Math.Min(first.Count, second.Count)];
+
+			for (var i = 0; i < result.Length; i++)
+				result[i] = new ValueTuple<TFirst,TSecond>(first[i], second[i]);
+
+			return result;
+		}
+
 		/// <summary>Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains merged elements of two input sequences.</returns>
+		/// <returns>A sequence that contains merged elements of two input sequences.</returns>
 		/// <param name="first">The first sequence to merge.</param>
 		/// <param name="second">The second sequence to merge.</param>
 		/// <param name="resultSelector">A function that specifies how to merge the elements from the two sequences.</param>
-		/// <typeparam name="TFirst">The type of the elements of the first input sequence.</typeparam>
-		/// <typeparam name="TSecond">The type of the elements of the second input sequence.</typeparam>
-		/// <typeparam name="TResult">The type of the elements of the result sequence.</typeparam>
 		public static IList<TResult> ZipF<TFirst, TSecond, TResult>(this IList<TFirst> first, IList<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
 		{
-			if (first == null)
-				throw Error.ArgumentNull(nameof(first));
+			var result = new TResult[Math.Min(first.Count, second.Count)];
 
-			if (second == null)
-				throw Error.ArgumentNull(nameof(second));
-
-			if (resultSelector == null)
-				throw Error.ArgumentNull(nameof(resultSelector));
-
-			var resultSize = Math.Min(first.Count, second.Count);
-			var result = new TResult[resultSize];
-
-			for (var i = 0; i < resultSize; i++)
+			for (var i = 0; i < result.Length; i++)
 				result[i] = resultSelector(first[i], second[i]);
 
 			return result;

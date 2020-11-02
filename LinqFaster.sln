@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer", "LinqFaster\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer.Tests", "LinqFaster.Tests\LinqFasterer.Tests.csproj", "{74C04BC1-3686-43C0-BCCF-3EB47179065A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqFasterer.Benchmarks", "LinqFasterer.Benchmark\LinqFasterer.Benchmarks.csproj", "{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{74C04BC1-3686-43C0-BCCF-3EB47179065A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74C04BC1-3686-43C0-BCCF-3EB47179065A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74C04BC1-3686-43C0-BCCF-3EB47179065A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
