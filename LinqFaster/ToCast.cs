@@ -1,19 +1,15 @@
-﻿using LinqFasterer.Utils;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
-		/// <summary>Creates an array from a <see cref="T:System.Collections.Generic.IEnumerable`1" />.</summary>
+		/// <summary>Creates an array from a sequence.</summary>
 		/// <returns>An array that contains the elements from the input sequence.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to create an array from.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <param name="source">A sequence to create an array from.</param>
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
 		public static TSource[] ToArrayF<TSource>(this IList<TSource> source, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
 			if (!forceClone && source is TSource[] sourceArray)
 				return sourceArray;
 
@@ -24,21 +20,17 @@ namespace LinqFasterer
 			return result;
 		}
 
-		/// <summary>Creates a <see cref="T:System.Collections.Generic.List`1" /> from an <see cref="T:System.Collections.Generic.IEnumerable`1" />.</summary>
-		/// <returns>A <see cref="T:System.Collections.Generic.List`1" /> that contains elements from the input sequence.</returns>
-		/// <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to create a <see cref="T:System.Collections.Generic.List`1" /> from.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		/// <summary>Creates a list from a sequence.</summary>
+		/// <returns>A sequence that contains elements from the input sequence.</returns>
+		/// <param name="source">A sequence to create a list from.</param>
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
 		public static List<TSource> ToListF<TSource>(this IList<TSource> source, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
 			if (!forceClone && source is List<TSource> sourceList)
 				return sourceList;
 
 			var result = new List<TSource>(source.Count);
 
-			// TODO: bechnmark addrange vs add
 			result.AddRange(source);
 
 			return result;

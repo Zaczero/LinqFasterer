@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Version>1.1.0</Version>
     <Authors>Jack Mott</Authors>
     <Description>High performance Linq-style extension methods for arrays and lists.</Description>
@@ -15,7 +15,7 @@
     <AssemblyName>LinqFasterer</AssemblyName>
     <RootNamespace>LinqFasterer</RootNamespace>
     <LangVersion>8.0</LangVersion>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
