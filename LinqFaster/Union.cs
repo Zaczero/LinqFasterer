@@ -7,9 +7,9 @@ namespace LinqFasterer
 	{
 		/// <summary>Produces the set union of two sequences.</summary>
 		/// <returns>A sequence that contains the elements from both input sequences, excluding duplicates.</returns>
-		/// <param name="first">The first set for the union.</param>
-		/// <param name="second">The second set for the union.</param>
-		/// <param name="comparer">Optional equality comparer, falls back to default when set to null.</param>
+		/// <param name="first">A sequence whose distinct elements form the first set for the union.</param>
+		/// <param name="second">A sequence whose distinct elements form the second set for the union.</param>
+		/// <param name="comparer">An optional equality comparer, falls back to default when set to null.</param>
 		public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
 		{
 			comparer ??= EqualityComparer<TSource>.Default;
