@@ -1,51 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
-		/// <summary>Produces the set union of two sequences by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements from both input sequences, excluding duplicates.</returns>
-		/// <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose distinct elements form the first set for the union.</param>
-		/// <param name="second">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose distinct elements form the second set for the union.</param>
-		/// <param name="comparer">The <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> to compare values.</param>
-		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
-		public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource> comparer = null)
+		/// <summary>Produces the set union of two sequences.</summary>
+		/// <returns>A sequence that contains the elements from both input sequences, excluding duplicates.</returns>
+		/// <param name="first">The first set for the union.</param>
+		/// <param name="second">The second set for the union.</param>
+		/// <param name="comparer">Optional equality comparer, falls back to default when set to null.</param>
+		public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
 		{
-			if (first == null)
-				throw Error.ArgumentNull(nameof(first));
+			comparer ??= EqualityComparer<TSource>.Default;
 
-			if (second == null)
-				throw Error.ArgumentNull(nameof(second));
-
-			if (comparer == null)
-				comparer = EqualityComparer<TSource>.Default;
-
-			var resultHashSet = new HashSet<TSource>(comparer);
 			var result = new TSource[first.Count + second.Count];
-			var resultSize = 0;
+			int resultSize;
 
-			for (var i = 0; i < first.Count; i++)
+			first.CopyTo(result, 0);
+			second.CopyTo(result, first.Count);
+
+			// The following code runs faster on smaller workloads
+			// The magic number is a result of multiple benchmark tests
+			if (result.Length < 2000)
 			{
-				var value = first[i];
+				var resultHashSet = new HashSet<TSource>(result, comparer);
+				resultSize = resultHashSet.Count;
 
-				if (!resultHashSet.Contains(value))
-				{
-					result[resultSize++] = value;
-					resultHashSet.Add(value);
-				}
+				resultHashSet.CopyTo(result, 0, resultSize);
 			}
-
-			for (var i = 0; i < second.Count; i++)
+			else
 			{
-				var value = second[i];
+				var resultHashSet = new HashSet<TSource>(comparer);
+				resultSize = 0;
 
-				if (!resultHashSet.Contains(value))
+				for (var i = 0; i<result.Length; i++)
 				{
-					result[resultSize++] = value;
-					resultHashSet.Add(value);
+					var value = result[i];
+
+					if (!resultHashSet.Contains(value))
+					{
+						result[resultSize++] = value;
+						resultHashSet.Add(value);
+					}
 				}
 			}
 
