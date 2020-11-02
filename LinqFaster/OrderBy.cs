@@ -32,8 +32,6 @@ namespace LinqFasterer
 
 			source.CopyTo(result, 0);
 
-			// TODO: benchmark with source.CopyTo()
-
 			Array.Sort(keys, result, comparer);
 
 			return result;

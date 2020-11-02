@@ -34,7 +34,7 @@ namespace LinqFasterer
 				var resultHashSet = new HashSet<TSource>(comparer);
 				resultSize = 0;
 
-				for (var i = 0; i<result.Length; i++)
+				for (var i = 0; i < result.Length; i++)
 				{
 					var value = result[i];
 

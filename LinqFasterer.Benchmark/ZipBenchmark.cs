@@ -17,7 +17,7 @@ namespace LinqFasterer.Benchmarks
 			return Data.ZipF(DataSecondary).ToArrayF();
 		}
 
-		[Benchmark]
+		[Benchmark(Baseline = true)]
 		public int[] ZipSelectorLinq()
 		{
 			return Data.Zip(DataSecondary, (l, r) => l + r).ToArray();

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using LinqFasterer.Utils;
+﻿using LinqFasterer.Utils;
+using System.Collections.Generic;
 
 namespace LinqFasterer
 {
@@ -9,10 +9,13 @@ namespace LinqFasterer
 		/// <returns>An array that contains the elements from the input sequence.</returns>
 		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to create an array from.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static TSource[] ToArrayF<TSource>(this IList<TSource> source)
+		public static TSource[] ToArrayF<TSource>(this IList<TSource> source, bool forceClone = false)
 		{
 			if (source == null)
 				throw Error.ArgumentNull(nameof(source));
+
+			if (!forceClone && source is TSource[] sourceArray)
+				return sourceArray;
 
 			var result = new TSource[source.Count];
 
@@ -25,10 +28,13 @@ namespace LinqFasterer
 		/// <returns>A <see cref="T:System.Collections.Generic.List`1" /> that contains elements from the input sequence.</returns>
 		/// <param name="source">The <see cref="T:System.Collections.Generic.IEnumerable`1" /> to create a <see cref="T:System.Collections.Generic.List`1" /> from.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static List<TSource> ToListF<TSource>(this IList<TSource> source)
+		public static List<TSource> ToListF<TSource>(this IList<TSource> source, bool forceClone = false)
 		{
 			if (source == null)
 				throw Error.ArgumentNull(nameof(source));
+
+			if (!forceClone && source is List<TSource> sourceList)
+				return sourceList;
 
 			var result = new List<TSource>(source.Count);
 
