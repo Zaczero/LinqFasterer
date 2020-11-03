@@ -6,9 +6,9 @@ namespace LinqFasterer.Benchmarks
 {
 	public static class Program
 	{
-		public static int Main(string[] args)
+		public static int Main()
 		{
-			var summary = BenchmarkRunner.Run<MinBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
+			var summary = BenchmarkRunner.Run<ContainsBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
 			if (summary.HasCriticalValidationErrors)
 				return -1;
 

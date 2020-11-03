@@ -1,26 +1,33 @@
 ﻿using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
-		/// <summary>Determines whether a sequence contains a specified element by using a specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" />.</summary>
+		/// <summary>Determines whether a sequence contains a specified element by using a specified equality comparer.</summary>
 		/// <returns>true if the source sequence contains an element that has the specified value; otherwise, false.</returns>
 		/// <param name="source">A sequence in which to locate a value.</param>
 		/// <param name="value">The value to locate in the sequence.</param>
-		/// <param name="comparer">An equality comparer to compare values.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static bool ContainsF<TSource>(this IList<TSource> source, TSource value, IEqualityComparer<TSource> comparer = null)
+		/// <param name="comparer">An equality comparer to compare values.</param>]
+		public static bool ContainsF<TSource>(this IList<TSource> source, TSource value, IEqualityComparer<TSource>? comparer = null)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 
-			comparer ??= EqualityComparer<TSource>.Default;
+			if (comparer == null)
+			{
+				// TODO: comparer == null case performs 3x slower than Linq's implementation
 
-			for (var i = 0; i < source.Count; i++)
-				if (comparer.Equals(source[i], value))
-					return true;
+				for (var i = 0; i < sourceLength; i++)
+					if (EqualityComparer<TSource>.Default.Equals(sourceArray[i], value))
+						return true;
+			}
+			else
+			{
+				for (var i = 0; i < sourceLength; i++)
+					if (comparer.Equals(sourceArray[i], value))
+						return true;
+			}
 
 			return false;
 		}

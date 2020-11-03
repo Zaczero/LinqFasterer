@@ -1,27 +1,23 @@
 ﻿using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
 		/// <summary>Concatenates two sequences.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the concatenated elements of the two input sequences.</returns>
+		/// <returns>A sequence that contains the concatenated elements of the two input sequences.</returns>
 		/// <param name="first">The first sequence to concatenate.</param>
 		/// <param name="second">The sequence to concatenate to the first sequence.</param>
-		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
 		public static IList<TSource> ConcatF<TSource>(this IList<TSource> first, IList<TSource> second)
 		{
-			if (first == null)
-				throw Error.ArgumentNull(nameof(first));
+			var firstLength = first.Count;
+			var secondLength = second.Count;
 
-			if (second == null)
-				throw Error.ArgumentNull(nameof(second));
-
-			var result = new TSource[first.Count + second.Count];
+			var resultLength = firstLength + secondLength;
+			var result = new TSource[resultLength];
 
 			first.CopyTo(result, 0);
-			second.CopyTo(result, first.Count);
+			second.CopyTo(result, firstLength);
 
 			return result;
 		}

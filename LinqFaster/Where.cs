@@ -12,12 +12,12 @@ namespace LinqFasterer
 		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
 		{
 			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 
-			var resultLength = sourceArray.Length;
-			var result = new TSource[resultLength];
+			var result = new TSource[sourceLength];
 			var resultSize = 0;
 
-			for (var i = 0; i < resultLength; i++)
+			for (var i = 0; i < sourceLength; i++)
 			{
 				var value = sourceArray[i];
 
@@ -37,12 +37,12 @@ namespace LinqFasterer
 		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
 		{
 			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 
-			var resultLength = sourceArray.Length;
-			var result = new TSource[resultLength];
+			var result = new TSource[sourceLength];
 			var resultSize = 0;
 
-			for (var i = 0; i < resultLength; i++)
+			for (var i = 0; i < sourceLength; i++)
 			{
 				var value = sourceArray[i];
 

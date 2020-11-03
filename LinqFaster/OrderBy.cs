@@ -46,7 +46,7 @@ namespace LinqFasterer
 		/// <typeparam name="TKey">The type of the key returned by <paramref name="keySelector" />.</typeparam>
 		public static IList<TSource> OrderByDescendingF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
 		{
-			return source.OrderByF(keySelector, comparer).ReverseInPlaceF();
+			return source.OrderByF(keySelector, comparer).ReverseF();
 		}
 	}
 }

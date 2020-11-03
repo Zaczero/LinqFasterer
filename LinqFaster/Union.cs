@@ -12,14 +12,17 @@ namespace LinqFasterer
 		/// <param name="comparer">An optional equality comparer, falls back to default when set to null.</param>
 		public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
 		{
+			var firstLength = first.Count;
+			var secondLength = second.Count;
+
 			comparer ??= EqualityComparer<TSource>.Default;
 
-			var resultLength = first.Count + second.Count;
+			var resultLength = firstLength + secondLength;
 			var result = new TSource[resultLength];
 			int resultSize;
 
 			first.CopyTo(result, 0);
-			second.CopyTo(result, first.Count);
+			second.CopyTo(result, firstLength);
 
 			// The following code runs faster on smaller workloads
 			// The magic number is a result of multiple benchmark tests
