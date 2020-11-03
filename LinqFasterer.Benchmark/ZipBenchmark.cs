@@ -20,13 +20,13 @@ namespace LinqFasterer.Benchmarks
 		[Benchmark(Baseline = true)]
 		public int[] ZipSelectorLinq()
 		{
-			return Data.Zip(DataSecondary, (l, r) => l + r).ToArray();
+			return Data.ToList().Zip(DataSecondary, (l, r) => l + r).ToArray();
 		}
 
 		[Benchmark]
 		public int[] ZipSelectorFaster()
 		{
-			return Data.ZipF(DataSecondary, (l, r) => l + r).ToArrayF();
+			return Data.ToList().ZipF(DataSecondary, (l, r) => l + r).ToArrayF();
 		}
 	}
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using LinqFasterer.Utils;
+using System;
 using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
@@ -9,29 +9,38 @@ namespace LinqFasterer
 		/// <summary>Returns the minimum value in a generic sequence.</summary>
 		/// <returns>The minimum value in the sequence.</returns>
 		/// <param name="source">A sequence of values to determine the minimum value of.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
 		public static TSource MinF<TSource>(this IList<TSource> source)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (source.Count == 0)
+			var sourceArr = source.ToArrayF();
+			var sourceLength = sourceArr.Length;
+			if (sourceLength == 0)
 				throw Error.NoElements();
 
 			var comparer = Comparer<TSource>.Default;
-			var result = source[0];
+			var result = sourceArr[0];
 
 			if (default(TSource) == null)
 			{
-				for (var i = 1; i < source.Count; i++)
-					if (source[i] != null && comparer.Compare(source[i], result) < 0)
-						result = source[i];
+				for (var i = 1; i < sourceLength; i++)
+				{
+					if (sourceArr[i] == null)
+						continue;
+
+					var value = sourceArr[i];
+
+					if (comparer.Compare(value, result) < 0)
+						result = value;
+				}
 			}
 			else
 			{
-				for (var i = 1; i < source.Count; i++)
-					if (comparer.Compare(source[i], result) < 0)
-						result = source[i];
+				for (var i = 1; i < sourceLength; i++)
+				{
+					var value = sourceArr[i];
+
+					if (comparer.Compare(value, result) < 0)
+						result = value;
+				}
 			}
 
 			return result;
@@ -41,30 +50,24 @@ namespace LinqFasterer
 		/// <returns>The minimum value in the sequence.</returns>
 		/// <param name="source">A sequence of values to determine the minimum value of.</param>
 		/// <param name="selector">A transform function to apply to each element.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector" />.</typeparam>
 		public static TResult MinF<TSource, TResult>(this IList<TSource> source, Func<TSource, TResult> selector)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (selector == null)
-				throw Error.ArgumentNull(nameof(selector));
-
-			if (source.Count == 0)
+			var sourceArr = source.ToArrayF();
+			var sourceLength = sourceArr.Length;
+			if (sourceLength == 0)
 				throw Error.NoElements();
 
 			var comparer = Comparer<TResult>.Default;
-			var result = selector(source[0]);
+			var result = selector(sourceArr[0]);
 
 			if (default(TSource) == null)
 			{
-				for (var i = 1; i < source.Count; i++)
+				for (var i = 1; i < sourceLength; i++)
 				{
-					if (source[i] == null)
+					if (sourceArr[i] == null)
 						continue;
 
-					var value = selector(source[i]);
+					var value = selector(sourceArr[i]);
 
 					if (comparer.Compare(value, result) < 0)
 						result = value;
@@ -72,9 +75,9 @@ namespace LinqFasterer
 			}
 			else
 			{
-				for (var i = 1; i < source.Count; i++)
+				for (var i = 1; i < sourceLength; i++)
 				{
-					var value = selector(source[i]);
+					var value = selector(sourceArr[i]);
 
 					if (comparer.Compare(value, result) < 0)
 						result = value;
