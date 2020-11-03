@@ -8,7 +8,7 @@ namespace LinqFasterer.Benchmarks
 	{
 		public static int Main(string[] args)
 		{
-			var summary = BenchmarkRunner.Run<ToCastBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
+			var summary = BenchmarkRunner.Run<ZipBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
 			if (summary.HasCriticalValidationErrors)
 				return -1;
 

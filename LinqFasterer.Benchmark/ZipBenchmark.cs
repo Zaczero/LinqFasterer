@@ -5,17 +5,17 @@ namespace LinqFasterer.Benchmarks
 {
 	public class ZipBenchmark : Benchmarkable
 	{
-		[Benchmark(Baseline = true)]
-		public (int, int)[] ZipLinq()
-		{
-			return Data.Zip(DataSecondary).ToArray();
-		}
+		//[Benchmark(Baseline = true)]
+		//public (int, int)[] ZipLinq()
+		//{
+		//	return Data.Zip(DataSecondary).ToArray();
+		//}
 
-		[Benchmark]
-		public (int, int)[] ZipFaster()
-		{
-			return Data.ZipF(DataSecondary).ToArrayF();
-		}
+		//[Benchmark]
+		//public (int, int)[] ZipFaster()
+		//{
+		//	return Data.ZipF(DataSecondary).ToArrayF();
+		//}
 
 		[Benchmark(Baseline = true)]
 		public int[] ZipSelectorLinq()

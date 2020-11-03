@@ -17,6 +17,18 @@ namespace LinqFasterer.Benchmarks
 			return Data.WhereF(v => v > 10).ToArrayF();
 		}
 
+		[Benchmark]
+		public int[] WhereIndexedLinq()
+		{
+			return Data.Where((v, _) => v > 10).ToArray();
+		}
+
+		[Benchmark]
+		public int[] WhereIndexedFaster()
+		{
+			return Data.WhereF((v, _) => v > 10).ToArrayF();
+		}
+
 		//[Benchmark]
 		//public int[] WhereIndexedLinq()
 		//{

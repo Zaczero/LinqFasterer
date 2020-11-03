@@ -14,7 +14,8 @@ namespace LinqFasterer
 		{
 			comparer ??= EqualityComparer<TSource>.Default;
 
-			var result = new TSource[first.Count + second.Count];
+			var resultLength = first.Count + second.Count;
+			var result = new TSource[resultLength];
 			int resultSize;
 
 			first.CopyTo(result, 0);
@@ -22,7 +23,7 @@ namespace LinqFasterer
 
 			// The following code runs faster on smaller workloads
 			// The magic number is a result of multiple benchmark tests
-			if (result.Length < 2000)
+			if (resultLength < 2000)
 			{
 				var resultHashSet = new HashSet<TSource>(result, comparer);
 				resultSize = resultHashSet.Count;
@@ -34,7 +35,7 @@ namespace LinqFasterer
 				var resultHashSet = new HashSet<TSource>(comparer);
 				resultSize = 0;
 
-				for (var i = 0; i < result.Length; i++)
+				for (var i = 0; i < resultLength; i++)
 				{
 					var value = result[i];
 

@@ -11,10 +11,14 @@ namespace LinqFasterer
 		/// <param name="second">The second sequence to merge.</param>
 		public static IList<ValueTuple<TFirst,TSecond>> ZipF<TFirst, TSecond>(this IList<TFirst> first, IList<TSecond> second)
 		{
-			var result = new ValueTuple<TFirst,TSecond>[Math.Min(first.Count, second.Count)];
+			var firstArray = first.ToArrayF();
+			var secondArray = second.ToArrayF();
 
-			for (var i = 0; i < result.Length; i++)
-				result[i] = new ValueTuple<TFirst,TSecond>(first[i], second[i]);
+			var resultLength = Math.Min(firstArray.Length, secondArray.Length);
+			var result = new ValueTuple<TFirst,TSecond>[resultLength];
+
+			for (var i = 0; i < resultLength; i++)
+				result[i] = new ValueTuple<TFirst,TSecond>(firstArray[i], secondArray[i]);
 
 			return result;
 		}
@@ -26,10 +30,14 @@ namespace LinqFasterer
 		/// <param name="resultSelector">A function that specifies how to merge the elements from the two sequences.</param>
 		public static IList<TResult> ZipF<TFirst, TSecond, TResult>(this IList<TFirst> first, IList<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
 		{
-			var result = new TResult[Math.Min(first.Count, second.Count)];
+			var firstArray = first.ToArrayF();
+			var secondArray = second.ToArrayF();
 
-			for (var i = 0; i < result.Length; i++)
-				result[i] = resultSelector(first[i], second[i]);
+			var resultLength = Math.Min(firstArray.Length, secondArray.Length);
+			var result = new TResult[resultLength];
+
+			for (var i = 0; i < resultLength; i++)
+				result[i] = resultSelector(firstArray[i], secondArray[i]);
 
 			return result;
 		}
