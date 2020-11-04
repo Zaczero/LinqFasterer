@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using LinqFasterer.Utils;
+using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
@@ -7,29 +7,23 @@ namespace LinqFasterer
 	{
 		/// <summary>Returns the element at a specified index in a sequence.</summary>
 		/// <returns>The element at the specified position in the source sequence.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
+		/// <param name="source">A sequence to return an element from.</param>
 		/// <param name="index">The zero-based index of the element to retrieve.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TSource ElementAtF<TSource>(this IList<TSource> source, int index)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
 			return source[index];
 		}
 
 		/// <summary>Returns the element at a specified index in a sequence.</summary>
 		/// <returns>The element at the specified position in the source sequence.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return an element from.</param>
+		/// <param name="source">A sequence to return an element from.</param>
 		/// <param name="index">The zero-based index of the element to retrieve.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TSource ElementAtOrDefaultF<TSource>(this IList<TSource> source, int index)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
 			if (index < 0 || index >= source.Count)
-				return default;
+				return default!;
 
 			return source[index];
 		}

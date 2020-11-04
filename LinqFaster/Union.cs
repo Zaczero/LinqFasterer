@@ -26,7 +26,7 @@ namespace LinqFasterer
 
 			// The following code runs faster on smaller workloads
 			// The magic number is a result of multiple benchmark tests
-			if (resultLength < 2000)
+			if (resultLength < 2500)
 			{
 				var resultHashSet = new HashSet<TSource>(result, comparer);
 				resultSize = resultHashSet.Count;
