@@ -51,11 +51,8 @@ namespace LinqFasterer
 		{
 			var result = new float[count];
 
-			checked
-			{
-				for (var i = 0; i < count; i++)
-					result[i] = start + i * change;
-			}
+			for (var i = 0; i < count; i++)
+				result[i] = start + i * change;
 
 			return result;
 		}
@@ -69,11 +66,8 @@ namespace LinqFasterer
 		{
 			var result = new double[count];
 
-			checked
-			{
-				for (var i = 0; i < count; i++)
-					result[i] = start + i * change;
-			}
+			for (var i = 0; i < count; i++)
+				result[i] = start + i * change;
 
 			return result;
 		}
@@ -87,11 +81,8 @@ namespace LinqFasterer
 		{
 			var result = new decimal[count];
 
-			checked
-			{
-				for (var i = 0; i < count; i++)
-					result[i] = start + i * change;
-			}
+			for (var i = 0; i < count; i++)
+				result[i] = start + i * change;
 
 			return result;
 		}

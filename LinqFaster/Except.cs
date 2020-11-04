@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
-		/// <summary>Produces the set difference of two sequences by using the specified <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> to compare values.</summary>
+		// TODO: benchmark
+
+		/// <summary>Produces the set difference of two sequences by using the specified equality comparer to compare values.</summary>
 		/// <returns>A sequence that contains the set difference of the elements of two sequences.</returns>
-		/// <param name="first">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements that are not also in <paramref name="second" /> will be returned.</param>
-		/// <param name="second">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements that also occur in the first sequence will cause those elements to be removed from the returned sequence.</param>
-		/// <param name="comparer">An <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> to compare values.</param>
-		/// <typeparam name="TSource">The type of the elements of the input sequences.</typeparam>
-		public static IList<TSource> ExceptF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource> comparer = null)
+		/// <param name="first">A sequence whose elements that are not also in second will be returned.</param>
+		/// <param name="second">A sequence whose elements that also occur in the first sequence will cause those elements to be removed from the returned sequence.</param>
+		/// <param name="comparer">An equality comparer to compare values.</param>
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> ExceptF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
 		{
-			if (first == null)
-				throw Error.ArgumentNull(nameof(first));
+			var firstArray = first.ToArrayF(forceClone);
+			var firstLength = firstArray.Length;
 
-			if (second == null)
-				throw Error.ArgumentNull(nameof(second));
-
-			if (comparer == null)
-				comparer = EqualityComparer<TSource>.Default;
-
-			// TODO: benchmark
+			comparer ??= EqualityComparer<TSource>.Default;
 
 			var secondHashSet = new HashSet<TSource>(second, comparer);
-			var result = new TSource[first.Count];
 			var resultSize = 0;
 
-			for (var i = 0; i < first.Count; i++)
-				if (!secondHashSet.Contains(first[i]))
-					result[resultSize++] = first[i];
+			for (var i = 0; i < firstLength; i++)
+			{
+				var value = firstArray[i];
 
-			Array.Resize(ref result, resultSize);
+				if (!secondHashSet.Contains(value))
+					firstArray[resultSize++] = value;
+			}
 
-			return result;
+			Array.Resize(ref firstArray, resultSize);
+
+			return firstArray;
 		}
 	}
 }

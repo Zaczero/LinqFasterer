@@ -14,7 +14,7 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		[Benchmark]
 		public int[] DistinctFaster()
 		{
-			return Data.DistinctF().ToArray();
+			return Data.DistinctF().ToArrayF();
 		}
 	}
 }
