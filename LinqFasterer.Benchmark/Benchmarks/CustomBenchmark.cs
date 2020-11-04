@@ -1,7 +1,7 @@
-﻿using BenchmarkDotNet.Attributes;
-using System;
+﻿using System;
+using BenchmarkDotNet.Attributes;
 
-namespace LinqFasterer.Benchmarks
+namespace LinqFasterer.Benchmarks.Benchmarks
 {
 	public class CustomBenchmark : Benchmarkable
 	{

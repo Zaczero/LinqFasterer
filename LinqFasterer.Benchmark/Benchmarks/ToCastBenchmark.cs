@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using BenchmarkDotNet.Attributes;
 using System.Linq;
+using BenchmarkDotNet.Attributes;
 
-namespace LinqFasterer.Benchmarks
+namespace LinqFasterer.Benchmarks.Benchmarks
 {
 	public class ToCastBenchmark : Benchmarkable
 	{

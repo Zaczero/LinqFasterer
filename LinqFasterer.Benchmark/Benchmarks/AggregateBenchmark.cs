@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using BenchmarkDotNet.Attributes;
 
-namespace LinqFasterer.Benchmarks
+namespace LinqFasterer.Benchmarks.Benchmarks
 {
 	// TODO: split into different classes, search by checking IBenchmarkable interface
 	public class AggregateBenchmark : Benchmarkable
