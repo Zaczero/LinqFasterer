@@ -19,6 +19,7 @@ namespace LinqFasterer
 				// TODO: comparer == null case performs 3x slower than Linq's implementation
 
 				for (var i = 0; i < sourceLength; i++)
+					// this is faster than assigning .Default to a variable (comparer)
 					if (EqualityComparer<TSource>.Default.Equals(sourceArray[i], value))
 						return true;
 			}

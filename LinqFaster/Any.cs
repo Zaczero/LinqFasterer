@@ -12,6 +12,7 @@ namespace LinqFasterer
 		public static bool AnyF<TSource>(this IList<TSource> source, Predicate<TSource>? predicate = null)
 		{
 			if (predicate == null)
+				// TODO: possible optimization by using != 0 comparison
 				return source.Count > 0;
 
 			var sourceArray = source.ToArrayF();
