@@ -10,9 +10,7 @@ namespace LinqFasterer
 		/// <param name="element">The value to prepend to source.</param>
 		public static IList<TSource> PrependF<TSource>(this IList<TSource> source, TSource element)
 		{
-			var sourceLength = source.Count;
-
-			var result = new TSource[sourceLength];
+			var result = new TSource[source.Count + 1];
 
 			result[0] = element;
 			source.CopyTo(result, 1);

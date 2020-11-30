@@ -8,8 +8,8 @@ namespace LinqFasterer.Benchmarks
 	[MemoryDiagnoser]
 	public class Benchmarkable
 	{
-		[Params(50000)]
-		//[Params(0, 1, 3, 5, 10, 50, 100, 250, 500, 1000, 1500, 2000, 2500, 3000, 5000, 10_000, 50_000, 100_000, 500_000, 1_000_000)]
+		//[Params(50000)]
+		[Params(0, 1, 3, 5, 10, 50, 100, 250, 500, 1000, 1500, 2000, 2500, 3000, 5000, 10_000, 50_000, 100_000, 500_000, 1_000_000)]
 		public int N;
 
 		protected int[] Data;

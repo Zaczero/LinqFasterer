@@ -12,7 +12,7 @@ namespace LinqFasterer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IList<TSource> DefaultIfEmptyF<TSource>(this IList<TSource> source, TSource defaultValue = default)
 		{
-			return source.Count == 0 ? new [] {defaultValue} : source;
+			return source.Count == 0 ? new [] {defaultValue}! : source;
 		}
 	}
 }

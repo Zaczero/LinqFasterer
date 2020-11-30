@@ -1,52 +1,27 @@
 ﻿using System;
+using System.Globalization;
 using BenchmarkDotNet.Attributes;
 
 namespace LinqFasterer.Benchmarks.Benchmarks
 {
 	public class CustomBenchmark : Benchmarkable
 	{
-		//[Benchmark(Baseline = true)]
-		//public int[] ArrayCopy()
-		//{
-		//	var arr = new int[Data.Length / 2];
-
-		//	Array.Copy(Data, 0, arr, 0, arr.Length);
-
-		//	return arr;
-		//}
-
-		//[Benchmark]
-		//public int[] ArrayResize()
-		//{
-		//	Array.Resize(ref Data, Data.Length / 2);
-
-		//	return Data;
-		//}
-
 		[Benchmark(Baseline = true)]
-		public int[] ArrayCopy()
+		public string Classic()
 		{
-			var arr = new int[Data.Length];
-
-			Array.Copy(Data, 0, arr, 0, arr.Length);
-
-			return arr;
+			return $"N = {N}.";
 		}
 
 		[Benchmark]
-		public int[] ArrayCopyTo()
+		public string ToString()
 		{
-			var arr = new int[Data.Length];
-
-			Data.CopyTo(arr, 0);
-
-			return Data;
+			return $"N = {N.ToString(CultureInfo.CurrentCulture)}.";
 		}
 
 		[Benchmark]
-		public int[] ArraySpan()
+		public string ToStringInvariant()
 		{
-			return Data.AsSpan().ToArray();
+			return $"N = {N.ToString(CultureInfo.InvariantCulture)}.";
 		}
 	}
 }

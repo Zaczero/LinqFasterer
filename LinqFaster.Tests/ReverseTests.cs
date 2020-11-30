@@ -11,21 +11,21 @@ namespace LinqFasterer.Tests
 		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
 		public void ReverseTest_Int(IList<int> source)
 		{
-			var expected = source.Reverse();
+			var expected = source.Reverse().ToArray();
 			var actual = source.ReverseF();
 
 			Assert.Equal(expected, actual);
 		}
 
 		[Theory]
-		[Trait(nameof(LinqFasterer.ReverseInPlaceF), null)]
+		[Trait(nameof(LinqFasterer.ReverseF), null)]
 		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		public void ReverseInPlaceTest_Int(IList<int> source)
+		public void ReverseForceCloneTest_Int(IList<int> source)
 		{
 			var expected = source.Reverse().ToArray();
-			source.ReverseInPlaceF();
+			var actual = source.ReverseF(true);
 
-			Assert.Equal(expected, source);
+			Assert.Equal(expected, actual);
 		}
 	}
 }

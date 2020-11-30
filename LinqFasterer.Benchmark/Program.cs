@@ -9,7 +9,7 @@ namespace LinqFasterer.Benchmarks
 	{
 		public static int Main()
 		{
-			var summary = BenchmarkRunner.Run<FirstBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
+			var summary = BenchmarkRunner.Run<OrderByBenchmark>(ManualConfig.Create(DefaultConfig.Instance));
 			if (summary.HasCriticalValidationErrors)
 				return -1;
 

@@ -11,24 +11,23 @@ namespace LinqFasterer
 		/// <param name="source">A sequence of values to determine the maximum value of.</param>
 		public static TSource MaxF<TSource>(this IList<TSource> source)
 		{
-			var sourceArr = source.ToArrayF();
-			var sourceLength = sourceArr.Length;
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 			if (sourceLength == 0)
 				throw Error.NoElements();
 
-			var comparer = Comparer<TSource>.Default;
-			var result = sourceArr[0];
+			var result = sourceArray[0];
 
 			if (default(TSource) == null)
 			{
 				for (var i = 1; i < sourceLength; i++)
 				{
-					if (sourceArr[i] == null)
+					if (sourceArray[i] == null)
 						continue;
 
-					var value = sourceArr[i];
+					var value = sourceArray[i];
 
-					if (comparer.Compare(value, result) > 0)
+					if (Comparer<TSource>.Default.Compare(value, result) > 0)
 						result = value;
 				}
 			}
@@ -36,9 +35,9 @@ namespace LinqFasterer
 			{
 				for (var i = 1; i < sourceLength; i++)
 				{
-					var value = sourceArr[i];
+					var value = sourceArray[i];
 
-					if (comparer.Compare(value, result) > 0)
+					if (Comparer<TSource>.Default.Compare(value, result) > 0)
 						result = value;
 				}
 			}
@@ -52,24 +51,23 @@ namespace LinqFasterer
 		/// <param name="selector">A transform function to apply to each element.</param>
 		public static TResult MaxF<TSource, TResult>(this IList<TSource> source, Func<TSource, TResult> selector)
 		{
-			var sourceArr = source.ToArrayF();
-			var sourceLength = sourceArr.Length;
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 			if (sourceLength == 0)
 				throw Error.NoElements();
 
-			var comparer = Comparer<TResult>.Default;
-			var result = selector(sourceArr[0]);
+			var result = selector(sourceArray[0]);
 
 			if (default(TSource) == null)
 			{
 				for (var i = 1; i < sourceLength; i++)
 				{
-					if (sourceArr[i] == null)
+					if (sourceArray[i] == null)
 						continue;
 
-					var value = selector(sourceArr[i]);
+					var value = selector(sourceArray[i]);
 
-					if (comparer.Compare(value, result) > 0)
+					if (Comparer<TResult>.Default.Compare(value, result) > 0)
 						result = value;
 				}
 			}
@@ -77,9 +75,9 @@ namespace LinqFasterer
 			{
 				for (var i = 1; i < sourceLength; i++)
 				{
-					var value = selector(sourceArr[i]);
+					var value = selector(sourceArray[i]);
 
-					if (comparer.Compare(value, result) > 0)
+					if (Comparer<TResult>.Default.Compare(value, result) > 0)
 						result = value;
 				}
 			}

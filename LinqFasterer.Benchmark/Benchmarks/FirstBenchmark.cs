@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BenchmarkDotNet.Attributes;
 using System.Linq;
-using BenchmarkDotNet.Attributes;
 
 namespace LinqFasterer.Benchmarks.Benchmarks
 {
