@@ -7,96 +7,86 @@ namespace LinqFasterer
 	public static partial class LinqFasterer
 	{
 		/// <summary>Bypasses a specified number of elements in a sequence and then returns the remaining elements.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements that occur after the specified index in the input sequence.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+		/// <returns>A sequence that contains the elements that occur after the specified index in the input sequence.</returns>
+		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="count">The number of elements to skip before returning the remaining elements.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> SkipF<TSource>(this IList<TSource> source, int count)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> SkipF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (count > source.Count)
+			var sourceLength = source.Count;
+			if (sourceLength <= count)
 				return EmptyF<TSource>();
 
+			var sourceArray = source.ToArrayF(forceClone);
+
 			if (count < 0)
-				count = 0;
+				return sourceArray;
 
-			var result = new TSource[source.Count - count];
+			var resultLength = sourceLength - count;
+			Array.Copy(sourceArray, count, sourceArray, 0, resultLength);
+			Array.Resize(ref sourceArray, resultLength);
 
-			for (var i = count; i < source.Count; i++)
-				result[i - count] = source[i];
-
-			return result;
+			return sourceArray;
 		}
 
 		/// <summary>Bypasses a specified number of last elements in a sequence and then returns the remaining elements.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements that occur before the specified index in the input sequence.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+		/// <returns>A sequence that contains the elements that occur before the specified index in the input sequence.</returns>
+		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="count">The number of elements to skip before returning the remaining elements.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> SkipLastF<TSource>(this IList<TSource> source, int count)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> SkipLastF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (count > source.Count)
+			var sourceLength = source.Count;
+			if (sourceLength <= count)
 				return EmptyF<TSource>();
 
+			var sourceArray = source.ToArrayF(forceClone);
+
 			if (count < 0)
-				count = 0;
+				return sourceArray;
+			
+			var resultLength = sourceLength - count;
+			Array.Resize(ref sourceArray, resultLength);
 
-			var resultLenght = source.Count - count;
-			var result = new TSource[resultLenght];
-
-			for (var i = 0; i < resultLenght; i++)
-				result[i] = source[i];
-
-			return result;
+			return sourceArray;
 		}
 
 		/// <summary>Bypasses elements in a sequence as long as a specified condition is true and then returns the remaining elements.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements from the input sequence starting at the first element in the linear series that does not pass the test specified by <paramref name="predicate" />.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+		/// <returns>A sequence that contains the elements from the input sequence starting at the first element in the linear series that does not pass the test specified by predicate.</returns>
+		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="predicate">A function to test each element for a condition.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> SkipWhileF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> SkipWhileF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (predicate == null)
-				throw Error.ArgumentNull(nameof(predicate));
-
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
+			
 			var count = 0;
 
-			for (; count < source.Count; count++)
-				if (!predicate(source[count]))
+			for (; count < sourceLength; count++)
+				if (!predicate(sourceArray[count]))
 					break;
 
-			return source.SkipF(count);
+			return source.SkipF(count, forceClone);
 		}
 
 		/// <summary>Bypasses elements in a sequence as long as a specified condition is true and then returns the remaining elements.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the elements from the input sequence starting at the first element in the linear series that does not pass the test specified by <paramref name="predicate" />.</returns>
-		/// <param name="source">An <see cref="T:System.Collections.Generic.IEnumerable`1" /> to return elements from.</param>
+		/// <returns>A sequence that contains the elements from the input sequence starting at the first element in the linear series that does not pass the test specified by predicate.</returns>
+		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="predicate">A function to test each element for a condition.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> SkipWhileF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> SkipWhileF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (predicate == null)
-				throw Error.ArgumentNull(nameof(predicate));
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
 
 			var count = 0;
 
-			for (; count < source.Count; count++)
-				if (!predicate(source[count], count))
+			for (; count < sourceLength; count++)
+				if (!predicate(sourceArray[count], count))
 					break;
 
-			return source.SkipF(count);
+			return source.SkipF(count, forceClone);
 		}
 	}
 }

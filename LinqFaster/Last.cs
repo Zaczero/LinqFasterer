@@ -13,7 +13,7 @@ namespace LinqFasterer
 		public static TSource LastF<TSource>(this IList<TSource> source, Func<TSource, bool>? predicate = null)
 		{
 			if (predicate == null)
-				return source[source.Count - 1];
+				return source[^1];
 
 			var sourceArray = source.ToArrayF();
 			var sourceLength = sourceArray.Length;
@@ -36,7 +36,7 @@ namespace LinqFasterer
 		public static TSource LastOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool>? predicate = null)
 		{
 			if (predicate == null)
-				return source.Count == 0 ? default! : source[source.Count - 1];
+				return source.Count == 0 ? default! : source[^1];
 
 			var sourceArray = source.ToArrayF();
 			var sourceLength = sourceArray.Length;

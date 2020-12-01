@@ -16,34 +16,37 @@ namespace LinqFasterer
 			if (sourceLength == 0)
 				throw Error.NoElements();
 
-			var comparer = Comparer<TSource>.Default;
-			var result = sourceArray[0];
-
 			if (default(TSource) == null)
 			{
-				for (var i = 1; i < sourceLength; i++)
+				TSource result = default;
+				
+				for (var i = 0; i < sourceLength; i++)
 				{
 					if (sourceArray[i] == null)
 						continue;
 
 					var value = sourceArray[i];
 
-					if (comparer.Compare(value, result) < 0)
+					if (result == null || Comparer<TSource>.Default.Compare(value, result) < 0)
 						result = value;
 				}
+
+				return result!;
 			}
 			else
 			{
+				var result = sourceArray[0];
+				
 				for (var i = 1; i < sourceLength; i++)
 				{
 					var value = sourceArray[i];
 
-					if (comparer.Compare(value, result) < 0)
+					if (Comparer<TSource>.Default.Compare(value, result) < 0)
 						result = value;
 				}
-			}
 
-			return result;
+				return result;
+			}
 		}
 
 		/// <summary>Invokes a transform function on each element of a generic sequence and returns the minimum resulting value.</summary>
@@ -57,23 +60,27 @@ namespace LinqFasterer
 			if (sourceLength == 0)
 				throw Error.NoElements();
 
-			var result = selector(sourceArray[0]);
-
 			if (default(TSource) == null)
 			{
-				for (var i = 1; i < sourceLength; i++)
+				TResult result = default;
+				
+				for (var i = 0; i < sourceLength; i++)
 				{
 					if (sourceArray[i] == null)
 						continue;
 
 					var value = selector(sourceArray[i]);
 
-					if (Comparer<TResult>.Default.Compare(value, result) < 0)
+					if (result == null || Comparer<TResult>.Default.Compare(value, result) < 0)
 						result = value;
 				}
+
+				return result!;
 			}
 			else
 			{
+				var result = selector(sourceArray[0]);
+				
 				for (var i = 1; i < sourceLength; i++)
 				{
 					var value = selector(sourceArray[i]);
@@ -81,9 +88,9 @@ namespace LinqFasterer
 					if (Comparer<TResult>.Default.Compare(value, result) < 0)
 						result = value;
 				}
-			}
 
-			return result;
+				return result;
+			}
 		}
 	}
 }

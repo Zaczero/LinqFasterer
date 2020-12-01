@@ -10,7 +10,8 @@ namespace LinqFasterer
 		/// <param name="first">A sequence whose distinct elements that also appear in the second sequence will be returned.</param>
 		/// <param name="second">A sequence whose distinct elements that also appear in the first sequence will be returned.</param>
 		/// <param name="comparer">An equality comparer to compare values.</param>
-		public static IList<TSource> IntersectF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> IntersectF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
 		{
 			comparer ??= EqualityComparer<TSource>.Default;
 
@@ -18,7 +19,7 @@ namespace LinqFasterer
 			var resultHashSet = new HashSet<TSource>(comparer);
 			var resultSize = 0;
 
-			var firstArray = first.ToArrayF(true);
+			var firstArray = first.ToArrayF(forceClone);
 			var firstLength = firstArray.Length;
 
 			for (var i = 0; i < firstLength; i++)

@@ -9,7 +9,8 @@ namespace LinqFasterer
 		/// <returns>A sequence that contains distinct elements from the source sequence.</returns>
 		/// <param name="source">The sequence to remove duplicate elements from.</param>
 		/// <param name="comparer">An equality comparer to compare values.</param>
-		public static IList<TSource> DistinctF<TSource>(this IList<TSource> source, IEqualityComparer<TSource>? comparer = null)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> DistinctF<TSource>(this IList<TSource> source, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
 		{
 			var sourceArray = source.ToArrayF();
 			var sourceLength = sourceArray.Length;
@@ -33,7 +34,7 @@ namespace LinqFasterer
 				var resultHashSet = new HashSet<TSource>(comparer);
 				var resultSize = 0;
 
-				result = new TSource[sourceLength];
+				result = forceClone ? new TSource[sourceLength] : sourceArray;
 
 				for (var i = 0; i < sourceLength; i++)
 				{

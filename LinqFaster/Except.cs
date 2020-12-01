@@ -13,7 +13,7 @@ namespace LinqFasterer
 		/// <param name="second">A sequence whose elements that also occur in the first sequence will cause those elements to be removed from the returned sequence.</param>
 		/// <param name="comparer">An equality comparer to compare values.</param>
 		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
-		public static IList<TSource> ExceptF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
+		public static IList<TSource> ExceptF<TSource>(this IList<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
 		{
 			var firstArray = first.ToArrayF(forceClone);
 			var firstLength = firstArray.Length;

@@ -6,56 +6,46 @@ namespace LinqFasterer
 {
 	public static partial class LinqFasterer
 	{
-		/// <summary>Projects each element of a sequence to an <see cref="T:System.Collections.Generic.IEnumerable`1" /> and flattens the resulting sequences into one sequence.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
+		/// <summary>Projects each element of a sequence to a sequence and flattens the resulting sequences into one sequence.</summary>
+		/// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
 		/// <param name="source">A sequence of values to project.</param>
 		/// <param name="selector">A transform function to apply to each element.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <typeparam name="TResult">The type of the elements of the sequence returned by <paramref name="selector" />.</typeparam>
 		public static IList<TResult> SelectManyF<TSource, TResult>(this IList<TSource> source, Func<TSource, IList<TResult>> selector)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (selector == null)
-				throw Error.ArgumentNull(nameof(selector));
-
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
+			
 			var result = new List<TResult>();
 
-			for (var i = 0; i < source.Count; i++)
+			for (var i = 0; i < sourceLength; i++)
 			{
-				var valueArray = selector(source[i]);
+				var valueArray = selector(source[i]).ToArrayF();
+				var valueLength = valueArray.Length;
 
-				// TODO: benchmark array with resize
-
-				for (var j = 0; j < valueArray.Count; j++)
+				for (var j = 0; j < valueLength; j++)
 					result.Add(valueArray[j]);
 			}
 
 			return result;
 		}
 
-		/// <summary>Projects each element of a sequence to an <see cref="T:System.Collections.Generic.IEnumerable`1" /> and flattens the resulting sequences into one sequence.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
+		/// <summary>Projects each element of a sequence to A sequence and flattens the resulting sequences into one sequence.</summary>
+		/// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>
 		/// <param name="source">A sequence of values to project.</param>
 		/// <param name="selector">A transform function to apply to each element.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		/// <typeparam name="TResult">The type of the elements of the sequence returned by <paramref name="selector" />.</typeparam>
 		public static IList<TResult> SelectManyF<TSource, TResult>(this IList<TSource> source, Func<TSource, int, IList<TResult>> selector)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (selector == null)
-				throw Error.ArgumentNull(nameof(selector));
-
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
+			
 			var result = new List<TResult>();
 
-			for (var i = 0; i < source.Count; i++)
+			for (var i = 0; i < sourceLength; i++)
 			{
-				var valueArray = selector(source[i], i);
+				var valueArray = selector(source[i], i).ToArrayF();
+				var valueLength = valueArray.Length;
 
-				for (var j = 0; j < valueArray.Count; j++)
+				for (var j = 0; j < valueLength; j++)
 					result.Add(valueArray[j]);
 			}
 

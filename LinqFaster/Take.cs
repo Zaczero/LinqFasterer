@@ -7,7 +7,7 @@ namespace LinqFasterer
 	public static partial class LinqFasterer
 	{
 		/// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the specified number of elements from the start of the input sequence.</returns>
+		/// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>
 		/// <param name="source">The sequence to return elements from.</param>
 		/// <param name="count">The number of elements to return.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
@@ -31,7 +31,7 @@ namespace LinqFasterer
 		}
 
 		/// <summary>Returns a specified number of contiguous elements from the end of a sequence.</summary>
-		/// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the specified number of elements from the end of the input sequence.</returns>
+		/// <returns>A sequence that contains the specified number of elements from the end of the input sequence.</returns>
 		/// <param name="source">The sequence to return elements from.</param>
 		/// <param name="count">The number of elements to return.</param>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>

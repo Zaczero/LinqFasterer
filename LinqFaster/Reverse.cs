@@ -11,11 +11,11 @@ namespace LinqFasterer
 		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
 		public static IList<TSource> ReverseF<TSource>(this IList<TSource> source, bool forceClone = false)
 		{
-			var sourceArr = source.ToArrayF(forceClone);
+			var sourceArray = source.ToArrayF(forceClone);
 
-			Array.Reverse(sourceArr);
+			Array.Reverse(sourceArray);
 
-			return sourceArr;
+			return sourceArray;
 		}
 	}
 }

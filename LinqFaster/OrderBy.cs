@@ -10,11 +10,12 @@ namespace LinqFasterer
 		/// <param name="source">A sequence of values to order.</param>
 		/// <param name="keySelector">A function to extract a key from an element.</param>
 		/// <param name="comparer">A comparer to compare keys.</param>
-		public static IList<TSource> OrderByF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer = null)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> OrderByF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer = null, bool forceClone = false)
 		{
 			comparer ??= Comparer<TKey>.Default;
 
-			var sourceArray = source.ToArrayF(true);
+			var sourceArray = source.ToArrayF(forceClone);
 			var sourceLength = sourceArray.Length;
 
 			var keys = new TKey[sourceLength];
@@ -32,9 +33,10 @@ namespace LinqFasterer
 		/// <param name="source">A sequence of values to order.</param>
 		/// <param name="keySelector">A function to extract a key from an element.</param>
 		/// <param name="comparer">A comparer to compare keys.</param>
-		public static IList<TSource> OrderByDescendingF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer = null)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> OrderByDescendingF<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer = null, bool forceClone = false)
 		{
-			return source.OrderByF(keySelector, comparer).ReverseF();
+			return source.OrderByF(keySelector, comparer, forceClone).ReverseF();
 		}
 	}
 }
