@@ -26,7 +26,7 @@
 
     <!-- NuGet -->
     <PackageTags>linq; linqfaster; optimized; performance; fast; faster; fasterer; alternative</PackageTags>
-    <PackageIconUrl>TODO</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/Zaczero/LinqFasterer/master/resources/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Zaczero/LinqFasterer</PackageProjectUrl>
     <PackageLicense>MIT</PackageLicense>
 
