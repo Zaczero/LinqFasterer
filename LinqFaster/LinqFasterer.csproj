@@ -25,10 +25,11 @@
     <RepositoryUrl>https://github.com/Zaczero/LinqFasterer</RepositoryUrl>
 
     <!-- NuGet -->
-    <PackageTags>linq; linqfaster; optimized; performance; fast; faster; fasterer; alternative</PackageTags>
+    <PackageTags>linq; linqfaster; optimized; high; performance; fast; faster; fasterer; alternative</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Zaczero/LinqFasterer/master/resources/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Zaczero/LinqFasterer</PackageProjectUrl>
-    <PackageLicense>MIT</PackageLicense>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
     <!-- Source Link -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -55,17 +56,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Utils\SliceHelper.cs" />
-    <Compile Remove="Utils\GenericOperators.cs" />
-    <Compile Remove="Utils\CustomPartition.cs" />
-    <Compile Remove="Utils\ComparerMagic.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\resources\icon.png">
+      <Link>icon.png</Link>
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Utils\SliceHelper.cs" />
+    <Compile Remove="Utils\GenericOperators.cs" />
+    <Compile Remove="Utils\CustomPartition.cs" />
+    <Compile Remove="Utils\ComparerMagic.cs" />
   </ItemGroup>
 
 </Project>
