@@ -1,29 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- Core configuration -->
     <LangVersion>9</LangVersion>
     <TargetFrameworks>net5.0;netstandard2.1</TargetFrameworks>
     <Nullable>enable</Nullable>
-    
+
+    <!-- Versioning -->
     <Version>2.0.0</Version>
     <PackageVersion>2.0.0</PackageVersion>
-    
+
+    <!-- Authors -->
     <Authors>Zaczero; jackmott</Authors>
     <Company>LinqFasterer Developers</Company>
     <AssemblyName>LinqFasterer</AssemblyName>
     <RootNamespace>LinqFasterer</RootNamespace>
-    
+
+    <!-- General information -->
     <Description>TODO</Description>
     <Copyright>Copyright © 2020 Kamil Monicz. All rights reserved.</Copyright>
 
+    <!-- Repository information -->
+    <RepositoryType>github</RepositoryType>
+    <RepositoryUrl>https://github.com/Zaczero/LinqFasterer</RepositoryUrl>
+
+    <!-- NuGet -->
     <PackageTags>linq; linqfaster; optimized; performance; fast; faster; fasterer; alternative</PackageTags>
     <PackageIconUrl>TODO</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Zaczero/LinqFasterer</PackageProjectUrl>
     <PackageLicense>MIT</PackageLicense>
-    
-    <RepositoryType>github</RepositoryType>
-    <RepositoryUrl>https://github.com/Zaczero/LinqFasterer</RepositoryUrl>
 
+    <!-- Source Link -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+    <!-- Misc. -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
@@ -46,6 +59,13 @@
     <Compile Remove="Utils\GenericOperators.cs" />
     <Compile Remove="Utils\CustomPartition.cs" />
     <Compile Remove="Utils\ComparerMagic.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
