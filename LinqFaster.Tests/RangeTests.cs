@@ -9,8 +9,8 @@ namespace LinqFasterer.Tests
 		[Trait(nameof(LinqFasterer.RangeF), null)]
 		public void RangeTest_Int()
 		{
-			var expected = Enumerable.Range(5, 100);
-			var actual = LinqFasterer.RangeF(5, 100);
+			var expected = Enumerable.Range(5, 100).ToArray();
+			var actual = LinqFasterer.RangeF(5, 100).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

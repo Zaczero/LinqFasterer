@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LinqFasterer.Utils;
 
 namespace LinqFasterer
@@ -10,94 +11,79 @@ namespace LinqFasterer
 		/// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>
 		/// <param name="source">The sequence to return elements from.</param>
 		/// <param name="count">The number of elements to return.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> TakeF<TSource>(this IList<TSource> source, int count)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> TakeF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (count < 0)
+			if (count <= 0)
 				return EmptyF<TSource>();
+			
+			var sourceArray = source.ToArrayF(forceClone);
+			var sourceLength = source.Count;
+			if (sourceLength <= count)
+				return sourceArray;
 
-			if (count > source.Count)
-				count = source.Count;
+			Array.Resize(ref sourceArray, count);
 
-			var result = new TSource[count];
-
-			for (var i = 0; i < count; i++)
-				result[i] = source[i];
-
-			return result;
+			return sourceArray;
 		}
 
 		/// <summary>Returns a specified number of contiguous elements from the end of a sequence.</summary>
 		/// <returns>A sequence that contains the specified number of elements from the end of the input sequence.</returns>
 		/// <param name="source">The sequence to return elements from.</param>
 		/// <param name="count">The number of elements to return.</param>
-		/// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
-		public static IList<TSource> TakeLastF<TSource>(this IList<TSource> source, int count)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> TakeLastF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (count < 0)
+			if (count <= 0)
 				return EmptyF<TSource>();
+			
+			var sourceArray = source.ToArrayF(forceClone);
+			var sourceLength = source.Count;
+			if (sourceLength <= count)
+				return sourceArray;
 
-			if (count > source.Count)
-				count = source.Count;
+			Array.Copy(sourceArray, sourceLength - count, sourceArray, 0, count);
+			Array.Resize(ref sourceArray, count);
 
-			var result = new TSource[count];
-
-			for (var i = 0; i < count; i++)
-				result[i] = source[source.Count - count + i];
-
-			return result;
+			return sourceArray;
 		}
 
-		/// <summary>
-		/// Returns elements from a sequence as long as a specified condition is true.
-		/// </summary>
+		/// <summary>Returns elements from a sequence as long as a specified condition is true.</summary>
+		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
 		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="predicate">A function to test each element for a condition.</param>
-		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (predicate == null)
-				throw Error.ArgumentNull(nameof(predicate));
-
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
+			
 			var count = 0;
 
-			for (; count < source.Count; count++)
-				if (!predicate(source[count]))
+			for (; count < sourceLength; count++)
+				if (!predicate(sourceArray[count]))
 					break;
 
-			return source.TakeF(count);
+			return sourceArray.TakeF(count, forceClone);
 		}
 
-		/// <summary>
-		/// Returns elements from a sequence as long as a specified condition is true.
-		/// </summary>
+		/// <summary>Returns elements from a sequence as long as a specified condition is true.</summary>
+		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
 		/// <param name="source">A sequence to return elements from.</param>
 		/// <param name="predicate">A function to test each element for a condition.</param>
-		/// <returns>A sequence that contains the elements from the input sequence that occur before the element at which the test no longer passes.</returns>
-		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> TakeWhileF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate, bool forceClone = false)
 		{
-			if (source == null)
-				throw Error.ArgumentNull(nameof(source));
-
-			if (predicate == null)
-				throw Error.ArgumentNull(nameof(predicate));
-
+			var sourceArray = source.ToArrayF();
+			var sourceLength = sourceArray.Length;
+			
 			var count = 0;
 
-			for (; count < source.Count; count++)
-				if (!predicate(source[count], count))
+			for (; count < sourceLength; count++)
+				if (!predicate(sourceArray[count], count))
 					break;
 
-			return source.TakeF(count);
+			return sourceArray.TakeF(count, forceClone);
 		}
 	}
 }

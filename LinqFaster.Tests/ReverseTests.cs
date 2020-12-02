@@ -12,18 +12,7 @@ namespace LinqFasterer.Tests
 		public void ReverseTest_Int(IList<int> source)
 		{
 			var expected = source.Reverse().ToArray();
-			var actual = source.ReverseF();
-
-			Assert.Equal(expected, actual);
-		}
-
-		[Theory]
-		[Trait(nameof(LinqFasterer.ReverseF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		public void ReverseForceCloneTest_Int(IList<int> source)
-		{
-			var expected = source.Reverse().ToArray();
-			var actual = source.ReverseF(true);
+			var actual = source.ReverseF().ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

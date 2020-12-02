@@ -12,8 +12,8 @@ namespace LinqFasterer.Tests
 		public void SelectManyTest_Int(IList<int> source)
 		{
 			var expected = source.SelectMany(v => new [] {v, v, v}).ToArray();
-			var actual = source.SelectManyF(v => new [] {v, v, v});
-			var actualIndexed = source.SelectManyF((v, i) => new [] {v, v, v});
+			var actual = source.SelectManyF(v => new[] {v, v, v}).ToArrayF();
+			var actualIndexed = source.SelectManyF((v, i) => new[] {v, v, v}).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);

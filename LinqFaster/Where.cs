@@ -9,12 +9,11 @@ namespace LinqFasterer
 		/// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
 		/// <param name="source">A sequence to filter.</param>
 		/// <param name="predicate">A function to test each element for a condition.</param>
-		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate, bool forceClone = false)
 		{
-			var sourceArray = source.ToArrayF();
+			var sourceArray = source.ToArrayF(forceClone);
 			var sourceLength = sourceArray.Length;
-
-			var result = new TSource[sourceLength];
 			var resultSize = 0;
 
 			for (var i = 0; i < sourceLength; i++)
@@ -22,24 +21,23 @@ namespace LinqFasterer
 				var value = sourceArray[i];
 
 				if (predicate(value))
-					result[resultSize++] = value;
+					sourceArray[resultSize++] = value;
 			}
 
-			Array.Resize(ref result, resultSize);
+			Array.Resize(ref sourceArray, resultSize);
 
-			return result;
+			return sourceArray;
 		}
 
 		/// <summary>Filters a sequence of values based on a predicate. Each element's index is used in the logic of the predicate function.</summary>
 		/// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>
 		/// <param name="source">A sequence to filter.</param>
 		/// <param name="predicate">A function to test each source element for a condition; the second parameter of the function represents the index of the source element.</param>
-		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate)
+		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+		public static IList<TSource> WhereF<TSource>(this IList<TSource> source, Func<TSource, int, bool> predicate, bool forceClone = false)
 		{
-			var sourceArray = source.ToArrayF();
+			var sourceArray = source.ToArrayF(forceClone);
 			var sourceLength = sourceArray.Length;
-
-			var result = new TSource[sourceLength];
 			var resultSize = 0;
 
 			for (var i = 0; i < sourceLength; i++)
@@ -47,12 +45,12 @@ namespace LinqFasterer
 				var value = sourceArray[i];
 
 				if (predicate(value, i))
-					result[resultSize++] = value;
+					sourceArray[resultSize++] = value;
 			}
 
-			Array.Resize(ref result, resultSize);
+			Array.Resize(ref sourceArray, resultSize);
 
-			return result;
+			return sourceArray;
 		}
 	}
 }

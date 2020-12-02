@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
@@ -10,7 +11,7 @@ namespace LinqFasterer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IList<TResult> EmptyF<TResult>()
 		{
-			return new TResult[0];
+			return Array.Empty<TResult>();
 		}
 	}
 }

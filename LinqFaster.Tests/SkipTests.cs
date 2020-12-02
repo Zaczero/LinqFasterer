@@ -16,8 +16,8 @@ namespace LinqFasterer.Tests
 		{
 			foreach (var i in source)
 			{
-				var expected = source.Skip(i);
-				var actual = source.SkipF(i);
+				var expected = source.Skip(i).ToArray();
+				var actual = source.SkipF(i, true).ToArrayF();
 
 				Assert.Equal(expected, actual);
 			}
@@ -33,8 +33,8 @@ namespace LinqFasterer.Tests
 		{
 			foreach (var i in source)
 			{
-				var expected = source.SkipLast(i);
-				var actual = source.SkipLastF(i);
+				var expected = source.SkipLast(i).ToArray();
+				var actual = source.SkipLastF(i, true).ToArrayF();
 
 				Assert.Equal(expected, actual);
 			}
@@ -49,8 +49,8 @@ namespace LinqFasterer.Tests
 		public void SkipWhileTest_Int(IList<int> source)
 		{
 			var expected = source.SkipWhile(v => v > 2).ToArray();
-			var actual = source.SkipWhileF(v => v > 2);
-			var actualIndexed = source.SkipWhileF((v, i) => v > 2);
+			var actual = source.SkipWhileF(v => v > 2, true).ToArrayF();
+			var actualIndexed = source.SkipWhileF((v, i) => v > 2, true).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);

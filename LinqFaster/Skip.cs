@@ -19,7 +19,7 @@ namespace LinqFasterer
 
 			var sourceArray = source.ToArrayF(forceClone);
 
-			if (count < 0)
+			if (count <= 0)
 				return sourceArray;
 
 			var resultLength = sourceLength - count;
@@ -42,7 +42,7 @@ namespace LinqFasterer
 
 			var sourceArray = source.ToArrayF(forceClone);
 
-			if (count < 0)
+			if (count <= 0)
 				return sourceArray;
 			
 			var resultLength = sourceLength - count;
@@ -67,7 +67,7 @@ namespace LinqFasterer
 				if (!predicate(sourceArray[count]))
 					break;
 
-			return source.SkipF(count, forceClone);
+			return sourceArray.SkipF(count, forceClone);
 		}
 
 		/// <summary>Bypasses elements in a sequence as long as a specified condition is true and then returns the remaining elements.</summary>
@@ -86,7 +86,7 @@ namespace LinqFasterer
 				if (!predicate(sourceArray[count], count))
 					break;
 
-			return source.SkipF(count, forceClone);
+			return sourceArray.SkipF(count, forceClone);
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace LinqFasterer
 		/// <param name="second">A sequence whose distinct elements that also appear in the first sequence will be returned.</param>
 		/// <param name="comparer">An equality comparer to compare values.</param>
 		/// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
-		public static IList<TSource> IntersectF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
+		public static IList<TSource> IntersectF<TSource>(this IList<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
 		{
 			comparer ??= EqualityComparer<TSource>.Default;
 

@@ -13,8 +13,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count - 1);
 
-			var expected = first.Prepend(second[0]);
-			var actual = first.PrependF(second[0]);
+			var expected = first.Prepend(second[0]).ToArray();
+			var actual = first.PrependF(second[0]).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

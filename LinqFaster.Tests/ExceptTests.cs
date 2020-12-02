@@ -15,8 +15,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Except(second);
-			var actual = first.ExceptF(second);
+			var expected = first.Except(second).ToArray();
+			var actual = first.ExceptF(second).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

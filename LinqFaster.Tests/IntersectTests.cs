@@ -15,8 +15,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Intersect(second);
-			var actual = first.IntersectF(second);
+			var expected = first.Intersect(second).ToArray();
+			var actual = first.IntersectF(second).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

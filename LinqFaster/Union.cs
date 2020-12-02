@@ -12,10 +12,10 @@ namespace LinqFasterer
 		/// <param name="comparer">An optional equality comparer, falls back to default when set to null.</param>
 		public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
 		{
+			comparer ??= EqualityComparer<TSource>.Default;
+			
 			var firstLength = first.Count;
 			var secondLength = second.Count;
-
-			comparer ??= EqualityComparer<TSource>.Default;
 
 			var resultLength = firstLength + secondLength;
 			var result = new TSource[resultLength];
@@ -24,8 +24,8 @@ namespace LinqFasterer
 			first.CopyTo(result, 0);
 			second.CopyTo(result, firstLength);
 
-			// The following code runs faster on smaller workloads
-			// The magic number is a result of multiple benchmark tests
+			// The following code runs faster on smaller workloads.
+			// The magic number is a result of multiple benchmark tests.
 			if (resultLength < 2500)
 			{
 				var resultHashSet = new HashSet<TSource>(result, comparer);

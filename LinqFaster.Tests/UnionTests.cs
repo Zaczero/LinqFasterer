@@ -16,8 +16,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Union(second);
-			var actual = first.UnionF(second);
+			var expected = first.Union(second).ToArray();
+			var actual = first.UnionF(second).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

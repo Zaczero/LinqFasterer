@@ -16,8 +16,8 @@ namespace LinqFasterer.Tests
 		{
 			foreach (var i in source)
 			{
-				var expected = source.Take(i);
-				var actual = source.TakeF(i);
+				var expected = source.Take(i).ToArray();
+				var actual = source.TakeF(i, true).ToArrayF();
 
 				Assert.Equal(expected, actual);
 			}
@@ -33,8 +33,8 @@ namespace LinqFasterer.Tests
 		{
 			foreach (var i in source)
 			{
-				var expected = source.TakeLast(i);
-				var actual = source.TakeLastF(i);
+				var expected = source.TakeLast(i).ToArray();
+				var actual = source.TakeLastF(i, true).ToArrayF();
 
 				Assert.Equal(expected, actual);
 			}
@@ -49,8 +49,8 @@ namespace LinqFasterer.Tests
 		public void TakeWhileTest_Int(IList<int> source)
 		{
 			var expected = source.TakeWhile(v => v > 2).ToArray();
-			var actual = source.TakeWhileF(v => v > 2);
-			var actualIndexed = source.TakeWhileF((v, i) => v > 2);
+			var actual = source.TakeWhileF(v => v > 2, true).ToArrayF();
+			var actualIndexed = source.TakeWhileF((v, i) => v > 2, true).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);

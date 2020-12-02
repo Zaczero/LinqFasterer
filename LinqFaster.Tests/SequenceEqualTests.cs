@@ -29,8 +29,7 @@ namespace LinqFasterer.Tests
 		public void SequenceCompareTest_Int(IList<int> source)
 		{
 			var clone = new List<int>(source);
-			var cloneModified = new List<int>(source);
-			cloneModified[0] = -1;
+			var cloneModified = new List<int>(source) {[0] = -1};
 
 			var expected = new int[source.Count];
 			var actual = source.SequenceCompareF(clone);

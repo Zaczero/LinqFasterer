@@ -44,9 +44,9 @@ namespace LinqFasterer
 		/// <returns>A sequence whose elements are the result of invoking the transform function on each element of source.</returns>
 		/// <param name="source">A sequence of values to invoke a transform function on.</param>
 		/// <param name="selector">A transform function to apply to each element.</param>
-		public static IList<TSource> SelectInPlaceF<TSource>(this IList<TSource> source, Func<TSource, TSource> selector)
+		public static IList<TSource> SelectInPlaceF<TSource>(this TSource[] source, Func<TSource, TSource> selector)
 		{
-			var sourceArray = source.ToArrayF();
+			var sourceArray = source;
 			var sourceLength = sourceArray.Length;
 			
 			for (var i = 0; i < sourceLength; i++)
@@ -59,9 +59,9 @@ namespace LinqFasterer
 		/// <returns>A sequence whose elements are the result of invoking the transform function on each element of source.</returns>
 		/// <param name="source">A sequence of values to invoke a transform function on.</param>
 		/// <param name="selector">A transform function to apply to each source element; the second parameter of the function represents the index of the source element.</param>
-		public static IList<TSource> SelectInPlaceF<TSource>(this IList<TSource> source, Func<TSource, int, TSource> selector)
+		public static IList<TSource> SelectInPlaceF<TSource>(this TSource[] source, Func<TSource, int, TSource> selector)
 		{
-			var sourceArray = source.ToArrayF();
+			var sourceArray = source;
 			var sourceLength = sourceArray.Length;
 			
 			for (var i = 0; i < sourceLength; i++)

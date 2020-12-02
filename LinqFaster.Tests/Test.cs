@@ -7,7 +7,7 @@ namespace LinqFasterer.Tests
 {
 	public partial class Test
 	{
-		public const int RandomSeed = 0;
+		private const int RandomSeed = 0;
 
 		public static (IList<TSource>, IList<TSource>) SplitArray<TSource>(IList<TSource> source, int firstSize)
 		{

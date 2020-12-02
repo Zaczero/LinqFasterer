@@ -13,8 +13,8 @@ namespace LinqFasterer.Tests
 		public void SelectTest_Int(IList<int> source)
 		{
 			var expected = source.Select(v => -v).ToArray();
-			var actual = source.SelectF(v => -v);
-			var actualIndexed = source.SelectF((v, i) => -v);
+			var actual = source.SelectF(v => -v).ToArrayF();
+			var actualIndexed = source.SelectF((v, i) => -v).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);
@@ -27,12 +27,8 @@ namespace LinqFasterer.Tests
 		public void SelectInPlaceTest_Int(IList<int> source)
 		{
 			var expected = source.Select(v => -v).ToArray();
-
-			var actual = new List<int>(source);
-			actual.SelectInPlaceF(v => -v);
-
-			var actualIndexed = new List<int>(source);
-			actualIndexed.SelectInPlaceF((v, i) => -v);
+			var actual = source.ToArrayF(true).SelectInPlaceF(v => -v).ToArrayF();
+			var actualIndexed = source.ToArrayF(true).SelectInPlaceF((v, i) => -v).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);

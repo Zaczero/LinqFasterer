@@ -14,8 +14,8 @@ namespace LinqFasterer.Tests
 		[MemberData(nameof(TestArray), typeof(int), 5000, 0, 100)]
 		public void DistinctTest_Int(IList<int> source)
 		{
-			var expected = source.Distinct();
-			var actual = source.DistinctF();
+			var expected = source.Distinct().ToArray();
+			var actual = source.DistinctF().ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

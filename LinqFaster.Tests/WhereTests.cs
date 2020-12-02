@@ -14,8 +14,8 @@ namespace LinqFasterer.Tests
 		public void WhereTest_Int(IList<int> source)
 		{
 			var expected = source.Where(v => v % 2 == 0).ToArray();
-			var actual = source.WhereF(v => v % 2 == 0);
-			var actualIndexed = source.WhereF((v, i) => v % 2 == 0);
+			var actual = source.WhereF(v => v % 2 == 0, true).ToArrayF();
+			var actualIndexed = source.WhereF((v, i) => v % 2 == 0, true).ToArrayF();
 
 			Assert.Equal(expected, actual);
 			Assert.Equal(expected, actualIndexed);

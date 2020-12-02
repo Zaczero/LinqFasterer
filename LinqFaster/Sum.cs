@@ -11,7 +11,7 @@ namespace LinqFasterer
 		public static int SumF(this IList<int> source)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0;
 
@@ -30,7 +30,7 @@ namespace LinqFasterer
 		public static long SumF(this IList<long> source)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0L;
 
@@ -49,7 +49,7 @@ namespace LinqFasterer
 		public static float SumF(this IList<float> source)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0.0;
 
@@ -65,7 +65,7 @@ namespace LinqFasterer
 		public static double SumF(this IList<double> source)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0.0;
 
@@ -81,7 +81,7 @@ namespace LinqFasterer
 		public static decimal SumF(this IList<decimal> source)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0M;
 
@@ -98,7 +98,7 @@ namespace LinqFasterer
 		public static int SumF<TSource>(this IList<TSource> source, Func<TSource, int> selector)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0;
 
@@ -118,7 +118,7 @@ namespace LinqFasterer
 		public static long SumF<TSource>(this IList<TSource> source, Func<TSource, long> selector)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0L;
 
@@ -138,7 +138,7 @@ namespace LinqFasterer
 		public static float SumF<TSource>(this IList<TSource> source, Func<TSource, float> selector)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0.0;
 
@@ -155,7 +155,7 @@ namespace LinqFasterer
 		public static double SumF<TSource>(this IList<TSource> source, Func<TSource, double> selector)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0.0;
 
@@ -172,7 +172,7 @@ namespace LinqFasterer
 		public static decimal SumF<TSource>(this IList<TSource> source, Func<TSource, decimal> selector)
 		{
 			var sourceArray = source.ToArrayF();
-			var sourceLength = source.Count;
+			var sourceLength = sourceArray.Length;
 
 			var sum = 0M;
 

@@ -13,8 +13,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Concat(second);
-			var actual = first.ConcatF(second);
+			var expected = first.Concat(second).ToArray();
+			var actual = first.ConcatF(second).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

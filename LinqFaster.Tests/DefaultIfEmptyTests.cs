@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -10,10 +11,10 @@ namespace LinqFasterer.Tests
 		[Trait(nameof(LinqFasterer.DefaultIfEmptyF), null)]
 		public void DefaultIfEmptyTest_Int()
 		{
-			var source = new int[0];
+			var source = Array.Empty<int>();
 
-			var expected = source.DefaultIfEmpty();
-			var actual = source.DefaultIfEmptyF();
+			var expected = source.DefaultIfEmpty().ToArray();
+			var actual = source.DefaultIfEmptyF().ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}
@@ -22,10 +23,10 @@ namespace LinqFasterer.Tests
 		[Trait(nameof(LinqFasterer.DefaultIfEmptyF), null)]
 		public void DefaultIfEmptyTest_IntDefault()
 		{
-			var source = new int[0];
+			var source = Array.Empty<int>();
 
-			var expected = source.DefaultIfEmpty(int.MaxValue);
-			var actual = source.DefaultIfEmptyF(int.MaxValue);
+			var expected = source.DefaultIfEmpty(int.MaxValue).ToArray();
+			var actual = source.DefaultIfEmptyF(int.MaxValue).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}

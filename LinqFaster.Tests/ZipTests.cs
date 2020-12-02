@@ -15,8 +15,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Zip(second);
-			var actual = first.ZipF(second);
+			var expected = first.Zip(second).ToArray();
+			var actual = first.ZipF(second).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}
@@ -30,8 +30,8 @@ namespace LinqFasterer.Tests
 		{
 			var (first, second) = SplitArray(source, source.Count / 2);
 
-			var expected = first.Zip(second, (l, r) => l * r);
-			var actual = first.ZipF(second, (l, r) => l * r);
+			var expected = first.Zip(second, (l, r) => l * r).ToArray();
+			var actual = first.ZipF(second, (l, r) => l * r).ToArrayF();
 
 			Assert.Equal(expected, actual);
 		}
