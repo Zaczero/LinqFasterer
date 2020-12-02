@@ -17,10 +17,10 @@
 * [ ] LinqFasterParallel update
 * [ ] LinqFasterParallelSIMD update
 * [ ] LinqFasterSIMD update
-* [ ] Extended type support
-* [ ] Reduced framework requirements
-* [ ] Addition of SourceLink
-* [ ] Benchmark code update (switch to NuGet library)
+* [x] Extended type support
+* [x] ~~Reduced framework requirements~~
+* [x] Addition of SourceLink
+* [ ] *Benchmark update (work in progress)*
 * [ ] README & LICENSE update
 
 ---
