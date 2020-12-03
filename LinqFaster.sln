@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer", "LinqFaster\LinqFasterer.csproj", "{5B2F0F9F-6DDA-4F06-A999-26E43AE04F86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer", "LinqFasterer\LinqFasterer.csproj", "{5B2F0F9F-6DDA-4F06-A999-26E43AE04F86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer.Tests", "LinqFaster.Tests\LinqFasterer.Tests.csproj", "{74C04BC1-3686-43C0-BCCF-3EB47179065A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer.Tests", "LinqFasterer.Tests\LinqFasterer.Tests.csproj", "{74C04BC1-3686-43C0-BCCF-3EB47179065A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqFasterer.Benchmarks", "LinqFasterer.Benchmark\LinqFasterer.Benchmarks.csproj", "{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}"
 EndProject

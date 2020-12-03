@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LinqFasterer\LinqFasterer.csproj" />
     <ProjectReference Include="..\LinqFaster\LinqFasterer.csproj" />
   </ItemGroup>
 
