@@ -4,7 +4,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace LinqFasterer.Benchmarks.Benchmarks
 {
-	public class ToCastBenchmark : Benchmarkable
+	public class ToArrayBenchmark : Benchmarkable
 	{
 		[Benchmark(Baseline = true)]
 		public int[] ToArrayLinq()
@@ -17,8 +17,11 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		{
 			return Data.ToArrayF();
 		}
-
-		[Benchmark]
+	}
+	
+	public class ToArrayFromListBenchmark : Benchmarkable
+	{
+		[Benchmark(Baseline = true)]
 		public int[] ToArrayFromListLinq()
 		{
 			// ReSharper disable once RemoveToList.1
@@ -30,8 +33,11 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		{
 			return Data.ToList().ToArrayF();
 		}
-
-		[Benchmark]
+	}
+	
+	public class ToListBenchmark : Benchmarkable
+	{
+		[Benchmark(Baseline = true)]
 		public List<int> ToListLinq()
 		{
 			return Data.ToList();

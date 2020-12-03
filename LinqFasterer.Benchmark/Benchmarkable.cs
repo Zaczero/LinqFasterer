@@ -3,9 +3,8 @@ using System.Linq;
 
 namespace LinqFasterer.Benchmarks
 {
-	[SimpleJob(launchCount:1, warmupCount:1, targetCount:4)]
-	//[SimpleJob(launchCount:1, warmupCount:2, targetCount:10)]
-	[MemoryDiagnoser]
+	//[SimpleJob(launchCount:1, warmupCount:1, targetCount:4)]
+	[SimpleJob(launchCount:1, warmupCount:2, targetCount:10)]
 	public class Benchmarkable
 	{
 		//[Params(50000)]

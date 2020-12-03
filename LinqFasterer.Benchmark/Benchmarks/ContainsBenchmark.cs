@@ -17,8 +17,11 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		{
 			return Data.ContainsF(-5);
 		}
-
-		[Benchmark]
+	}
+	
+	public class ContainsComparerBenchmark : Benchmarkable
+	{
+		[Benchmark(Baseline = true)]
 		public bool ContainsComparerLinq()
 		{
 			return Data.Contains(-5, EqualityComparer<int>.Default);

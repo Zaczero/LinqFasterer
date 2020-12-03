@@ -16,8 +16,11 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		{
 			return Data.CountF();
 		}
-
-		[Benchmark]
+	}
+	
+	public class CountPredicateBenchmark : Benchmarkable
+	{
+		[Benchmark(Baseline = true)]
 		public int CountPredicateLinq()
 		{
 			return Data.Count(v => v % 2 == 0);

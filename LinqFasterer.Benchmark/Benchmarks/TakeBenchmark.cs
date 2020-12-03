@@ -17,4 +17,19 @@ namespace LinqFasterer.Benchmarks.Benchmarks
             return Data.TakeF(5).ToArrayF();
         }
     }
+    
+    public class TakeLastBenchmark : Benchmarkable
+    {
+        [Benchmark(Baseline = true)]
+        public int[] TakeLastLinq()
+        {
+            return Data.TakeLast(5).ToArray();
+        }
+
+        [Benchmark]
+        public int[] TakeLastFaster()
+        {
+            return Data.TakeLastF(5).ToArrayF();
+        }
+    }
 }

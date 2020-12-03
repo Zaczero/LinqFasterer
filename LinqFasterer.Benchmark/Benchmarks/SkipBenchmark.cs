@@ -17,4 +17,19 @@ namespace LinqFasterer.Benchmarks.Benchmarks
             return Data.SkipF(5).ToArrayF();
         }
     }
+    
+    public class SkipLastBenchmark : Benchmarkable
+    {
+        [Benchmark(Baseline = true)]
+        public int[] SkipLastLinq()
+        {
+            return Data.SkipLast(5).ToArray();
+        }
+
+        [Benchmark]
+        public int[] SkipLastFaster()
+        {
+            return Data.SkipLastF(5).ToArrayF();
+        }
+    }
 }

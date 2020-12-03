@@ -6,6 +6,21 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 	public class LastBenchmark : Benchmarkable
 	{
 		[Benchmark(Baseline = true)]
+		public int LastLinq()
+		{
+			return Data.Last();
+		}
+
+		[Benchmark]
+		public int LastFaster()
+		{
+			return Data.LastF();
+		}
+	}
+	
+	public class LastPredicateBenchmark : Benchmarkable
+	{
+		[Benchmark(Baseline = true)]
 		public int LastPredicateLinq()
 		{
 			return Data.Last(v => v < -1);
