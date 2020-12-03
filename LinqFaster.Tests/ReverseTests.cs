@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,7 +9,7 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.ReverseF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ReverseTest_Int(IList<int> source)
 		{
 			var expected = source.Reverse().ToArray();

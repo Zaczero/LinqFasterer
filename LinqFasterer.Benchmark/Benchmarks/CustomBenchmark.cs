@@ -13,7 +13,7 @@ namespace LinqFasterer.Benchmarks.Benchmarks
 		}
 
 		[Benchmark]
-		public string ToString()
+		public new string ToString()
 		{
 			return $"N = {N.ToString(CultureInfo.CurrentCulture)}.";
 		}

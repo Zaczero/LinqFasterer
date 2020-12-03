@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,9 +9,9 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.MaxF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
 		public void MaxTest_Int(IList<int> source)
 		{
 			var expected = source.Max();
@@ -21,9 +22,9 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.MaxF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
 		public void MaxTest_IntNullable(IList<int> source)
 		{
 			var expected = source.Cast<int?>().ToArray().Max();
@@ -34,9 +35,9 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.MaxF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
 		public void MaxTest_IntSelector(IList<int> source)
 		{
 			var expected = source.Max(v => -v);
@@ -47,9 +48,9 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.MaxF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 10, 0, 2)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 5)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
 		public void MaxTest_IntSelectorNullable(IList<int> source)
 		{
 			var expected = source.Cast<int?>().ToArray().Max(v => -v);

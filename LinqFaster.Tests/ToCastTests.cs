@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,7 +9,7 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.ToArrayF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ToArrayTest_Int(IList<int> source)
 		{
 			var expected = source.ToArray();
@@ -19,7 +20,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ToArrayF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ToArrayTest_IntForceClone(IList<int> source)
 		{
 			var expected = source.ToArray();
@@ -30,7 +31,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ToListF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ToListTest_Int(IList<int> source)
 		{
 			var expected = source.ToList();
@@ -41,7 +42,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ToListF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ToListTest_IntInPlace(IList<int> source)
 		{
 			var expected = source.ToList();

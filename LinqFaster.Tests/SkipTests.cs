@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,10 +9,10 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.SkipF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void SkipTest_Int(IList<int> source)
 		{
 			foreach (var i in source)
@@ -25,10 +26,10 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.SkipLastF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void SkipLastTest_Int(IList<int> source)
 		{
 			foreach (var i in source)
@@ -42,10 +43,10 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.SkipWhileF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void SkipWhileTest_Int(IList<int> source)
 		{
 			var expected = source.SkipWhile(v => v > 2).ToArray();

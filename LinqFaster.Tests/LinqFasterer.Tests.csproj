@@ -25,4 +25,6 @@
     <ProjectReference Include="..\LinqFaster\LinqFasterer.csproj" />
   </ItemGroup>
 
+  <Import Project="..\LinqFasterer.Shared\LinqFasterer.Shared.projitems" Label="Shared" />
+
 </Project>

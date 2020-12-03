@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,10 +9,10 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.TakeF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void TakeTest_Int(IList<int> source)
 		{
 			foreach (var i in source)
@@ -25,10 +26,10 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.TakeLastF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void TakeLastTest_Int(IList<int> source)
 		{
 			foreach (var i in source)
@@ -42,10 +43,10 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.TakeWhileF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 5)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, -5, -1)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 50, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 50, 100, MemberType = typeof(Utilities))]
 		public void TakeWhileTest_Int(IList<int> source)
 		{
 			var expected = source.TakeWhile(v => v > 2).ToArray();

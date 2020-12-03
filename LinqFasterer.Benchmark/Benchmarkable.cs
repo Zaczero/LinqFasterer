@@ -18,8 +18,8 @@ namespace LinqFasterer.Benchmarks
 		[GlobalSetup]
 		public void GlobalSetup()
 		{
-			Data = Utilities.TestArray(typeof(int), N, 0, 1000).ToArray()[0][0] as int[];
-			DataSecondary = Utilities.TestArray(typeof(int), N, 500, 1500).ToArray()[0][0] as int[];
+			Data = Shared.Utilities.TestArray(typeof(int), N, 0, 1000).ToArray()[0][0] as int[];
+			DataSecondary = Shared.Utilities.TestArray(typeof(int), N, 500, 1500).ToArray()[0][0] as int[];
 		}
 	}
 }

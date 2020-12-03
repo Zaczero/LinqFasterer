@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,10 +9,10 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.AllF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 0, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 1)]
-		[MemberData(nameof(TestArray), typeof(int), 5, -1, 0)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 1, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, -1, 0, MemberType = typeof(Utilities))]
 		public void AllTest_Int(IList<int> source)
 		{
 			var expected = source.All(v => v == -1);

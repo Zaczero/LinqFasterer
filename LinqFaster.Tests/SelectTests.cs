@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,8 +9,8 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.SelectF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 0, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void SelectTest_Int(IList<int> source)
 		{
 			var expected = source.Select(v => -v).ToArray();
@@ -22,8 +23,8 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.SelectInPlaceF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 0, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void SelectInPlaceTest_Int(IList<int> source)
 		{
 			var expected = source.Select(v => -v).ToArray();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -9,7 +10,7 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void LastTest_Int(IList<int> source)
 		{
 			var expected = source.Last();
@@ -20,7 +21,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 10)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 10, MemberType = typeof(Utilities))]
 		public void LastTest_IntPredicate(IList<int> source)
 		{
 			var expected = source.Last(v => v == source[0]);
@@ -31,7 +32,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 10)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 10, MemberType = typeof(Utilities))]
 		public void LastTest_IntPredicateFail(IList<int> source)
 		{
 			Assert.Throws<InvalidOperationException>(() => source.LastF(v => v == -1));
@@ -39,7 +40,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastOrDefaultF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void LastOrDefaultTest_Int(IList<int> source)
 		{
 			var expected = source.LastOrDefault();
@@ -50,7 +51,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastOrDefaultF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 50, 0, 10)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 10, MemberType = typeof(Utilities))]
 		public void LastOrDefaultTest_IntPredicate(IList<int> source)
 		{
 			var expected = source.LastOrDefault(v => v == source[0]);
@@ -61,7 +62,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.LastOrDefaultF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 10)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 10, MemberType = typeof(Utilities))]
 		public void LastOrDefaultTest_IntPredicateDefault(IList<int> source)
 		{
 			var expected = source.LastOrDefault(v => v == -1);

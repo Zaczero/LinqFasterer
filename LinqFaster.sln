@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqFasterer.Tests", "LinqF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqFasterer.Benchmarks", "LinqFasterer.Benchmark\LinqFasterer.Benchmarks.csproj", "{E5CFAF89-6293-4A7B-97CF-C3588A52EE86}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LinqFasterer.Shared", "LinqFasterer.Shared\LinqFasterer.Shared.shproj", "{8CF29127-1239-4553-A8A1-BDCF290CA64F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -8,14 +9,14 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.SequenceEqualF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 0, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 4, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
-		[MemberData(nameof(TestArray), typeof(int), 15, 1, 2)]
-		[MemberData(nameof(TestArray), typeof(int), 16, 1, 2)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 4, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 15, 1, 2, MemberType = typeof(Utilities))]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 16, 1, 2, MemberType = typeof(Utilities))]
 		public void SequenceEqualTest_Int(IList<int> source)
 		{
-			var (first, second) = SplitArray(source, source.Count / 2);
+			var (first, second) = Utilities.SplitArray(source, source.Count / 2);
 
 			var expected = first.SequenceEqual(second);
 			var actual = first.SequenceEqualF(second);
@@ -25,7 +26,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.SequenceCompareF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void SequenceCompareTest_Int(IList<int> source)
 		{
 			var clone = new List<int>(source);

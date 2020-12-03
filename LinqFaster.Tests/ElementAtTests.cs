@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
@@ -9,7 +10,7 @@ namespace LinqFasterer.Tests
 	{
 		[Theory]
 		[Trait(nameof(LinqFasterer.ElementAtF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ElementAtTest_Int(IList<int> source)
 		{
 			var expected = source.ElementAt(source.Count / 2);
@@ -20,7 +21,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ElementAtF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ElementAtTest_Except(IList<int> source)
 		{
 			Assert.Throws<ArgumentOutOfRangeException>(() => source.ElementAtF(-1));
@@ -29,7 +30,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ElementAtOrDefaultF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ElementAtOrDefaultTest_Int(IList<int> source)
 		{
 			var expected = source.ElementAtOrDefault(source.Count / 2);
@@ -40,7 +41,7 @@ namespace LinqFasterer.Tests
 
 		[Theory]
 		[Trait(nameof(LinqFasterer.ElementAtOrDefaultF), null)]
-		[MemberData(nameof(TestArray), typeof(int), 5, 0, 100)]
+		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
 		public void ElementAtOrDefaultTest_Default(IList<int> source)
 		{
 			Assert.Equal(0, source.ElementAtOrDefaultF(-1));
