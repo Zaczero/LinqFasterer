@@ -24,25 +24,25 @@ namespace JM.LinqFaster.SIMD
                 throw Error.NoElements();
             }
 
-            T max = source[0];
-            int count = Vector<T>.Count;
+            var max = source[0];
+            var count = Vector<T>.Count;
             if (count <= source.Length)
             {
                 var vMax = new Vector<T>(source, 0);
-                for (int i = count; i <= source.Length-count; i+=count)
+                for (var i = count; i <= source.Length-count; i+=count)
                 {
                     var v = new Vector<T>(source, i);
                     vMax = Vector.Max(v, vMax);                         
                 }
 
                 max = vMax[0];
-                for (int i = 1; i < count; i++)
+                for (var i = 1; i < count; i++)
                 {
                     if (GreaterThan(vMax[i], max)) max = vMax[i];
                 }
             }
 
-            for (int i = source.Length-source.Length%count; i < source.Length;i++)
+            for (var i = source.Length-source.Length%count; i < source.Length;i++)
             {
                 if (GreaterThan(source[i],max)) max = source[i];
             }

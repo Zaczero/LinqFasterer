@@ -30,7 +30,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         source[i] = selector(source[i]);
                     }
@@ -60,7 +60,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         source[i] = selector(source[i],i);
                     }
@@ -91,7 +91,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++) {
+                    for (var i = range.Item1; i < range.Item2; i++) {
                         r[i] = selector(source[i]);
                     }
                 });
@@ -121,7 +121,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++) {
+                    for (var i = range.Item1; i < range.Item2; i++) {
                         r[i] = selector(source[i],i);
                     }
                 });
@@ -153,7 +153,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         source[i] = selector(source[i]);
                     }
@@ -183,7 +183,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         source[i] = selector(source[i], i);
                     }
@@ -213,7 +213,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         r[i] = selector(source[i]);
                     }
@@ -247,7 +247,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++) {
+                    for (var i = range.Item1; i < range.Item2; i++) {
                         r[i] = selector(source[i], i);
                     }
                 });
@@ -281,7 +281,7 @@ namespace JM.LinqFaster.Parallel
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) => {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         r.Add(selector(source[i], i));
                     }

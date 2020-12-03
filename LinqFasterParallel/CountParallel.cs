@@ -11,7 +11,7 @@ namespace JM.LinqFaster.Parallel
         /// <summary>
         /// Returns a number that represents how many elements in the specified in parallel.
         /// array satisfy a condition.
-        /// </summary>        
+        /// </summary>
         /// <param name="source">An array that contains elements to be tested and counted.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="batchSize">Optional custom batch size to divide work into.</param>
@@ -29,15 +29,15 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            int total = 0;
+            var total = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
-                {                    
+                {
                     checked
                     {
-                        for (int i = range.Item1; i < range.Item2; i++)
+                        for (var i = range.Item1; i < range.Item2; i++)
                         {
                             if (predicate(source[i]))
                             {
@@ -60,7 +60,7 @@ namespace JM.LinqFaster.Parallel
         /// <summary>
         /// Returns a number that represents how many elements in the specified in parallel.
         /// list satisfy a condition.
-        /// </summary>        
+        /// </summary>
         /// <param name="source">A list that contains elements to be tested and counted.</param>
         /// <param name="predicate">A function to test each element for a condition.</param>
         /// <param name="batchSize">Optional custom batch size to divide work into.</param>
@@ -78,15 +78,15 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            int total = 0;
+            var total = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
-                {                    
+                {
                     checked
                     {
-                        for (int i = range.Item1; i < range.Item2; i++)
+                        for (var i = range.Item1; i < range.Item2; i++)
                         {
                             if (predicate(source[i]))
                             {

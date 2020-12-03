@@ -34,12 +34,12 @@ namespace JM.LinqFaster.Parallel
             
             var isChosen = new bool[source.Length];
             var tempResults = new TResult[source.Length];
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner, () => 0,               
                 (range, loopState,acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (predicate(s))
@@ -57,8 +57,8 @@ namespace JM.LinqFaster.Parallel
                  });
 
             var result = new TResult[count];
-            int idx = 0;
-            for (int i = 0; i < isChosen.Length; i++)
+            var idx = 0;
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -96,12 +96,12 @@ namespace JM.LinqFaster.Parallel
 
             var isChosen = new bool[source.Length];
             var tempResults = new TResult[source.Length];
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner, () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i],i);
                         if (predicate(s,i))
@@ -119,8 +119,8 @@ namespace JM.LinqFaster.Parallel
                  });
 
             var result = new TResult[count];
-            int idx = 0;
-            for (int i = 0; i < isChosen.Length; i++)
+            var idx = 0;
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -160,12 +160,12 @@ namespace JM.LinqFaster.Parallel
 
             var isChosen = new bool[source.Count];
             var tempResults = new TResult[source.Count];
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner, () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (predicate(s))
@@ -183,7 +183,7 @@ namespace JM.LinqFaster.Parallel
                  });
 
             var result = new List<TResult>(count);            
-            for (int i = 0; i < isChosen.Length; i++)
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -220,12 +220,12 @@ namespace JM.LinqFaster.Parallel
 
             var isChosen = new bool[source.Count];
             var tempResults = new TResult[source.Count];
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner, () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i], i);
                         if (predicate(s, i))
@@ -243,7 +243,7 @@ namespace JM.LinqFaster.Parallel
                  });
 
             var result = new List<TResult>(count);            
-            for (int i = 0; i < isChosen.Length; i++)
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {

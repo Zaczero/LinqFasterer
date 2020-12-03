@@ -26,7 +26,7 @@ namespace JM.LinqFaster.SIMD.Parallel
                 throw Error.ArgumentNull("source");
             }
 
-            int count = Vector<T>.Count;
+            var count = Vector<T>.Count;
 
             if (count != Vector<U>.Count)
             {
@@ -38,8 +38,8 @@ namespace JM.LinqFaster.SIMD.Parallel
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, s) =>
                 {
-                    int index = range.Item1 * count;
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    var index = range.Item1 * count;
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         selectorSIMD(new Vector<T>(source, index)).CopyTo(result, index);
                         index += count;
@@ -49,7 +49,7 @@ namespace JM.LinqFaster.SIMD.Parallel
 
             if (selector != null)
             {
-                for (int i = source.Length - source.Length % count; i < source.Length; i++)
+                for (var i = source.Length - source.Length % count; i < source.Length; i++)
                 {
                     result[i] = selector(source[i]);
                 }

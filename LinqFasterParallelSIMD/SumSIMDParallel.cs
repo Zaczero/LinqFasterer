@@ -23,15 +23,15 @@ namespace JM.LinqFaster.SIMD.Parallel
 
             var count = Vector<T>.Count;
             var sum = Vector<T>.Zero;
-            object LOCK = new object();
+            var LOCK = new object();
 
             var rangePartitioner = MakeSIMDPartition(source.Length, count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => Vector<T>.Zero,
                 (range, s, acc) =>
                 {
-                    int index = range.Item1 * count;
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    var index = range.Item1 * count;
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         acc += new Vector<T>(source, index);
                         index += count;
@@ -47,8 +47,8 @@ namespace JM.LinqFaster.SIMD.Parallel
                      }
                  });
 
-            T result = default(T);
-            for (int i = 0; i < count; i++)
+            var result = default(T);
+            for (var i = 0; i < count; i++)
             {
                 result = Add(result, sum[i]);
             }

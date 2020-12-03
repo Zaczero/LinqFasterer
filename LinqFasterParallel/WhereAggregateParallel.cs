@@ -32,12 +32,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("func");
             }
 
-            bool[] isChosen = new bool[source.Length];            
+            var isChosen = new bool[source.Length];            
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -48,7 +48,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = default(TSource);
 
-            int idx = 0;
+            var idx = 0;
             for (; idx < isChosen.Length; idx++)
             {
                 if (isChosen[idx])
@@ -93,12 +93,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("func");
             }
 
-            bool[] isChosen = new bool[source.Length];
+            var isChosen = new bool[source.Length];
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i],i))
                         {
@@ -109,7 +109,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = default(TSource);
 
-            int idx = 0;            
+            var idx = 0;            
             for (; idx < isChosen.Length; idx++)
             {
                 if (isChosen[idx])
@@ -156,12 +156,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Length];
+            var isChosen = new bool[source.Length];
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -172,7 +172,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = seed;
 
-            for (int i = 0; i < isChosen.Length;i++)
+            for (var i = 0; i < isChosen.Length;i++)
             {
                 if (isChosen[i])
                     result = func(result, source[i]);
@@ -209,12 +209,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Length];
+            var isChosen = new bool[source.Length];
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -225,7 +225,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = seed;
 
-            for (int i = 0; i < isChosen.Length; i++)
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                     result = func(result, source[i]);
@@ -262,12 +262,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("func");
             }
 
-            bool[] isChosen = new bool[source.Count];
+            var isChosen = new bool[source.Count];
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -278,7 +278,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = default(TSource);
 
-            int idx = 0;
+            var idx = 0;
             for (; idx < isChosen.Length; idx++)
             {
                 if (isChosen[idx])
@@ -323,12 +323,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("func");
             }
 
-            bool[] isChosen = new bool[source.Count];
+            var isChosen = new bool[source.Count];
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i], i))
                         {
@@ -339,7 +339,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = default(TSource);
 
-            int idx = 0;
+            var idx = 0;
             for (; idx < isChosen.Length; idx++)
             {
                 if (isChosen[idx])
@@ -385,12 +385,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Count];
+            var isChosen = new bool[source.Count];
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -401,7 +401,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = seed;
 
-            for (int i = 0; i < isChosen.Length; i++)
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                     result = func(result, source[i]);
@@ -438,12 +438,12 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Count];
+            var isChosen = new bool[source.Count];
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -454,7 +454,7 @@ namespace JM.LinqFaster.Parallel
 
             var result = seed;
 
-            for (int i = 0; i < isChosen.Length; i++)
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                     result = func(result, source[i]);

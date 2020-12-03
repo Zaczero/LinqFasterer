@@ -24,19 +24,19 @@ namespace JM.LinqFaster.SIMD
             var state = Vector<T>.Zero;
             var count = Vector<T>.Count;
 
-            for (int i = 0; i <= source.Length - count; i+=count)
+            for (var i = 0; i <= source.Length - count; i+=count)
             {
                 state = state + new Vector<T>(source, i);
             }
 
             var result = default(T);
             
-            for (int i = source.Length-source.Length % count; i < source.Length;i++)
+            for (var i = source.Length-source.Length % count; i < source.Length;i++)
             {
                 result = Add(result,source[i]);
             }
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 result = Add(result, state[i]);
             }
@@ -68,7 +68,7 @@ namespace JM.LinqFaster.SIMD
             var state = Vector<U>.Zero;
             var count = Vector<U>.Count;
 
-            for (int i = 0; i <= source.Length-count; i += count)
+            for (var i = 0; i <= source.Length-count; i += count)
             {
                 state = state + selectorSIMD(new Vector<T>(source, i));
             }
@@ -77,13 +77,13 @@ namespace JM.LinqFaster.SIMD
 
             if (selector != null)
             {
-                for (int i = source.Length - source.Length % count; i < source.Length; i++)
+                for (var i = source.Length - source.Length % count; i < source.Length; i++)
                 {
                     result = Add(result, selector(source[i]));
                 }
             }
 
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 result = Add(result, state[i]);
             }

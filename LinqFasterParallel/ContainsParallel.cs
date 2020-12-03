@@ -30,12 +30,12 @@ namespace JM.LinqFaster.Parallel
             }
 
 
-            int total = 0;
+            var total = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (comparer.Equals(source[i], value))
                         {
@@ -73,12 +73,12 @@ namespace JM.LinqFaster.Parallel
             }
 
 
-            int total = 0;
+            var total = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (comparer.Equals(source[i], value))
                         {

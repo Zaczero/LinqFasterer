@@ -34,14 +34,14 @@ namespace JM.LinqFaster.SIMD.Parallel
             if (first == second) return true;
 
             var count = Vector<T>.Count;
-            int nonEqualCount = 0;            
+            var nonEqualCount = 0;            
             var rangePartitioner = MakeSIMDPartition(first.Length, count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,               
                 (range, loopState) =>
                 {
 
-                    int index = range.Item1 * count;
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    var index = range.Item1 * count;
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (!Vector.EqualsAll(new Vector<T>(first, index), new Vector<T>(second, index)))
                         {
@@ -54,7 +54,7 @@ namespace JM.LinqFaster.SIMD.Parallel
                 });
             if (nonEqualCount != 0) return false;
             var comparer = EqualityComparer<T>.Default;
-            for (int i = first.Length - (first.Length % count); i < first.Length; i++)
+            for (var i = first.Length - (first.Length % count); i < first.Length; i++)
             {
                 if (!comparer.Equals(first[i], second[i])) return false;
             }

@@ -29,10 +29,10 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            object LOCK = new object();
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
-            Comparer<T> comparer = Comparer<T>.Default;
-            T min = default(T);
+            var comparer = Comparer<T>.Default;
+            var min = default(T);
             if (min == null)
             {
                 min = source[0];
@@ -40,7 +40,7 @@ namespace JM.LinqFaster.Parallel
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] != null && comparer.Compare(source[i], threadMin) < 0) threadMin = source[i];
                     }
@@ -64,7 +64,7 @@ namespace JM.LinqFaster.Parallel
                () => min,
                (range, state, threadMin) =>
                {
-                   for (int i = range.Item1; i < range.Item2; i++)
+                   for (var i = range.Item1; i < range.Item2; i++)
                    {
                        if (comparer.Compare(source[i], threadMin) < 0) threadMin = source[i];
                    }
@@ -102,9 +102,9 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            object LOCK = new object();
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
-            Comparer<TResult> comparer = Comparer<TResult>.Default;
+            var comparer = Comparer<TResult>.Default;
             var min = default(TResult);
             if (min == null)
             {
@@ -113,7 +113,7 @@ namespace JM.LinqFaster.Parallel
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s != null && comparer.Compare(s, threadMin) < 0) threadMin = s;
@@ -138,7 +138,7 @@ namespace JM.LinqFaster.Parallel
                () => min,
                (range, state, threadMin) =>
                {
-                   for (int i = range.Item1; i < range.Item2; i++)
+                   for (var i = range.Item1; i < range.Item2; i++)
                    {
                        var s = selector(source[i]);
                        if (comparer.Compare(s, threadMin) < 0) threadMin = s;
@@ -178,14 +178,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            int min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -226,14 +226,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            int min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -274,14 +274,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            long min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -322,14 +322,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            long min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -370,14 +370,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            float min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -418,14 +418,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            float min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -466,14 +466,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            double min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -514,14 +514,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            double min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -562,14 +562,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            decimal min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -610,14 +610,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            decimal min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -661,10 +661,10 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            object LOCK = new object();
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
-            Comparer<T> comparer = Comparer<T>.Default;
-            T min = default(T);
+            var comparer = Comparer<T>.Default;
+            var min = default(T);
             if (min == null)
             {
                 min = source[0];
@@ -672,7 +672,7 @@ namespace JM.LinqFaster.Parallel
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] != null && comparer.Compare(source[i], threadMin) < 0) threadMin = source[i];
                     }
@@ -696,7 +696,7 @@ namespace JM.LinqFaster.Parallel
                () => min,
                (range, state, threadMin) =>
                {
-                   for (int i = range.Item1; i < range.Item2; i++)
+                   for (var i = range.Item1; i < range.Item2; i++)
                    {
                        if (comparer.Compare(source[i], threadMin) < 0) threadMin = source[i];
                    }
@@ -734,9 +734,9 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            object LOCK = new object();
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
-            Comparer<TResult> comparer = Comparer<TResult>.Default;
+            var comparer = Comparer<TResult>.Default;
             var min = default(TResult);
             if (min == null)
             {
@@ -745,7 +745,7 @@ namespace JM.LinqFaster.Parallel
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s != null && comparer.Compare(s, threadMin) < 0) threadMin = s;
@@ -770,7 +770,7 @@ namespace JM.LinqFaster.Parallel
                () => min,
                (range, state, threadMin) =>
                {
-                   for (int i = range.Item1; i < range.Item2; i++)
+                   for (var i = range.Item1; i < range.Item2; i++)
                    {
                        var s = selector(source[i]);
                        if (comparer.Compare(s, threadMin) < 0) threadMin = s;
@@ -810,14 +810,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            int min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -858,14 +858,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            int min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -906,14 +906,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            long min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -954,14 +954,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            long min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -1002,14 +1002,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            float min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -1050,14 +1050,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            float min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -1098,14 +1098,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            double min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -1146,14 +1146,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            double min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)
@@ -1194,14 +1194,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            decimal min = source[0];
-            object LOCK = new object();
+            var min = source[0];
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (source[i] < threadMin)
                         {
@@ -1242,14 +1242,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.NoElements();
             }
 
-            decimal min = selector(source[0]);
-            object LOCK = new object();
+            var min = selector(source[0]);
+            var LOCK = new object();
             var rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => min,
                 (range, state, threadMin) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         var s = selector(source[i]);
                         if (s < threadMin)

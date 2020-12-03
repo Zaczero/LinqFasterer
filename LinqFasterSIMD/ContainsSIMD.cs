@@ -24,14 +24,14 @@ namespace JM.LinqFaster.SIMD
 
             var count = Vector<T>.Count;
             var vectorValue = new Vector<T>(value);
-            for (int i = 0; i < source.Length-count;i+=count)
+            for (var i = 0; i < source.Length-count;i+=count)
             {
                 if (Vector.EqualsAny(new Vector<T>(source,i),vectorValue))
                 {
                     return true;
                 }
             }
-            for (int i = source.Length-(source.Length%count); i < source.Length;i++)
+            for (var i = source.Length-(source.Length%count); i < source.Length;i++)
             {                
                 if (GenericOperators.Equals(source[i],value)) return true;
             }

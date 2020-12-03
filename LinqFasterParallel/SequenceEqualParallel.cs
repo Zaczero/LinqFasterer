@@ -37,12 +37,12 @@ namespace JM.LinqFaster.Parallel
 
             if (first.Length != second.Length) return false;
             if (first == second) return true;
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(first.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,               
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (!comparer.Equals(first[i], second[i]))
                         {
@@ -86,12 +86,12 @@ namespace JM.LinqFaster.Parallel
             if (first.Count != second.Count) return false;
             if (first == second) return true;
 
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(first.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (!comparer.Equals(first[i], second[i]))
                         {
@@ -134,12 +134,12 @@ namespace JM.LinqFaster.Parallel
 
             if (first.Length != second.Count) return false;
 
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(first.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (!comparer.Equals(first[i], second[i]))
                         {
@@ -182,12 +182,12 @@ namespace JM.LinqFaster.Parallel
 
             if (first.Count != second.Length) return false;
 
-            int count = 0;
+            var count = 0;
             var rangePartitioner = MakePartition(first.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (!comparer.Equals(first[i], second[i]))
                         {

@@ -31,7 +31,7 @@ namespace JM.LinqFaster.SIMD
             if (first == second) return true;
 
             var count = Vector<T>.Count;
-            for (int i = 0; i <= first.Length - count; i += count)
+            for (var i = 0; i <= first.Length - count; i += count)
             {
                 if (!Vector.EqualsAll(new Vector<T>(first, i), new Vector<T>(second, i)))
                 {
@@ -39,7 +39,7 @@ namespace JM.LinqFaster.SIMD
                 }
             }
             var comparer = EqualityComparer<T>.Default;
-            for (int i = first.Length - (first.Length % count); i < first.Length; i++)
+            for (var i = first.Length - (first.Length % count); i < first.Length; i++)
             {
                 if (!comparer.Equals(first[i], second[i])) return false;
             }
@@ -71,7 +71,7 @@ namespace JM.LinqFaster.SIMD
             var minusone = new Vector<int>(-1);
             var count = Vector<T>.Count;
             var result = new int[first.Length];
-            for (int i = 0; i <= first.Length - count; i += count)
+            for (var i = 0; i <= first.Length - count; i += count)
             {
                 var a = new Vector<T>(first, i);
                 var b = new Vector<T>(second, i);
@@ -82,7 +82,7 @@ namespace JM.LinqFaster.SIMD
                     Vector.BitwiseOr(gt, lt).CopyTo(result, i);
                 }
             }
-            for (int i = first.Length - (first.Length % count); i < first.Length; i++)
+            for (var i = first.Length - (first.Length % count); i < first.Length; i++)
             {
                 if (GreaterThan(first[i], second[i]))
                 {

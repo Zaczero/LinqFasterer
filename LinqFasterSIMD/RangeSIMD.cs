@@ -15,30 +15,30 @@ namespace JM.LinqFaster.SIMD
         /// <returns>A sequence that contains a range of sequential integral numbers.</returns>
         public static int[] RangeS(int start, int len)            
         {
-            long max = ((long)start) + len - 1;
+            var max = ((long)start) + len - 1;
             if (len < 0 || max > int.MaxValue) {
                 throw Error.ArgumentOutOfRange("len");
             }
 
             var count = Vector<int>.Count;
-            int[] result = new int[len];
+            var result = new int[len];
             if (len >= count) {
                 //use result array for double duty to save memory
                 
-                for (int i = 0; i < count; i++) {
+                for (var i = 0; i < count; i++) {
                     result[i] = i + start;
                 }
 
                 var V = new Vector<int>(result);
                 var Increment = new Vector<int>(count);
                 V = V + Increment;
-                for (int i = count; i <= len - count; i += count) {
+                for (var i = count; i <= len - count; i += count) {
                     V.CopyTo(result, i);
                     V = V + Increment;
                 }
             }
 
-            for (int i = len - len % count; i < len; i++) {
+            for (var i = len - len % count; i < len; i++) {
                 result[i] = i + start;
             }
 

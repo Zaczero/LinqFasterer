@@ -26,14 +26,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Length];
-            int count = 0;
+            var isChosen = new bool[source.Length];
+            var count = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -48,8 +48,8 @@ namespace JM.LinqFaster.Parallel
                     Interlocked.Add(ref count, acc);
                 });
             var result = new TSource[count];
-            int idx = 0;
-            for (int i = 0; i < isChosen.Length; i++)
+            var idx = 0;
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -81,14 +81,14 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Length];
-            int count = 0;
+            var isChosen = new bool[source.Length];
+            var count = 0;
             var rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i],i))
                         {
@@ -103,8 +103,8 @@ namespace JM.LinqFaster.Parallel
                     Interlocked.Add(ref count, acc);
                 });
             var result = new TSource[count];
-            int idx = 0;
-            for (int i = 0; i < isChosen.Length; i++)
+            var idx = 0;
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -139,15 +139,15 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Count];
-            int count = 0;
+            var isChosen = new bool[source.Count];
+            var count = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
             
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i]))
                         {
@@ -162,8 +162,8 @@ namespace JM.LinqFaster.Parallel
                     Interlocked.Add(ref count, acc);
                 });
 
-            List<TSource> result = new List<TSource>(count);            
-            for (int i = 0; i < isChosen.Length; i++)
+            var result = new List<TSource>(count);            
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
@@ -192,15 +192,15 @@ namespace JM.LinqFaster.Parallel
                 throw Error.ArgumentNull("predicate");
             }
 
-            bool[] isChosen = new bool[source.Count];
-            int count = 0;
+            var isChosen = new bool[source.Count];
+            var count = 0;
             var rangePartitioner = MakePartition(source.Count, batchSize);
 
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
                 {
-                    for (int i = range.Item1; i < range.Item2; i++)
+                    for (var i = range.Item1; i < range.Item2; i++)
                     {
                         if (predicate(source[i],i))
                         {
@@ -215,8 +215,8 @@ namespace JM.LinqFaster.Parallel
                     Interlocked.Add(ref count, acc);
                 });
 
-            List<TSource> result = new List<TSource>(count);            
-            for (int i = 0; i < isChosen.Length; i++)
+            var result = new List<TSource>(count);            
+            for (var i = 0; i < isChosen.Length; i++)
             {
                 if (isChosen[i])
                 {
