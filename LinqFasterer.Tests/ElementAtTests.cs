@@ -9,7 +9,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.ElementAtF), null)]
+        [Trait(nameof(EnumerableF.ElementAtF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ElementAtTest_Int(IList<int> source)
         {
@@ -20,7 +20,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ElementAtF), null)]
+        [Trait(nameof(EnumerableF.ElementAtF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ElementAtTest_Except(IList<int> source)
         {
@@ -29,7 +29,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ElementAtOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.ElementAtOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ElementAtOrDefaultTest_Int(IList<int> source)
         {
@@ -40,7 +40,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ElementAtOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.ElementAtOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ElementAtOrDefaultTest_Default(IList<int> source)
         {

@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SelectF), null)]
+        [Trait(nameof(EnumerableF.SelectF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SelectTest_Int(IList<int> source)
@@ -22,7 +22,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SelectInPlaceF), null)]
+        [Trait(nameof(EnumerableF.SelectInPlaceF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SelectInPlaceTest_Int(IList<int> source)

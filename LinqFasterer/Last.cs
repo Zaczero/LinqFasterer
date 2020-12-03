@@ -4,7 +4,7 @@ using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the last element in a sequence that satisfies a specified condition.</summary>
         /// <returns>The last element in the sequence that passes the test in the specified predicate function.</returns>

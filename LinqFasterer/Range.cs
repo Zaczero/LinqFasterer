@@ -2,7 +2,7 @@
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Generates a sequence of numbers within a specified range.</summary>
         /// <returns>A sequence that contains a range of sequential numbers.</returns>

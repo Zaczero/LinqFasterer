@@ -4,7 +4,7 @@ using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the first element in a sequence that satisfies a specified condition.</summary>
         /// <returns>The first element in the sequence that passes the test in the specified predicate function.</returns>

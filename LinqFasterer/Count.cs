@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns a number that represents how many elements in the specified sequence satisfy a condition.</summary>
         /// <returns>A number that represents how many elements in the sequence satisfy the condition in the predicate function.</returns>

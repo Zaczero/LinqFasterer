@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_Int(IList<int> source)
         {
@@ -19,7 +19,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(long), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_Long(IList<long> source)
         {
@@ -30,7 +30,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(float), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_Float(IList<float> source)
         {
@@ -41,7 +41,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(double), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_Double(IList<double> source)
         {
@@ -52,7 +52,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(decimal), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_Decimal(IList<decimal> source)
         {
@@ -63,7 +63,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_IntSelector(IList<int> source)
         {
@@ -74,7 +74,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(long), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_LongSelector(IList<long> source)
         {
@@ -85,7 +85,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(float), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_FloatSelector(IList<float> source)
         {
@@ -96,7 +96,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(double), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_DoubleSelector(IList<double> source)
         {
@@ -107,7 +107,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AverageF), null)]
+        [Trait(nameof(EnumerableF.AverageF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(decimal), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AverageTest_DecimalSelector(IList<decimal> source)
         {

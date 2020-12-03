@@ -3,6 +3,6 @@
     /// <summary>
     /// TODO:
     /// </summary>
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     { }
 }

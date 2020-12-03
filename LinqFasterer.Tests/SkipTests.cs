@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SkipF), null)]
+        [Trait(nameof(EnumerableF.SkipF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
@@ -25,7 +25,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SkipLastF), null)]
+        [Trait(nameof(EnumerableF.SkipLastF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]
@@ -42,7 +42,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SkipWhileF), null)]
+        [Trait(nameof(EnumerableF.SkipWhileF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 5, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 15, -5, -1, MemberType = typeof(Utilities))]

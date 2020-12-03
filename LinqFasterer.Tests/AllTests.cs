@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.AllF), null)]
+        [Trait(nameof(EnumerableF.AllF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 1, MemberType = typeof(Utilities))]

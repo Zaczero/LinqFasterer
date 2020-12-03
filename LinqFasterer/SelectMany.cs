@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Projects each element of a sequence to a sequence and flattens the resulting sequences into one sequence.</summary>
         /// <returns>A sequence whose elements are the result of invoking the one-to-many transform function on each element of the input sequence.</returns>

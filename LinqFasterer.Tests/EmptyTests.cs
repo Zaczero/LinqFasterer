@@ -6,11 +6,11 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Fact]
-        [Trait(nameof(LinqFasterer.EmptyF), null)]
+        [Trait(nameof(EnumerableF.EmptyF), null)]
         public void EmptyTest_Int()
         {
             var expected = Enumerable.Empty<int>().ToArray();
-            var actual = LinqFasterer.EmptyF<int>().ToArrayF();
+            var actual = EnumerableF.EmptyF<int>().ToArrayF();
 
             Assert.Equal(expected, actual);
         }

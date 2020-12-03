@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns a specified number of contiguous elements from the start of a sequence.</summary>
         /// <returns>A sequence that contains the specified number of elements from the start of the input sequence.</returns>

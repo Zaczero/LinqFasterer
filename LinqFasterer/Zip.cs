@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Produces a sequence of tuples with elements from the two specified sequences.</summary>
         /// <returns>A sequence of tuples with elements taken from the first and second sequences, in that order.</returns>

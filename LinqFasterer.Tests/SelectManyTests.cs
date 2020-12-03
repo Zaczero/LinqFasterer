@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SelectManyF), null)]
+        [Trait(nameof(EnumerableF.SelectManyF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SelectManyTest_Int(IList<int> source)
         {

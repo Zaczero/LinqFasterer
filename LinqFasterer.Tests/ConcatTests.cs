@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.ConcatF), null)]
+        [Trait(nameof(EnumerableF.ConcatF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ConcatTest_Int(IList<int> source)
         {

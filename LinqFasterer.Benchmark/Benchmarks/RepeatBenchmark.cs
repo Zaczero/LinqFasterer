@@ -14,7 +14,7 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         [Benchmark]
         public int[] RepeatFaster()
         {
-            return LinqFasterer.RepeatF(5, 100).ToArrayF();
+            return EnumerableF.RepeatF(5, 100).ToArrayF();
         }
     }
 }

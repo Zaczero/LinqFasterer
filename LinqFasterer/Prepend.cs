@@ -2,7 +2,7 @@
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Adds a value to the beginning of the sequence.</summary>
         /// <returns>A new sequence that begins with element.</returns>

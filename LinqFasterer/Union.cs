@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Produces the set union of two sequences.</summary>
         /// <returns>A sequence that contains the elements from both input sequences, excluding duplicates.</returns>

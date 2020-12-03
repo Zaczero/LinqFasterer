@@ -9,7 +9,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstF), null)]
+        [Trait(nameof(EnumerableF.FirstF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void FirstTest_Int(IList<int> source)
         {
@@ -20,7 +20,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstF), null)]
+        [Trait(nameof(EnumerableF.FirstF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 10, MemberType = typeof(Utilities))]
         public void FirstTest_IntPredicate(IList<int> source)
         {
@@ -31,7 +31,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstF), null)]
+        [Trait(nameof(EnumerableF.FirstF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 10, MemberType = typeof(Utilities))]
         public void FirstTest_IntPredicateFail(IList<int> source)
         {
@@ -39,7 +39,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.FirstOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void FirstOrDefaultTest_Int(IList<int> source)
         {
@@ -50,7 +50,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.FirstOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 10, MemberType = typeof(Utilities))]
         public void FirstOrDefaultTest_IntPredicate(IList<int> source)
         {
@@ -61,7 +61,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.FirstOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.FirstOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 10, MemberType = typeof(Utilities))]
         public void FirstOrDefaultTest_IntPredicateDefault(IList<int> source)
         {

@@ -2,7 +2,7 @@
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Creates an array from a sequence.</summary>
         /// <returns>An array that contains the elements from the input sequence.</returns>

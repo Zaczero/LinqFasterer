@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.AggregateF), null)]
+        [Trait(nameof(EnumerableF.AggregateF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AggregateTest_Int(IList<int> source)
         {
@@ -19,7 +19,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AggregateF), null)]
+        [Trait(nameof(EnumerableF.AggregateF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AggregateTest_IntSeed(IList<int> source)
         {
@@ -30,7 +30,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AggregateF), null)]
+        [Trait(nameof(EnumerableF.AggregateF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AggregateTest_IntSeedSelector(IList<int> source)
         {

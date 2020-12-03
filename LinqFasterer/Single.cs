@@ -4,7 +4,7 @@ using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.</summary>
         /// <returns>The single element of the input sequence.</returns>

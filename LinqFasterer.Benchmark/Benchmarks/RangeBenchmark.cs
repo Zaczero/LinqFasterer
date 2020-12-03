@@ -14,7 +14,7 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         [Benchmark]
         public int[] RangeFaster()
         {
-            return LinqFasterer.RangeF(0, 100).ToArrayF();
+            return EnumerableF.RangeF(0, 100).ToArrayF();
         }
     }
 }

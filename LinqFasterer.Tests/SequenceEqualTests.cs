@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SequenceEqualF), null)]
+        [Trait(nameof(EnumerableF.SequenceEqualF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 4, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
@@ -25,7 +25,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SequenceCompareF), null)]
+        [Trait(nameof(EnumerableF.SequenceCompareF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SequenceCompareTest_Int(IList<int> source)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Bypasses a specified number of elements in a sequence and then returns the remaining elements.</summary>
         /// <returns>A sequence that contains the elements that occur after the specified index in the input sequence.</returns>

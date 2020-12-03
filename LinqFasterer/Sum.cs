@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Computes the sum of a sequence.</summary>
         /// <returns>The sum of the values in the sequence.</returns>

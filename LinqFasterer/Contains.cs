@@ -2,7 +2,7 @@
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Determines whether a sequence contains a specified element by using a specified equality comparer.</summary>
         /// <returns>true if the source sequence contains an element that has the specified value; otherwise, false.</returns>

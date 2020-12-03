@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Sorts the elements of a sequence in ascending order by using a specified comparer.</summary>
         /// <returns>A sequence whose elements are sorted according to a key.</returns>

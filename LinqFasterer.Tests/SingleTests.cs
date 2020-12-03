@@ -9,7 +9,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleF), null)]
+        [Trait(nameof(EnumerableF.SingleF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 1, 0, 100, MemberType = typeof(Utilities))]
         public void SingleTest_Int(IList<int> source)
         {
@@ -20,7 +20,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleF), null)]
+        [Trait(nameof(EnumerableF.SingleF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SingleTest_IntFail(IList<int> source)
@@ -29,7 +29,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleF), null)]
+        [Trait(nameof(EnumerableF.SingleF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 5, 10, MemberType = typeof(Utilities))]
         public void SingleTest_IntPredicate(IList<int> source)
         {
@@ -42,7 +42,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleF), null)]
+        [Trait(nameof(EnumerableF.SingleF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SingleTest_IntPredicateFail(IList<int> source)
@@ -51,7 +51,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 1, 0, 100, MemberType = typeof(Utilities))]
         public void SingleOrDefaultTest_Int(IList<int> source)
         {
@@ -62,7 +62,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         public void SingleOrDefaultTest_IntDefault(IList<int> source)
         {
@@ -73,7 +73,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 5, 10, MemberType = typeof(Utilities))]
         public void SingleOrDefaultTest_IntPredicate(IList<int> source)
         {
@@ -86,7 +86,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SingleOrDefaultF), null)]
+        [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SingleOrDefaultTest_IntPredicateDefault(IList<int> source)

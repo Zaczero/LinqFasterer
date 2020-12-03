@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns distinct elements from a sequence by using a specified equality comparer to compare values.</summary>
         /// <returns>A sequence that contains distinct elements from the source sequence.</returns>

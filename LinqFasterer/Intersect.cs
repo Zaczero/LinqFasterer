@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Produces the set intersection of two sequences by using the default equality comparer to compare values.</summary>
         /// <returns>A sequence that contains the elements that form the set intersection of two sequences.</returns>

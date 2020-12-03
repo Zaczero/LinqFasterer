@@ -7,7 +7,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Fact]
-        [Trait(nameof(LinqFasterer.DefaultIfEmptyF), null)]
+        [Trait(nameof(EnumerableF.DefaultIfEmptyF), null)]
         public void DefaultIfEmptyTest_Int()
         {
             var source = Array.Empty<int>();
@@ -19,7 +19,7 @@ namespace LinqFasterer.Tests
         }
 
         [Fact]
-        [Trait(nameof(LinqFasterer.DefaultIfEmptyF), null)]
+        [Trait(nameof(EnumerableF.DefaultIfEmptyF), null)]
         public void DefaultIfEmptyTest_IntDefault()
         {
             var source = Array.Empty<int>();

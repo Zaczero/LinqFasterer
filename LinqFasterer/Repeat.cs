@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Generates a sequence that contains one repeated value.</summary>
         /// <returns>A sequence that contains a repeated value.</returns>

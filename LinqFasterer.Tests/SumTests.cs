@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.SumF), null)]
+        [Trait(nameof(EnumerableF.SumF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SumTest_Int(IList<int> source)
         {
@@ -21,7 +21,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SumF), null)]
+        [Trait(nameof(EnumerableF.SumF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(long), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SumTest_Long(IList<long> source)
         {
@@ -34,7 +34,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SumF), null)]
+        [Trait(nameof(EnumerableF.SumF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(float), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SumTest_Float(IList<float> source)
         {
@@ -47,7 +47,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SumF), null)]
+        [Trait(nameof(EnumerableF.SumF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(double), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SumTest_Double(IList<double> source)
         {
@@ -60,7 +60,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.SumF), null)]
+        [Trait(nameof(EnumerableF.SumF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(decimal), 5, 0, 100, MemberType = typeof(Utilities))]
         public void SumTest_Decimal(IList<decimal> source)
         {

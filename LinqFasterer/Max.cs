@@ -4,7 +4,7 @@ using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the maximum value in a generic sequence.</summary>
         /// <returns>The maximum value in the sequence.</returns>

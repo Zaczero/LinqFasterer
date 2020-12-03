@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Inverts the order of the elements in a sequence.</summary>
         /// <returns>A sequence whose elements correspond to those of the input sequence in reverse order.</returns>

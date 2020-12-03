@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Applies an accumulator function over a sequence.</summary>
         /// <returns>The final accumulator value.</returns>

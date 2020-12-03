@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the minimum value in a generic sequence.</summary>
         /// <returns>The minimum value in the sequence.</returns>

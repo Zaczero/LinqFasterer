@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.CountF), null)]
+        [Trait(nameof(EnumerableF.CountF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 2, MemberType = typeof(Utilities))]
         public void CountTest_Int(IList<int> source)

@@ -4,7 +4,7 @@ using LinqFasterer.Utils;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Computes the average of a sequence.</summary>
         /// <returns>The average of the sequence of values.</returns>

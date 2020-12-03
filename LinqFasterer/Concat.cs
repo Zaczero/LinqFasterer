@@ -2,7 +2,7 @@
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Concatenates two sequences.</summary>
         /// <returns>A sequence that contains the concatenated elements of the two input sequences.</returns>

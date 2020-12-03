@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.AnyF), null)]
+        [Trait(nameof(EnumerableF.AnyF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AnyTest_Int(IList<int> source)
@@ -20,7 +20,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AnyF), null)]
+        [Trait(nameof(EnumerableF.AnyF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AnyTest_IntPredicate(IList<int> source)
         {
@@ -31,7 +31,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.AnyF), null)]
+        [Trait(nameof(EnumerableF.AnyF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void AnyTest_IntPredicateMatch(IList<int> source)
         {

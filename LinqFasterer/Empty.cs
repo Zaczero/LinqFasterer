@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns an empty sequence that has the specified type argument.</summary>
         /// <returns>An empty sequence.</returns>

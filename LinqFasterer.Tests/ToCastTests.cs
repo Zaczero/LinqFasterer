@@ -8,7 +8,7 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
-        [Trait(nameof(LinqFasterer.ToArrayF), null)]
+        [Trait(nameof(EnumerableF.ToArrayF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ToArrayTest_Int(IList<int> source)
         {
@@ -19,7 +19,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ToArrayF), null)]
+        [Trait(nameof(EnumerableF.ToArrayF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ToArrayTest_IntForceClone(IList<int> source)
         {
@@ -30,7 +30,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ToListF), null)]
+        [Trait(nameof(EnumerableF.ToListF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ToListTest_Int(IList<int> source)
         {
@@ -41,7 +41,7 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
-        [Trait(nameof(LinqFasterer.ToListF), null)]
+        [Trait(nameof(EnumerableF.ToListF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         public void ToListTest_IntInPlace(IList<int> source)
         {

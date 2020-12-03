@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the element at a specified index in a sequence.</summary>
         /// <returns>The element at the specified position in the source sequence.</returns>

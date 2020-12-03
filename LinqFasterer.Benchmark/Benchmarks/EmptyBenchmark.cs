@@ -14,7 +14,7 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         [Benchmark]
         public int[] EmptyFaster()
         {
-            return LinqFasterer.EmptyF<int>().ToArrayF();
+            return EnumerableF.EmptyF<int>().ToArrayF();
         }
     }
 }

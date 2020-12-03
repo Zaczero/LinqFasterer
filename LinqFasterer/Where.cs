@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Filters a sequence of values based on a predicate.</summary>
         /// <returns>A sequence that contains elements from the input sequence that satisfy the condition.</returns>

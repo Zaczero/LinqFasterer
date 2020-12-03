@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
-    public static partial class LinqFasterer
+    public static partial class EnumerableF
     {
         /// <summary>Returns the elements of the specified sequence or the specified value in a singleton collection if the sequence is empty.</summary>
         /// <returns>A sequence that contains defaultValue if source is empty; otherwise, source.</returns>
