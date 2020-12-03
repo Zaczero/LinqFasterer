@@ -3,13 +3,14 @@ using BenchmarkDotNet.Running;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using BenchmarkDotNet.Columns;
-using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Loggers;
+using LinqFasterer.Benchmarks.Benchmarks;
 
 namespace LinqFasterer.Benchmarks
 {
@@ -18,23 +19,29 @@ namespace LinqFasterer.Benchmarks
         private const string ArtifactsDirectory = "Artifacts/";
         private const string ResultsDirectory = ArtifactsDirectory + "results/";
         private const string MarkdownFileExtension = ".md";
-        private const string MergedResultsFilePath = "BenchmarkResult" + MarkdownFileExtension;
+        private const string MergedResultsFilePath = "Benchmarks" + MarkdownFileExtension;
 
         private static readonly Regex ResultRegex = new(@"``` ini\s+(?<resultHeader>.*?)\s+```\s+(?<tableHeader>\|.*?\|)\r?\n(?<tableSeparator>\|.*?\|)\r?\n(?<tableData>\|.*\|)", RegexOptions.Singleline);
         private static readonly Regex TableEntryRegex = new(@"[^|]+", RegexOptions.Singleline);
         
         public static int Main()
         {
-            CleanupResults();
-
             var config = ManualConfig.CreateEmpty()
                 .AddLogger(ConsoleLogger.Default)
                 .AddColumnProvider(DefaultColumnProviders.Instance)
-                .AddDiagnoser(MemoryDiagnoser.Default)
                 .AddExporter(MarkdownExporter.GitHub)
                 .WithArtifactsPath(ArtifactsDirectory);
 
-            foreach (var benchmark in EnumerateTypes<Benchmarkable>())
+            // Add benchmarks of your choice here.
+            var benchmarks = Enumerable.Empty<Type>()
+                .Append(typeof(AggregateBenchmark));
+
+            // ...or benchmark everything. Please note that this WILL take multiple hours.
+            // benchmarks = benchmarks
+            //     .Concat(EnumerateTypes<Benchmarkable>())
+            //     .Distinct();
+
+            foreach (var benchmark in benchmarks)
             {
                 var summary = BenchmarkRunner.Run(benchmark, config);
                 if (summary.HasCriticalValidationErrors)
@@ -75,10 +82,24 @@ namespace LinqFasterer.Benchmarks
 
                 if (tableHeaderFormatted == null)
                 {
+                    var matches = TableEntryRegex.Matches(tableHeader);
+                    
                     var sb = new StringBuilder("|");
 
-                    foreach (Match match in TableEntryRegex.Matches(tableHeader))
+                    for (var i = 0; i < matches.Count; i++)
+                        sb.Append(" |");
+
+                    sb.AppendLine();
+                    sb.Append('|');
+
+                    foreach (Match match in matches)
                         sb.Append($" **{match.Value.Trim()}** |");
+
+                    sb.AppendLine();
+                    sb.Append('|');
+
+                    for (var i = 0; i < matches.Count; i++)
+                        sb.Append(" |");
 
                     tableHeaderFormatted = sb.ToString();
                     
@@ -94,14 +115,6 @@ namespace LinqFasterer.Benchmarks
             }
             
             return 0;
-        }
-
-        private static void CleanupResults()
-        {
-            if (!Directory.Exists(ResultsDirectory))
-                return;
-            
-            Directory.Delete(ResultsDirectory, true);
         }
         
         private static IEnumerable<Type> EnumerateTypes<T>()
