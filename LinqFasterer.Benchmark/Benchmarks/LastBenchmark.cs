@@ -23,13 +23,13 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         [Benchmark(Baseline = true)]
         public int LastPredicateLinq()
         {
-            return Data.Last(v => v < -1);
+            return Data.Last(v => v == Data[Data.Length / 2]);
         }
 
         [Benchmark]
         public int LastPredicateFaster()
         {
-            return Data.LastF(v => v < -1);
+            return Data.LastF(v => v == Data[Data.Length / 2]);
         }
     }
 }

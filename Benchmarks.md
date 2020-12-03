@@ -1,6 +1,6 @@
 # Benchmark master file
 
-This is a file containing results of all the benchmarks merged together. Please remember that `CTRL + F` is your friend if you are looking for a specific result. Alternatively, you can browse the `Benchmarks` directory for individual files. They may contain some extra notes which are not present in this file.
+This is a file containing results of all the benchmarks merged together. Please remember that `CTRL + F` is your friend if you are looking for a specific result. Alternatively, you can browse the `benchmarks` directory for individual files. They may contain some extra notes which are not present in this file.
 
 ## Contributing
 
@@ -1016,65 +1016,65 @@ IterationCount=10  LaunchCount=1  WarmupCount=2
 | | | | | | | |
 | **Method** | **N** | **Mean** | **Error** | **StdDev** | **Ratio** | **RatioSD** |
 | | | | | | | |
-|   **FirstPredicateLinq** |       **0** |
-| FirstPredicateFaster |       0 |
-|                      |         |
-|   **FirstPredicateLinq** |       **1** |
-| FirstPredicateFaster |       1 |
-|                      |         |
-|   **FirstPredicateLinq** |       **3** |
-| FirstPredicateFaster |       3 |
-|                      |         |
-|   **FirstPredicateLinq** |       **5** |
-| FirstPredicateFaster |       5 |
-|                      |         |
-|   **FirstPredicateLinq** |      **10** |
-| FirstPredicateFaster |      10 |
-|                      |         |
-|   **FirstPredicateLinq** |      **50** |
-| FirstPredicateFaster |      50 |
-|                      |         |
-|   **FirstPredicateLinq** |     **100** |
-| FirstPredicateFaster |     100 |
-|                      |         |
-|   **FirstPredicateLinq** |     **250** |
-| FirstPredicateFaster |     250 |
-|                      |         |
-|   **FirstPredicateLinq** |     **500** |
-| FirstPredicateFaster |     500 |
-|                      |         |
-|   **FirstPredicateLinq** |    **1000** |
-| FirstPredicateFaster |    1000 |
-|                      |         |
-|   **FirstPredicateLinq** |    **1500** |
-| FirstPredicateFaster |    1500 |
-|                      |         |
-|   **FirstPredicateLinq** |    **2000** |
-| FirstPredicateFaster |    2000 |
-|                      |         |
-|   **FirstPredicateLinq** |    **2500** |
-| FirstPredicateFaster |    2500 |
-|                      |         |
-|   **FirstPredicateLinq** |    **3000** |
-| FirstPredicateFaster |    3000 |
-|                      |         |
-|   **FirstPredicateLinq** |    **5000** |
-| FirstPredicateFaster |    5000 |
-|                      |         |
-|   **FirstPredicateLinq** |   **10000** |
-| FirstPredicateFaster |   10000 |
-|                      |         |
-|   **FirstPredicateLinq** |   **50000** |
-| FirstPredicateFaster |   50000 |
-|                      |         |
-|   **FirstPredicateLinq** |  **100000** |
-| FirstPredicateFaster |  100000 |
-|                      |         |
-|   **FirstPredicateLinq** |  **500000** |
-| FirstPredicateFaster |  500000 |
-|                      |         |
-|   **FirstPredicateLinq** | **1000000** |
-| FirstPredicateFaster | 1000000 |
+|   **FirstPredicateLinq** |       **0** |           **NA** |        **NA** |        **NA** |     **?** |       **?** |
+| FirstPredicateFaster |       0 |           NA |        NA |        NA |     ? |       ? |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |       **1** |     **23.05 ns** |  **0.256 ns** |  **0.153 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |       1 |     12.95 ns |  0.198 ns |  0.118 ns |  0.56 |    0.01 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |       **3** |     **29.38 ns** |  **1.031 ns** |  **0.682 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |       3 |     15.82 ns |  0.288 ns |  0.150 ns |  0.54 |    0.01 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |       **5** |     **36.05 ns** |  **1.463 ns** |  **0.968 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |       5 |     18.37 ns |  0.737 ns |  0.487 ns |  0.51 |    0.02 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |      **10** |     **42.34 ns** |  **0.867 ns** |  **0.573 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |      10 |     20.15 ns |  0.202 ns |  0.134 ns |  0.48 |    0.01 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |      **50** |    **182.62 ns** |  **1.346 ns** |  **0.891 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |      50 |     82.98 ns |  2.837 ns |  1.688 ns |  0.45 |    0.01 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |     **100** |    **329.70 ns** |  **3.036 ns** |  **2.008 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |     100 |    140.36 ns |  4.390 ns |  2.904 ns |  0.43 |    0.01 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |     **250** |    **762.61 ns** |  **3.945 ns** |  **2.348 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |     250 |    309.60 ns |  1.139 ns |  0.678 ns |  0.41 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |     **500** |    **749.29 ns** |  **4.500 ns** |  **2.976 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |     500 |    305.25 ns |  1.737 ns |  0.908 ns |  0.41 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **1000** |    **854.98 ns** |  **6.685 ns** |  **4.422 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    1000 |    346.44 ns |  1.250 ns |  0.827 ns |  0.41 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **1500** |  **4,389.65 ns** | **20.492 ns** | **13.554 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    1500 |  1,717.65 ns | 24.966 ns | 16.513 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **2000** |  **5,862.86 ns** | **34.415 ns** | **22.763 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    2000 |  2,290.42 ns | 16.612 ns |  9.886 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **2500** |  **3,041.06 ns** | **24.539 ns** | **16.231 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    2500 |  1,195.36 ns |  9.699 ns |  6.415 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **3000** |    **502.21 ns** |  **1.579 ns** |  **0.826 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    3000 |    207.79 ns |  0.461 ns |  0.274 ns |  0.41 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |    **5000** |  **7,319.33 ns** | **66.915 ns** | **39.820 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |    5000 |  2,868.97 ns | 29.228 ns | 19.333 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |   **10000** |  **2,971.12 ns** | **22.411 ns** | **14.824 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |   10000 |  1,153.23 ns |  7.346 ns |  4.859 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |   **50000** |  **8,651.53 ns** | **40.649 ns** | **24.190 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |   50000 |  3,374.37 ns | 15.152 ns | 10.022 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |  **100000** |  **4,651.84 ns** | **13.211 ns** |  **7.862 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |  100000 |  1,826.20 ns |  5.892 ns |  3.897 ns |  0.39 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** |  **500000** | **16,500.99 ns** | **91.953 ns** | **54.720 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster |  500000 |  6,756.84 ns | 34.199 ns | 22.621 ns |  0.41 |    0.00 |
+|                      |         |              |           |           |       |         |
+|   **FirstPredicateLinq** | **1000000** | **10,345.45 ns** | **39.945 ns** | **23.771 ns** |  **1.00** |    **0.00** |
+| FirstPredicateFaster | 1000000 |  4,236.75 ns | 35.063 ns | 23.192 ns |  0.41 |    0.00 |
 | | | | | | | |
 | **Method** | **N** | **Mean** | **Error** | **StdDev** | **Ratio** | **RatioSD** |
 | | | | | | | |
@@ -1202,65 +1202,65 @@ IterationCount=10  LaunchCount=1  WarmupCount=2
 | | | | | | | |
 | **Method** | **N** | **Mean** | **Error** | **StdDev** | **Ratio** | **RatioSD** |
 | | | | | | | |
-|   **LastPredicateLinq** |       **0** |
-| LastPredicateFaster |       0 |
-|                     |         |
-|   **LastPredicateLinq** |       **1** |
-| LastPredicateFaster |       1 |
-|                     |         |
-|   **LastPredicateLinq** |       **3** |
-| LastPredicateFaster |       3 |
-|                     |         |
-|   **LastPredicateLinq** |       **5** |
-| LastPredicateFaster |       5 |
-|                     |         |
-|   **LastPredicateLinq** |      **10** |
-| LastPredicateFaster |      10 |
-|                     |         |
-|   **LastPredicateLinq** |      **50** |
-| LastPredicateFaster |      50 |
-|                     |         |
-|   **LastPredicateLinq** |     **100** |
-| LastPredicateFaster |     100 |
-|                     |         |
-|   **LastPredicateLinq** |     **250** |
-| LastPredicateFaster |     250 |
-|                     |         |
-|   **LastPredicateLinq** |     **500** |
-| LastPredicateFaster |     500 |
-|                     |         |
-|   **LastPredicateLinq** |    **1000** |
-| LastPredicateFaster |    1000 |
-|                     |         |
-|   **LastPredicateLinq** |    **1500** |
-| LastPredicateFaster |    1500 |
-|                     |         |
-|   **LastPredicateLinq** |    **2000** |
-| LastPredicateFaster |    2000 |
-|                     |         |
-|   **LastPredicateLinq** |    **2500** |
-| LastPredicateFaster |    2500 |
-|                     |         |
-|   **LastPredicateLinq** |    **3000** |
-| LastPredicateFaster |    3000 |
-|                     |         |
-|   **LastPredicateLinq** |    **5000** |
-| LastPredicateFaster |    5000 |
-|                     |         |
-|   **LastPredicateLinq** |   **10000** |
-| LastPredicateFaster |   10000 |
-|                     |         |
-|   **LastPredicateLinq** |   **50000** |
-| LastPredicateFaster |   50000 |
-|                     |         |
-|   **LastPredicateLinq** |  **100000** |
-| LastPredicateFaster |  100000 |
-|                     |         |
-|   **LastPredicateLinq** |  **500000** |
-| LastPredicateFaster |  500000 |
-|                     |         |
-|   **LastPredicateLinq** | **1000000** |
-| LastPredicateFaster | 1000000 |
+|   **LastPredicateLinq** |       **0** |          **NA** |         **NA** |        **NA** |     **?** |       **?** |
+| LastPredicateFaster |       0 |          NA |         NA |        NA |     ? |       ? |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |       **1** |    **23.85 ns** |   **0.724 ns** |  **0.479 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |       1 |    13.83 ns |   0.203 ns |  0.134 ns |  0.58 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |       **3** |    **28.84 ns** |   **1.203 ns** |  **0.629 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |       3 |    17.62 ns |   0.310 ns |  0.205 ns |  0.61 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |       **5** |    **33.49 ns** |   **0.464 ns** |  **0.276 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |       5 |    19.66 ns |   0.515 ns |  0.341 ns |  0.59 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |      **10** |    **39.81 ns** |   **0.631 ns** |  **0.417 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |      10 |    23.07 ns |   0.635 ns |  0.420 ns |  0.58 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |      **50** |   **124.29 ns** |   **1.828 ns** |  **1.088 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |      50 |    77.79 ns |   1.050 ns |  0.695 ns |  0.63 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |     **100** |   **218.96 ns** |   **2.939 ns** |  **1.944 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |     100 |   135.04 ns |   1.448 ns |  0.958 ns |  0.62 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |     **250** |   **505.26 ns** |   **4.599 ns** |  **3.042 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |     250 |   304.37 ns |   9.006 ns |  5.359 ns |  0.60 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |     **500** |    **64.22 ns** |   **1.111 ns** |  **0.735 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |     500 |    32.22 ns |   0.453 ns |  0.269 ns |  0.50 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **1000** | **1,932.77 ns** |  **16.537 ns** | **10.938 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    1000 | 1,158.51 ns |   9.492 ns |  6.278 ns |  0.60 |    0.00 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **1500** | **2,247.39 ns** |  **14.781 ns** |  **9.777 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    1500 | 1,340.68 ns |  40.670 ns | 24.202 ns |  0.60 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **2000** | **1,495.32 ns** |  **24.058 ns** | **15.913 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    2000 |   901.97 ns |  14.441 ns |  8.593 ns |  0.60 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **2500** | **2,285.43 ns** |  **13.575 ns** |  **8.979 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    2500 | 1,359.34 ns |  14.841 ns |  9.817 ns |  0.59 |    0.00 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **3000** | **3,370.15 ns** |  **47.471 ns** | **31.399 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    3000 | 2,029.04 ns |   8.880 ns |  5.874 ns |  0.60 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |    **5000** | **1,417.43 ns** |  **17.158 ns** | **11.349 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |    5000 |   795.81 ns |   9.979 ns |  6.601 ns |  0.56 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |   **10000** | **6,220.47 ns** |  **22.445 ns** | **13.357 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |   10000 | 3,722.59 ns |  21.227 ns | 12.632 ns |  0.60 |    0.00 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |   **50000** |   **866.80 ns** |   **5.882 ns** |  **3.890 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |   50000 |   527.34 ns |  15.805 ns | 10.454 ns |  0.61 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |  **100000** |   **616.13 ns** |   **6.520 ns** |  **4.312 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |  100000 |   366.88 ns |   2.795 ns |  1.849 ns |  0.60 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** |  **500000** | **3,369.80 ns** | **114.638 ns** | **75.826 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster |  500000 | 1,964.27 ns |   5.814 ns |  3.460 ns |  0.58 |    0.01 |
+|                     |         |             |            |           |       |         |
+|   **LastPredicateLinq** | **1000000** | **1,063.20 ns** |   **3.989 ns** |  **2.639 ns** |  **1.00** |    **0.00** |
+| LastPredicateFaster | 1000000 |   637.42 ns |   3.308 ns |  2.188 ns |  0.60 |    0.00 |
 | | | | | | | |
 | **Method** | **N** | **Mean** | **Error** | **StdDev** | **Ratio** | **RatioSD** |
 | | | | | | | |
