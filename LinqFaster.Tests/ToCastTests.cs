@@ -5,50 +5,50 @@ using Xunit;
 
 namespace LinqFasterer.Tests
 {
-	public partial class Test
-	{
-		[Theory]
-		[Trait(nameof(LinqFasterer.ToArrayF), null)]
-		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
-		public void ToArrayTest_Int(IList<int> source)
-		{
-			var expected = source.ToArray();
-			var actual = source.ToArrayF();
+    public partial class Test
+    {
+        [Theory]
+        [Trait(nameof(LinqFasterer.ToArrayF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void ToArrayTest_Int(IList<int> source)
+        {
+            var expected = source.ToArray();
+            var actual = source.ToArrayF();
 
-			Assert.Equal(expected, actual);
-		}
+            Assert.Equal(expected, actual);
+        }
 
-		[Theory]
-		[Trait(nameof(LinqFasterer.ToArrayF), null)]
-		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
-		public void ToArrayTest_IntForceClone(IList<int> source)
-		{
-			var expected = source.ToArray();
-			var actual = source.ToArrayF(true);
+        [Theory]
+        [Trait(nameof(LinqFasterer.ToArrayF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void ToArrayTest_IntForceClone(IList<int> source)
+        {
+            var expected = source.ToArray();
+            var actual = source.ToArrayF(true);
 
-			Assert.Equal(expected, actual);
-		}
+            Assert.Equal(expected, actual);
+        }
 
-		[Theory]
-		[Trait(nameof(LinqFasterer.ToListF), null)]
-		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
-		public void ToListTest_Int(IList<int> source)
-		{
-			var expected = source.ToList();
-			var actual = source.ToListF();
+        [Theory]
+        [Trait(nameof(LinqFasterer.ToListF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void ToListTest_Int(IList<int> source)
+        {
+            var expected = source.ToList();
+            var actual = source.ToListF();
 
-			Assert.Equal(expected, actual);
-		}
+            Assert.Equal(expected, actual);
+        }
 
-		[Theory]
-		[Trait(nameof(LinqFasterer.ToListF), null)]
-		[MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
-		public void ToListTest_IntInPlace(IList<int> source)
-		{
-			var expected = source.ToList();
-			var actual = source.ToList().ToListF();
+        [Theory]
+        [Trait(nameof(LinqFasterer.ToListF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void ToListTest_IntInPlace(IList<int> source)
+        {
+            var expected = source.ToList();
+            var actual = source.ToList().ToListF();
 
-			Assert.Equal(expected, actual);
-		}
-	}
+            Assert.Equal(expected, actual);
+        }
+    }
 }
