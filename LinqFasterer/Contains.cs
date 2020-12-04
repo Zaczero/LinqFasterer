@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace LinqFasterer
 {
@@ -12,23 +13,15 @@ namespace LinqFasterer
         public static bool ContainsF<TSource>(this IList<TSource> source, TSource value, IEqualityComparer<TSource>? comparer = null)
         {
             var sourceArray = source.ToArrayF();
-            var sourceLength = sourceArray.Length;
-
+            
             if (comparer == null)
-            {
-                // TODO: comparer == null case performs 3x slower than Linq's implementation
-
-                for (var i = 0; i < sourceLength; i++)
-                    // this is faster than assigning .Default to a variable (comparer)
-                    if (EqualityComparer<TSource>.Default.Equals(sourceArray[i], value))
-                        return true;
-            }
-            else
-            {
-                for (var i = 0; i < sourceLength; i++)
-                    if (comparer.Equals(sourceArray[i], value))
-                        return true;
-            }
+                return Array.IndexOf(sourceArray, value) > -1;
+            
+            var sourceLength = sourceArray.Length;
+            
+            for (var i = 0; i < sourceLength; i++)
+                if (comparer.Equals(sourceArray[i], value))
+                    return true;
 
             return false;
         }
