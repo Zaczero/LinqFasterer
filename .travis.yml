@@ -1,7 +1,13 @@
 language: csharp
 dotnet: 5.0.100
 mono: none
+
+before_script:
+ - dotnet restore
+
 script:
- - dotnet test
  - dotnet build -c Debug
  - dotnet build -c Release
+
+ - dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+ - bash <(curl -s https://codecov.io/bash)
