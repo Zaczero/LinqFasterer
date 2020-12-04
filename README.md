@@ -20,7 +20,7 @@
 * [x] Extended type support
 * [x] ~~Reduced framework requirements~~
 * [x] Addition of SourceLink
-* [ ] *Benchmark update (work in progress)*
+* [x] Benchmark update
 * [ ] README & LICENSE update
 
 ---
