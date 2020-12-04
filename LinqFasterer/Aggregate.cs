@@ -1,6 +1,7 @@
 ﻿using LinqFasterer.Utils;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
@@ -49,6 +50,7 @@ namespace LinqFasterer
         /// <param name="seed">The initial accumulator value.</param>
         /// <param name="func">An accumulator function to be invoked on each element.</param>
         /// <param name="resultSelector">A function to transform the final accumulator value into the result value.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TResult AggregateF<TSource, TAccumulate, TResult>(this IList<TSource> source, TAccumulate seed, Func<TAccumulate, TSource, TAccumulate> func, Func<TAccumulate, TResult> resultSelector)
         {
             return resultSelector(AggregateF(source, seed, func));
