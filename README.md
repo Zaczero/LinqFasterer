@@ -1,4 +1,4 @@
-# ![Logo](https://github.com/Zaczero/LinqFasterer/blob/master/resources/icon-32.png) LinqFasterer
+# ![Logo](https://github.com/Zaczero/LinqFasterer/blob/master/resources/icon-24.png) LinqFasterer
 
 ![Travis (.com)](https://img.shields.io/travis/com/Zaczero/LinqFasterer?style=for-the-badge)
 ![Codecov](https://img.shields.io/codecov/c/github/Zaczero/LinqFasterer?style=for-the-badge&token=22SJNO514P)
