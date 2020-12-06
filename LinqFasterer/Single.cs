@@ -6,9 +6,12 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.</summary>
-        /// <returns>The single element of the input sequence.</returns>
-        /// <param name="source">A sequence to return the single element of.</param>
+        /// <summary>
+        /// Returns the only element of a sequence, and throws an exception if there is not exactly one element in the sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to return the single element of.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>The single element of <paramref name="source"/>.</returns>
         public static TSource SingleF<TSource>(this IList<TSource> source)
         {
             var sourceLength = source.Count;
@@ -21,10 +24,13 @@ namespace LinqFasterer
             return source[0];
         }
 
-        /// <summary>Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.</summary>
-        /// <returns>The single element of the input sequence that satisfies a condition.</returns>
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
+        /// <summary>
+        /// Returns the only element of a sequence that satisfies a specified condition, and throws an exception if more than one such element exists.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to return a single element from.</param>
+        /// <param name="predicate">A predicate function to test an element for a condition.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>The single element of <paramref name="source"/> that satisfies a condition.</returns>
         public static TSource SingleF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
         {
             var sourceLength = source.Count;
@@ -47,9 +53,12 @@ namespace LinqFasterer
             return sourceArray[foundAtIndex];
         }
 
-        /// <summary>Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.</summary>
-        /// <returns>The single element of the input sequence, or default if the sequence contains no elements.</returns>
-        /// <param name="source">A sequence to return the single element of.</param>
+        /// <summary>
+        /// Returns the only element of a sequence, or a default value if the sequence is empty; this method throws an exception if there is more than one element in the sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to return the single element of.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>The single element of <paramref name="source"/>, or <see langword="default"/> if <paramref name="source"/> contains no elements.</returns>
         public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source)
         {
             var sourceLength = source.Count;
@@ -62,10 +71,13 @@ namespace LinqFasterer
             return source[0];
         }
 
-        /// <summary>Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists; this method throws an exception if more than one element satisfies the condition.</summary>
-        /// <returns>The single element of the input sequence that satisfies the condition, or default if no such element is found.</returns>
-        /// <param name="source">A sequence to return a single element from.</param>
-        /// <param name="predicate">A function to test an element for a condition.</param>
+        /// <summary>
+        /// Returns the only element of a sequence that satisfies a specified condition or a default value if no such element exists; this method throws an exception if more than one element satisfies the condition.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to return a single element from.</param>
+        /// <param name="predicate">A predicate function to test an element for a condition.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>The single element of <paramref name="source"/> that satisfies the condition, or <see langword="default"/> if no such element is found.</returns>
         public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
         {
             var sourceLength = source.Count;

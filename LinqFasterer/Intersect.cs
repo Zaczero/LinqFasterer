@@ -5,12 +5,15 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Produces the set intersection of two sequences by using the default equality comparer to compare values.</summary>
-        /// <returns>A sequence that contains the elements that form the set intersection of two sequences.</returns>
-        /// <param name="first">A sequence whose distinct elements that also appear in the second sequence will be returned.</param>
-        /// <param name="second">A sequence whose distinct elements that also appear in the first sequence will be returned.</param>
-        /// <param name="comparer">An equality comparer to compare values.</param>
-        /// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+        /// <summary>
+        /// Produces the set intersection of two sequences.
+        /// </summary>
+        /// <param name="first">An <see cref="IList{T}"/> whose distinct elements that also appear in <paramref name="second"/> will be returned.</param>
+        /// <param name="second">An <see cref="IList{T}"/> whose distinct elements that also appear in <paramref name="first"/> will be returned.</param>
+        /// <param name="comparer">An optional <see cref="IEqualityComparer{T}"/> used to compare values; falls back to <see cref="EqualityComparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <param name="forceClone">Force clone of <paramref name="first"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains the elements that form the set intersection of the two input sequences.</returns>
         public static IList<TSource> IntersectF<TSource>(this IList<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
         {
             comparer ??= EqualityComparer<TSource>.Default;

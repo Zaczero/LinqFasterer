@@ -4,10 +4,13 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Concatenates two sequences.</summary>
-        /// <returns>A sequence that contains the concatenated elements of the two input sequences.</returns>
-        /// <param name="first">The first sequence to concatenate.</param>
-        /// <param name="second">The sequence to concatenate to the first sequence.</param>
+        /// <summary>
+        /// Concatenates two sequences.
+        /// </summary>
+        /// <param name="first">The first <see cref="IList{T}"/> to concatenate.</param>
+        /// <param name="second">The second <see cref="IList{T}"/> to concatenate.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains the concatenated elements of the two input sequences.</returns>
         public static IList<TSource> ConcatF<TSource>(this IList<TSource> first, IList<TSource> second)
         {
             var firstLength = first.Count;

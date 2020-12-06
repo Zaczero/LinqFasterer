@@ -5,11 +5,14 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Determines whether two sequences are equal by comparing their elements by using a specified equality comparer.</summary>
-        /// <returns>true if the two source sequences are of equal length and their corresponding elements compare equal according to comparer; otherwise, false.</returns>
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to the first sequence.</param>
-        /// <param name="comparer">An equality comparer to use to compare elements.</param>
+        /// <summary>
+        /// Determines whether two sequences are equal by comparing their elements by using a specified equality comparer.
+        /// </summary>
+        /// <param name="first">An <see cref="IList{T}"/> to compare to <paramref name="second"/>.</param>
+        /// <param name="second">An <see cref="IList{T}"/> to compare to <paramref name="first"/>.</param>
+        /// <param name="comparer">An optional <see cref="IEqualityComparer{T}"/> used to compare values; falls back to <see cref="EqualityComparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns><see langword="true"/> if the two input sequences are of equal length and their corresponding elements compare equal according to <paramref name="comparer"/>; otherwise, <see langword="false"/>.</returns>
         public static bool SequenceEqualF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
         {
             var firstLength = first.Count;
@@ -40,12 +43,15 @@ namespace LinqFasterer
 
             return true;
         }
-
-        /// <summary>Determines whether two sequences are equal by comparing their elements by using a specified comparer.</summary>
-        /// <returns>An array of integers, where the value corresponds to IComparer.Compare indicating less than, greater than, or equals.</returns>
-        /// <param name="first">A sequence to compare to second.</param>
-        /// <param name="second">A sequence to compare to the first sequence.</param>
-        /// <param name="comparer">A comparer to use to compare elements.</param>
+        
+        /// <summary>
+        /// Determines whether two sequences are equal by comparing their elements by using a specified comparer.
+        /// </summary>
+        /// <param name="first">An <see cref="IList{T}"/> to compare to <paramref name="second"/>.</param>
+        /// <param name="second">An <see cref="IList{T}"/> to compare to <paramref name="first"/>.</param>
+        /// <param name="comparer">An optional <see cref="IComparer{T}"/> used to compare values; falls back to <see cref="Comparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns>An array of <see cref="int"/>, where the value corresponds to <see cref="IComparer{T}.Compare"/> indicating less than, greater than, or equals.</returns>
         public static int[] SequenceCompareF<TSource>(this IList<TSource> first, IList<TSource> second, IComparer<TSource>? comparer = null)
         {
             var firstLength = first.Count;

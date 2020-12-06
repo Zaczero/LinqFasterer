@@ -4,10 +4,13 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Creates an array from a sequence.</summary>
-        /// <returns>An array that contains the elements from the input sequence.</returns>
-        /// <param name="source">A sequence to create an array from.</param>
-        /// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+        /// <summary>
+        /// Creates a <see cref="System.Array"/> from an <see cref="IList{T}"/>.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to create a <see cref="System.Array"/> from.</param>
+        /// <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>A <see cref="System.Array"/> that contains the elements from <paramref name="source"/>.</returns>
         public static TSource[] ToArrayF<TSource>(this IList<TSource> source, bool forceClone = false)
         {
             if (!forceClone && source is TSource[] sourceArray)
@@ -20,10 +23,13 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Creates a list from a sequence.</summary>
-        /// <returns>A sequence that contains elements from the input sequence.</returns>
-        /// <param name="source">A sequence to create a list from.</param>
-        /// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+        /// <summary>
+        /// Creates a <see cref="List{T}"/> from an <see cref="IList{T}"/>.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to create a <see cref="List{T}"/> from.</param>
+        /// <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>A <see cref="List{T}"/> that contains elements from <paramref name="source"/>.</returns>
         public static List<TSource> ToListF<TSource>(this IList<TSource> source, bool forceClone = false)
         {
             if (!forceClone && source is List<TSource> sourceList)

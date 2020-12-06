@@ -5,9 +5,11 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Computes the sum of a sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of <see cref="int"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        /// <param name="source">A sequence to calculate the sum of.</param>
         public static int SumF(this IList<int> source)
         {
             var sourceArray = source.ToArrayF();
@@ -24,9 +26,11 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of <see cref="long"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        /// <param name="source">A sequence to calculate the sum of.</param>
         public static long SumF(this IList<long> source)
         {
             var sourceArray = source.ToArrayF();
@@ -43,9 +47,11 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of <see cref="float"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        /// <param name="source">A sequence to calculate the sum of.</param>
         public static float SumF(this IList<float> source)
         {
             var sourceArray = source.ToArrayF();
@@ -59,9 +65,11 @@ namespace LinqFasterer
             return (float) sum;
         }
 
-        /// <summary>Computes the sum of a sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of <see cref="double"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        /// <param name="source">A sequence to calculate the sum of.</param>
         public static double SumF(this IList<double> source)
         {
             var sourceArray = source.ToArrayF();
@@ -75,9 +83,11 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of <see cref="decimal"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        /// <param name="source">A sequence to calculate the sum of.</param>
         public static decimal SumF(this IList<decimal> source)
         {
             var sourceArray = source.ToArrayF();
@@ -91,10 +101,13 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element which returns <see cref="int"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
         public static int SumF<TSource>(this IList<TSource> source, Func<TSource, int> selector)
         {
             var sourceArray = source.ToArrayF();
@@ -111,10 +124,13 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element which returns <see cref="long"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
         public static long SumF<TSource>(this IList<TSource> source, Func<TSource, long> selector)
         {
             var sourceArray = source.ToArrayF();
@@ -131,10 +147,13 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element which returns <see cref="float"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
         public static float SumF<TSource>(this IList<TSource> source, Func<TSource, float> selector)
         {
             var sourceArray = source.ToArrayF();
@@ -148,10 +167,13 @@ namespace LinqFasterer
             return (float) sum;
         }
 
-        /// <summary>Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element which returns <see cref="double"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
         public static double SumF<TSource>(this IList<TSource> source, Func<TSource, double> selector)
         {
             var sourceArray = source.ToArrayF();
@@ -165,10 +187,13 @@ namespace LinqFasterer
             return sum;
         }
 
-        /// <summary>Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.</summary>
+        /// <summary>
+        /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
+        /// <param name="selector">A transform function to apply to each element which returns <see cref="decimal"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        /// <param name="source">A sequence of values that are used to calculate a sum.</param>
-        /// <param name="selector">A transform function to apply to each element.</param>
         public static decimal SumF<TSource>(this IList<TSource> source, Func<TSource, decimal> selector)
         {
             var sourceArray = source.ToArrayF();

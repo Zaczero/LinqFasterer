@@ -7,12 +7,15 @@ namespace LinqFasterer
     {
         // TODO: benchmark
 
-        /// <summary>Produces the set difference of two sequences by using the specified equality comparer to compare values.</summary>
-        /// <returns>A sequence that contains the set difference of the elements of two sequences.</returns>
-        /// <param name="first">A sequence whose elements that are not also in second will be returned.</param>
-        /// <param name="second">A sequence whose elements that also occur in the first sequence will cause those elements to be removed from the returned sequence.</param>
-        /// <param name="comparer">An equality comparer to compare values.</param>
-        /// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+        /// <summary>
+        /// Produces the set difference of two sequences by using the specified equality comparer to compare values.
+        /// </summary>
+        /// <param name="first">An <see cref="IList{T}"/> whose elements that are not also in <paramref name="second"/> will be returned.</param>
+        /// <param name="second">An <see cref="IList{T}"/> whose elements that also occur in <paramref name="first"/> will cause those elements to be removed from the returned sequence.</param>
+        /// <param name="comparer">An optional <see cref="IEqualityComparer{T}"/> used to compare values; falls back to <see cref="EqualityComparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <param name="forceClone">Force clone of <paramref name="first"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains the set difference of the elements of the two input sequences.</returns>
         public static IList<TSource> ExceptF<TSource>(this IList<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
         {
             var firstArray = first.ToArrayF(forceClone);

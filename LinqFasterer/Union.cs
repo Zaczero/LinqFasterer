@@ -5,11 +5,14 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Produces the set union of two sequences.</summary>
-        /// <returns>A sequence that contains the elements from both input sequences, excluding duplicates.</returns>
-        /// <param name="first">A sequence whose distinct elements form the first set for the union.</param>
-        /// <param name="second">A sequence whose distinct elements form the second set for the union.</param>
-        /// <param name="comparer">An optional equality comparer, falls back to default when set to null.</param>
+        /// <summary>
+        /// Produces the set union of two sequences.
+        /// </summary>
+        /// <param name="first">An <see cref="IList{T}"/> whose distinct elements form the first set for the union.</param>
+        /// <param name="second">An <see cref="IList{T}"/> whose distinct elements form the second set for the union.</param>
+        /// <param name="comparer">An optional <see cref="IEqualityComparer{T}"/> used to compare values; falls back to <see cref="EqualityComparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains the elements from both input sequences, excluding duplicates.</returns>
         public static IList<TSource> UnionF<TSource>(this IList<TSource> first, IList<TSource> second, IEqualityComparer<TSource>? comparer = null)
         {
             comparer ??= EqualityComparer<TSource>.Default;

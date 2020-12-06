@@ -6,9 +6,12 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Returns the maximum value in a generic sequence.</summary>
-        /// <returns>The maximum value in the sequence.</returns>
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <summary>
+        /// Returns the maximum value in a sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values to determine the maximum value of.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>The maximum value in <paramref name="source"/>.</returns>
         public static TSource MaxF<TSource>(this IList<TSource> source)
         {
             var sourceArray = source.ToArrayF();
@@ -48,10 +51,14 @@ namespace LinqFasterer
             }
         }
 
-        /// <summary>Invokes a transform function on each element of a generic sequence and returns the maximum resulting value.</summary>
-        /// <returns>The maximum value in the sequence.</returns>
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <summary>
+        /// Invokes a transform function on each element of a sequence and returns the maximum resulting value.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> of values to determine the maximum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <returns>The maximum value in <paramref name="source"/>.</returns>
         public static TResult MaxF<TSource, TResult>(this IList<TSource> source, Func<TSource, TResult> selector)
         {
             var sourceArray = source.ToArrayF();

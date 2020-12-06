@@ -6,7 +6,9 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Returns an empty sequence that has the specified type argument.</summary>
+        /// <summary>
+        /// Returns an empty sequence that has the specified type argument.
+        /// </summary>
         /// <returns>An empty sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IList<TResult> EmptyF<TResult>()

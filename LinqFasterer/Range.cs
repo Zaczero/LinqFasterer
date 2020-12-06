@@ -4,11 +4,13 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Generates a sequence of numbers within a specified range.</summary>
-        /// <returns>A sequence that contains a range of sequential numbers.</returns>
+        /// <summary>
+        /// Generates a sequence of numbers within a specified range.
+        /// </summary>
         /// <param name="start">The value of the first number in the sequence.</param>
-        /// <param name="count">The number of sequential numbers to generate.</param>
-        /// <param name="change">The value change between individual elements of a sequence.</param>
+        /// <param name="count">A number of sequential numbers to generate.</param>
+        /// <param name="change">A value change between individual elements of an <see cref="IList{T}"/>.</param>
+        /// <returns>An <see cref="IList{T}"/> of <see cref="int"/> that contains a range of sequential numbers.</returns>
         public static IList<int> RangeF(int start, int count, int change = 1)
         {
             if (change == 0)
@@ -29,11 +31,13 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Generates a sequence of numbers within a specified range.</summary>
-        /// <returns>A sequence that contains a range of sequential numbers.</returns>
+        /// <summary>
+        /// Generates a sequence of numbers within a specified range.
+        /// </summary>
         /// <param name="start">The value of the first number in the sequence.</param>
-        /// <param name="count">The number of sequential numbers to generate.</param>
-        /// <param name="change">The value change between individual elements of a sequence.</param>
+        /// <param name="count">A number of sequential numbers to generate.</param>
+        /// <param name="change">A value change between individual elements of an <see cref="IList{T}"/>.</param>
+        /// <returns>An <see cref="IList{T}"/> of <see cref="long"/> that contains a range of sequential numbers.</returns>
         public static IList<long> RangeF(long start, int count, long change = 1)
         {
             if (change == 0)
@@ -54,11 +58,13 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Generates a sequence of numbers within a specified range.</summary>
-        /// <returns>A sequence that contains a range of sequential numbers.</returns>
+        /// <summary>
+        /// Generates a sequence of numbers within a specified range.
+        /// </summary>
         /// <param name="start">The value of the first number in the sequence.</param>
-        /// <param name="count">The number of sequential numbers to generate.</param>
-        /// <param name="change">The value change between individual elements of a sequence.</param>
+        /// <param name="count">A number of sequential numbers to generate.</param>
+        /// <param name="change">A value change between individual elements of an <see cref="IList{T}"/>.</param>
+        /// <returns>An <see cref="IList{T}"/> of <see cref="float"/> that contains a range of sequential numbers.</returns>
         public static IList<float> RangeF(float start, int count, float change = 1)
         {
             if (change == 0)
@@ -76,11 +82,13 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Generates a sequence of numbers within a specified range.</summary>
-        /// <returns>A sequence that contains a range of sequential numbers.</returns>
+        /// <summary>
+        /// Generates a sequence of numbers within a specified range.
+        /// </summary>
         /// <param name="start">The value of the first number in the sequence.</param>
-        /// <param name="count">The number of sequential numbers to generate.</param>
-        /// <param name="change">The value change between individual elements of a sequence.</param>
+        /// <param name="count">A number of sequential numbers to generate.</param>
+        /// <param name="change">A value change between individual elements of an <see cref="IList{T}"/>.</param>
+        /// <returns>An <see cref="IList{T}"/> of <see cref="double"/> that contains a range of sequential numbers.</returns>
         public static IList<double> RangeF(double start, int count, double change = 1)
         {
             if (change == 0)
@@ -98,11 +106,13 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Generates a sequence of numbers within a specified range.</summary>
-        /// <returns>A sequence that contains a range of sequential numbers.</returns>
+        /// <summary>
+        /// Generates a sequence of numbers within a specified range.
+        /// </summary>
         /// <param name="start">The value of the first number in the sequence.</param>
-        /// <param name="count">The number of sequential numbers to generate.</param>
-        /// <param name="change">The value change between individual elements of a sequence.</param>
+        /// <param name="count">A number of sequential numbers to generate.</param>
+        /// <param name="change">A value change between individual elements of an <see cref="IList{T}"/>.</param>
+        /// <returns>An <see cref="IList{T}"/> of <see cref="decimal"/> that contains a range of sequential numbers.</returns>
         public static IList<decimal> RangeF(decimal start, int count, decimal change = 1)
         {
             if (change == 0)

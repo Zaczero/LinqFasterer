@@ -5,11 +5,14 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Returns distinct elements from a sequence by using a specified equality comparer to compare values.</summary>
-        /// <returns>A sequence that contains distinct elements from the source sequence.</returns>
-        /// <param name="source">The sequence to remove duplicate elements from.</param>
-        /// <param name="comparer">An equality comparer to compare values.</param>
-        /// <param name="forceClone">Force clone of an object (disable in-place optimization).</param>
+        /// <summary>
+        /// Returns distinct elements from a sequence by using a specified equality comparer to compare values.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to remove duplicate elements from.</param>
+        /// <param name="comparer">An optional <see cref="IEqualityComparer{T}"/> used to compare values; falls back to <see cref="EqualityComparer{T}.Default"/> when set to <see langword="null"/>.</param>
+        /// <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains distinct elements from <paramref name="source"/>.</returns>
         public static IList<TSource> DistinctF<TSource>(this IList<TSource> source, IEqualityComparer<TSource>? comparer = null, bool forceClone = false)
         {
             var sourceArray = source.ToArrayF();

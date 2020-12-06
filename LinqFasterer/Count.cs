@@ -5,10 +5,13 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Returns a number that represents how many elements in the specified sequence satisfy a condition.</summary>
-        /// <returns>A number that represents how many elements in the sequence satisfy the condition in the predicate function.</returns>
-        /// <param name="source">A sequence that contains elements to be tested and counted.</param>
-        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <summary>
+        /// Returns a number that represents how many elements in the specified sequence satisfy a condition.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> that contains elements to be tested and counted.</param>
+        /// <param name="predicate">An optional predicate function to test each element for a condition; when set to <see langword="null"/>, the function returns the current size of <paramref name="source"/>.</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>A number that represents how many elements in <paramref name="source"/> satisfy the condition specified by <paramref name="predicate"/>.</returns>
         public static int CountF<TSource>(this IList<TSource> source, Func<TSource, bool>? predicate = null)
         {
             var sourceLength = source.Count;

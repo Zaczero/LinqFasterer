@@ -5,10 +5,14 @@ namespace LinqFasterer
 {
     public static partial class EnumerableF
     {
-        /// <summary>Produces a sequence of tuples with elements from the two specified sequences.</summary>
-        /// <returns>A sequence of tuples with elements taken from the first and second sequences, in that order.</returns>
-        /// <param name="first">The first sequence to merge.</param>
-        /// <param name="second">The second sequence to merge.</param>
+        /// <summary>
+        /// Produces a sequence of tuples with elements from the two specified sequences.
+        /// </summary>
+        /// <param name="first">The first <see cref="IList{T}"/> to merge.</param>
+        /// <param name="second">The second <see cref="IList{T}"/> to merge.</param>
+        /// <typeparam name="TFirst">The type of the elements of <paramref name="first"/>.</typeparam>
+        /// <typeparam name="TSecond">The type of the elements of <paramref name="second"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> of tuples with elements taken from <paramref name="first"/> and <paramref name="second"/>, in that order.</returns>
         public static IList<ValueTuple<TFirst,TSecond>> ZipF<TFirst, TSecond>(this IList<TFirst> first, IList<TSecond> second)
         {
             var firstArray = first.ToArrayF();
@@ -23,11 +27,16 @@ namespace LinqFasterer
             return result;
         }
 
-        /// <summary>Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.</summary>
-        /// <returns>A sequence that contains merged elements of two input sequences.</returns>
-        /// <param name="first">The first sequence to merge.</param>
-        /// <param name="second">The second sequence to merge.</param>
-        /// <param name="resultSelector">A function that specifies how to merge the elements from the two sequences.</param>
+        /// <summary>
+        /// Applies a specified function to the corresponding elements of two sequences, producing a sequence of the results.
+        /// </summary>
+        /// <param name="first">The first <see cref="IList{T}"/> to merge.</param>
+        /// <param name="second">The second <see cref="IList{T}"/> to merge.</param>
+        /// <param name="resultSelector">A selector function that specifies how to merge the elements from the two input sequences.</param>
+        /// <typeparam name="TFirst">The type of the elements of <paramref name="first"/>.</typeparam>
+        /// <typeparam name="TSecond">The type of the elements of <paramref name="second"/>.</typeparam>
+        /// <typeparam name="TResult">The type returned by <paramref name="resultSelector"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains merged elements of the two input sequences using <paramref name="resultSelector"/>.</returns>
         public static IList<TResult> ZipF<TFirst, TSecond, TResult>(this IList<TFirst> first, IList<TSecond> second, Func<TFirst, TSecond, TResult> resultSelector)
         {
             var firstArray = first.ToArrayF();
