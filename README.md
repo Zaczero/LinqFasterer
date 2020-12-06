@@ -1,7 +1,7 @@
 # ![Logo](https://github.com/Zaczero/LinqFasterer/blob/master/resources/icon-24.png) LinqFasterer
 
-![Travis (.com)](https://img.shields.io/travis/com/Zaczero/LinqFasterer?style=for-the-badge)
-![Codecov](https://img.shields.io/codecov/c/github/Zaczero/LinqFasterer?style=for-the-badge&token=22SJNO514P)
+[![Travis (.com)](https://img.shields.io/travis/com/Zaczero/LinqFasterer?style=for-the-badge)](https://travis-ci.com/github/Zaczero/LinqFasterer)
+[![Codecov](https://img.shields.io/codecov/c/github/Zaczero/LinqFasterer?style=for-the-badge&token=22SJNO514P)](https://codecov.io/gh/Zaczero/LinqFasterer)
 
 *Work in progress... Stay tuned.*
 
