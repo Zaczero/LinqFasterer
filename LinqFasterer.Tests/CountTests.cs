@@ -15,6 +15,20 @@ namespace LinqFasterer.Tests
         {
             var (first, second) = Utilities.SplitArray(source, source.Count - 1);
 
+            var expected = first.Count();
+            var actual = first.CountF();
+
+            Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.CountF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 2, MemberType = typeof(Utilities))]
+        public void CountPredicateTest_Int(IList<int> source)
+        {
+            var (first, second) = Utilities.SplitArray(source, source.Count - 1);
+
             var expected = first.Count(v => v == second[0]);
             var actual = first.CountF(v => v == second[0]);
 
