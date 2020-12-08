@@ -194,11 +194,11 @@ The complexity is now equal to the one in LINQ's example.
 And by running a short benchmark one can see that the overall performance is even greater.
 All it took is some basic understanding of the methods in use and the minor code modification.
 
-|                         Method |     N |       Mean |    Error |   StdDev | Ratio | RatioSD |
-|------------------------------- |------ |-----------:|---------:|---------:|------:|--------:|
-|                  MasteringLinq | 50000 |     104 ns |     0 ns |     0 ns |     1 |       0 |
-|          MasteringLinqFasterer | 50000 | 143,489 ns | 5,960 ns | 3,942 ns | 1,371 |      40 |
-| MasteringLinqFastererRewritten | 50000 |      52 ns |     1 ns |     0 ns |     0 |       0 |
+|                         Method |     N |          Mean |        Error |    Ratio |
+|------------------------------- |------ |--------------:|-------------:|---------:|
+|                  MasteringLinq | 50000 |     104.46 ns |     0.753 ns |     1.00 |
+|          MasteringLinqFasterer | 50000 | 143,489.55 ns | 5,960.480 ns | 1,371.13 |
+| MasteringLinqFastererRewritten | 50000 |      52.83 ns |     1.028 ns |     0.51 |
 
 What you should remember from all of this is that by using LinqFasterer correctly you open your code to even greater performance.
 By removing Enumerable calculations *(LINQ)* from your code you save on CPU ticks but become more susceptible to killing overall performance with just a few lines of code.
