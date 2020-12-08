@@ -17,7 +17,7 @@
     <RootNamespace>LinqFasterer</RootNamespace>
 
     <!-- General information -->
-    <Description>TODO</Description>
+    <Description>A set of fast LINQ-like extension methods for arrays and lists. Fine-tune your code for the maximum performance.</Description>
     <Copyright>Copyright © 2020 Kamil Monicz. All rights reserved.</Copyright>
 
     <!-- Repository information -->
@@ -25,7 +25,7 @@
     <RepositoryUrl>https://github.com/Zaczero/LinqFasterer</RepositoryUrl>
 
     <!-- NuGet -->
-    <PackageTags>linq; linqfaster; optimized; high; performance; fast; faster; fasterer; alternative</PackageTags>
+    <PackageTags>linq; faster; performance; fine-tuning; arrays; lists; optimization; linqfaster</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Zaczero/LinqFasterer/master/resources/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Zaczero/LinqFasterer</PackageProjectUrl>
@@ -50,9 +50,11 @@
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugType>full</DebugType>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
