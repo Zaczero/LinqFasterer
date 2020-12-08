@@ -141,7 +141,7 @@ A full list of methods where the `forceClone` argument is applicable:
 
 **You don't have to remember this list** - that would be stupid and very unnecessary.
 It is enough to follow a simple logic.
-The `forceClone` argument is applicable on methods whose output is **guaranteed** to be of the same or smaller size than of the input sequence and the `Type` remains unchanged.
+The `forceClone` argument is applicable on methods whose output is **guaranteed** to be of the same or smaller size than of an input sequence and the element's `Type` remains unchanged.
 
 ## 📗 Mastering performance
 
