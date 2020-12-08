@@ -14,7 +14,7 @@ In other cases switching to LinqFasterer may not be as beneficial or even hurt y
 It all depends on your use case.
 Use your common sense and benchmark your code if needed.
 
-To learn more please visit the [mastering performance]() section.
+To learn more please visit the [mastering performance](#-mastering-performance) section.
 
 ## 🏃‍♂️ Sample benchmark
 
@@ -38,15 +38,15 @@ A full list of benchmarks can be found in the [benchmark master file](https://gi
 
 ---
 
-* [Features]()
-* [Installation]()
-* [Requirements]()
-* [Getting started]()
-* [Mastering performance]()
-* [Roadmap]()
-* [Support me]()
-* [Contact]()
-* [License]()
+* [Features](#%EF%B8%8F-features)
+* [Installation](#%EF%B8%8F-installation)
+* [Requirements](#-requirements)
+* [Getting started](#-getting-started)
+* [Mastering performance](#-mastering-performance)
+* [Roadmap](#%EF%B8%8F-roadmap)
+* [Support me](#-support-me)
+* [Contact](#-contact)
+* [License](#-license)
 
 ---
 
