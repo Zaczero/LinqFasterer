@@ -223,7 +223,9 @@ However, you also become fully responsible for making sure your code is well-opt
 
 * SIMD+Parallel support
 
-## 🎉 Support me
+## Footer
+
+### ☕ Support me
 
 Making a small donation will enable me to spend even more time towards making this project better.
 Send me an email afterwards and I will make sure to put you in the supporters section of the `README.md` file *(not yet present)*.
@@ -231,8 +233,6 @@ Send me an email afterwards and I will make sure to put you in the supporters se
 * Bitcoin :: `bc1qvhdxpwzcvfhyzlf5jd3xvm48tm5wm6d0xaq55z`
 * Bitcoin Cash :: `qpclmw8ulcdqd2gd66ryepshn9dq8278tvmkpu6df6`
 * Monero :: `4ABpPJchKYS8Nq9dPb8mr1NEEAHbKDr5aK777QZh2aSD7BJHdhkQn4RFQ3zNW2kytSXHXpimt57L9X9iin3uJjw93pCpKaJ`
-
-## Footer
 
 ### 📧 Contact
 
