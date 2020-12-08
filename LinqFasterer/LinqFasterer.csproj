@@ -25,7 +25,7 @@
     <RepositoryUrl>https://github.com/Zaczero/LinqFasterer</RepositoryUrl>
 
     <!-- NuGet -->
-    <PackageTags>linq; faster; performance; fine-tuning; arrays; lists; optimization; linqfaster</PackageTags>
+    <PackageTags>linqfaster; linq; fast; faster; performance; fine-tuning; arrays; lists; optimization; optimize</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Zaczero/LinqFasterer/master/resources/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/Zaczero/LinqFasterer</PackageProjectUrl>
