@@ -210,6 +210,7 @@ However, you also become fully responsible for making sure your code is well-opt
 ### Release 2.1
 
 * Additional non-LINQ extension methods
+* .NET Standard 2.0 support
 
 ### Release 2.2
 
