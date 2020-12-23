@@ -5,7 +5,7 @@
 
 A set of fast LINQ-like extension methods for `Array[]`, `List<T>` and all other objects implementing `IList<T>` interface.
 LinqFasterer is designed to work well alongside LINQ, rather than to replace it completely.
-Under the hood LinqFasterer operates sorely on Array objects which grants it a significant performance advantage over Enumerable-based LINQ.
+Under the hood LinqFasterer operates solely on Array objects which grants it a significant performance advantage over Enumerable-based LINQ.
 
 Please don't think about LinqFasterer as 1:1 replacement.
 There are certain scenarios where the use of LINQ is still more appropriable.
@@ -166,7 +166,7 @@ The total number of multiplications is just 5 instead of `input.Length` - in con
 
 ### 2) Understanding LinqFasterer
 
-As previously mentioned, LinqFasterer operates sorely on Array objects.
+As previously mentioned, LinqFasterer operates solely on Array objects.
 Knowing that, to get the most out of this library, your code should also favor a use of arrays whenever applicable.
 Whenever a non-array object is used as an input sequence it is internally casted onto a newly allocated array.
 The following 2 lines of code are equivalent performance-wise *(notice how the input sequence is a list)*:
