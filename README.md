@@ -73,16 +73,19 @@ A full list of benchmarks can be found in the [benchmark master file](https://gi
 
 ## ⚓ Requirements
 
-This library is currently compiled in two frameworks, **.NET Standard 2.1** and **.NET 5.0**.
+This library is currently compiled in two frameworks, **.NET Standard 2.0** and **.NET 5.0**.
 When installing from a package manager a more appropriate version will be used.
 The minimum .NET requirements are then as follows:
 
 * .NET 5.0
-* .NET Core 3.0
-* Mono 6.4
-* Xamarin.iOS 12.16
-* Xamarin.Mac 5.16
-* Xamarin.Android 10.0
+* .NET Core 2.0
+* .NET Framework 4.6.1
+* Mono 5.4
+* Xamarin.iOS 10.14
+* Xamarin.Mac 3.8
+* Xamarin.Android 8.0
+* UWP 10.0.16299
+* Unity 2018.1
 
 Check out this [interactive .NET Standard compatibility table](https://dotnet.microsoft.com/platform/dotnet-standard#versions).
 
