@@ -8,13 +8,13 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         [Benchmark(Baseline = true)]
         public int[] RepeatLinq()
         {
-            return Enumerable.Repeat(5, 100).ToArray();
+            return Enumerable.Repeat(5, N).ToArray();
         }
 
         [Benchmark]
         public int[] RepeatFaster()
         {
-            return EnumerableF.RepeatF(5, 100).ToArrayF();
+            return EnumerableF.RepeatF(5, N).ToArrayF();
         }
     }
 }

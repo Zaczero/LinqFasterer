@@ -34,7 +34,7 @@ namespace LinqFasterer.Benchmarks
 
             // Add benchmarks of your choice here.
             var benchmarks = Enumerable.Empty<Type>()
-                .Append(typeof(ContainsBenchmark));
+                .Append(typeof(RepeatBenchmark));
 
             // ...or benchmark everything. Please note that this WILL take multiple hours.
             // benchmarks = benchmarks
