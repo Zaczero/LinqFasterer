@@ -1,16 +1,22 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LinqFasterer.Shared;
 using Xunit;
 
 namespace LinqFasterer.Tests
 {
     public partial class Test
     {
-        [Fact]
+        [Theory]
         [Trait(nameof(EnumerableF.RepeatF), null)]
-        public void RepeatTest_Int()
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5000, 0, 100, MemberType = typeof(Utilities))]
+        public void RepeatTest_Int(IList<int> source)
         {
-            var expected = Enumerable.Repeat(5, 100).ToArray();
-            var actual = EnumerableF.RepeatF(5, 100).ToArrayF();
+            var expected = Enumerable.Repeat(source[0], source.Count).ToArray();
+            var actual = EnumerableF.RepeatF(source[0], source.Count).ToArrayF();
 
             Assert.Equal(expected, actual);
         }
