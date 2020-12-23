@@ -29,7 +29,7 @@ namespace LinqFasterer.Tests
             var (first, second) = Utilities.SplitArray(source, source.Count - 1);
 
             var expected = first.Contains(second[0]);
-            var actual = first.ContainsF(second[0]);
+            var actual = first.ContainsF(second[0], EqualityComparer<int>.Default);
 
             Assert.Equal(expected, actual);
         }

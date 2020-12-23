@@ -39,5 +39,21 @@ namespace LinqFasterer.Tests
             Assert.Equal(expected, actual);
             Assert.NotEqual(expected, actualModified);
         }
+
+        [Theory]
+        [Trait(nameof(EnumerableF.SequenceCompareF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void SequenceCompareComparerTest_Int(IList<int> source)
+        {
+            var clone = new List<int>(source);
+            var cloneModified = new List<int>(source) {[0] = -1};
+
+            var expected = new int[source.Count];
+            var actual = source.SequenceCompareF(clone, Comparer<int>.Default);
+            var actualModified = source.SequenceCompareF(cloneModified, Comparer<int>.Default);
+
+            Assert.Equal(expected, actual);
+            Assert.NotEqual(expected, actualModified);
+        }
     }
 }
