@@ -44,10 +44,11 @@ namespace LinqFasterer.Tests
         [Theory]
         [Trait(nameof(EnumerableF.SingleF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 100, MemberType = typeof(Utilities))]
-        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 20, 0, 1, MemberType = typeof(Utilities))]
         public void SingleTest_IntPredicateFail(IList<int> source)
         {
             Assert.Throws<InvalidOperationException>(() => source.SingleF(v => v == 0));
+            Assert.Throws<InvalidOperationException>(() => source.SingleF(v => v == -1));
         }
 
         [Theory]
@@ -73,6 +74,14 @@ namespace LinqFasterer.Tests
         }
 
         [Theory]
+        [Trait(nameof(EnumerableF.SingleF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void SingleOrDefaultTest_IntFail(IList<int> source)
+        {
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefaultF());
+        }
+
+        [Theory]
         [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 5, 10, MemberType = typeof(Utilities))]
         public void SingleOrDefaultTest_IntPredicate(IList<int> source)
@@ -95,6 +104,14 @@ namespace LinqFasterer.Tests
             var actual = source.SingleOrDefaultF(v => v < 0);
 
             Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [Trait(nameof(EnumerableF.SingleOrDefaultF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 20, 0, 1, MemberType = typeof(Utilities))]
+        public void SingleOrDefaultTest_IntPredicateDefaultFail(IList<int> source)
+        {
+            Assert.Throws<InvalidOperationException>(() => source.SingleOrDefaultF(v => v == 0));
         }
     }
 }

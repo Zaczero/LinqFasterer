@@ -35,6 +35,26 @@ namespace LinqFasterer.Tests
             Assert.Equal(expected, actual2);
         }
         
+        [Fact]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        public void ConcatMultipleTest_IntZero()
+        {
+            var expected = new int[0];
+            var actual = EnumerableF.ConcatMultipleF(new IList<int>[0]);
+
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        public void ConcatMultipleTest_IntSingle()
+        {
+            var expected = new[] {1, 2, 3};
+            var actual = EnumerableF.ConcatMultipleF(expected);
+
+            Assert.Equal(expected, actual);
+        }
+        
         [Theory]
         [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
         [InlineData("HelloWorld!", "Hello", "World", "!")]
@@ -48,6 +68,36 @@ namespace LinqFasterer.Tests
 
             Assert.Equal(expected, actual);
             Assert.Equal(expected, actual2);
+        }
+        
+        [Fact]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        public void ConcatMultipleTest_StringZero()
+        {
+            var expected = string.Empty;
+            var actual = EnumerableF.ConcatMultipleF();
+
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        public void ConcatMultipleTest_StringSingle()
+        {
+            var expected = "TeHe";
+            var actual = EnumerableF.ConcatMultipleF(expected);
+
+            Assert.Equal(expected, actual);
+        }
+        
+        [Fact]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        public void ConcatMultipleTest_StringPair()
+        {
+            var expected = "TeHe";
+            var actual = EnumerableF.ConcatMultipleF("Te", "He");
+
+            Assert.Equal(expected, actual);
         }
     }
 }

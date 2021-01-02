@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LinqFasterer.Shared;
 using Xunit;
@@ -16,6 +17,14 @@ namespace LinqFasterer.Tests
             var actual = source.AggregateF((l, r) => l + r);
 
             Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.AggregateF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 0, MemberType = typeof(Utilities))]
+        public void AggregateTest_IntFail(IList<int> source)
+        {
+            Assert.Throws<InvalidOperationException>(() => source.AggregateF((l, r) => l + r));
         }
 
         [Theory]

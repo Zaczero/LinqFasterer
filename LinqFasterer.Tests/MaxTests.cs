@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LinqFasterer.Shared;
 using Xunit;
@@ -18,6 +19,14 @@ namespace LinqFasterer.Tests
             var actual = source.MaxF();
 
             Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.MaxF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 0, MemberType = typeof(Utilities))]
+        public void MaxTest_IntFail(IList<int> source)
+        {
+            Assert.Throws<InvalidOperationException>(() => source.MaxF());
         }
 
         [Theory]
@@ -44,6 +53,14 @@ namespace LinqFasterer.Tests
             var actual = source.MaxF(v => -v);
 
             Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.MaxF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 0, 0, 0, MemberType = typeof(Utilities))]
+        public void MaxTest_IntSelectorFail(IList<int> source)
+        {
+            Assert.Throws<InvalidOperationException>(() => source.MaxF(v => v));
         }
 
         [Theory]
