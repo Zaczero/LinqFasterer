@@ -26,4 +26,13 @@ namespace LinqFasterer.Benchmarks.Benchmarks
             return EnumerableF.ConcatMultipleF(Data, DataSecondary, Data, DataSecondary).ToArrayF();
         }
     }
+    
+    public class ConcatMultipleStrBenchmark : Benchmarkable
+    {
+        [Benchmark(Baseline = true)]
+        public string ConcatMultipleStrFaster()
+        {
+            return EnumerableF.ConcatMultipleF(Data.SelectF(i => i.ToString()).ToArrayF());
+        }
+    }
 }

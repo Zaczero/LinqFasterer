@@ -29,8 +29,25 @@ namespace LinqFasterer.Tests
         public void ConcatMultipleTest_Int(int[] expected, int[] left, int[] middle, int[] right)
         {
             var actual = EnumerableF.ConcatMultipleF(left, middle, right);
-            
+            var actual2 = new[] {left, middle, right}.ConcatF();
+
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
+        }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        [InlineData("HelloWorld!", "Hello", "World", "!")]
+        [InlineData("VeryVeryVeryVeryLongLongLongLongStringStringStringString", "VeryVeryVeryVery", "LongLongLongLong", "StringStringStringString")]
+        [InlineData("A", "", "A", "")]
+        [InlineData("", "", "", "")]
+        public void ConcatMultipleTest_String(string expected, string left, string middle, string right)
+        {
+            var actual = EnumerableF.ConcatMultipleF(left, middle, right);
+            var actual2 = new[] {left, middle, right}.ConcatF();
+
+            Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
         }
     }
 }

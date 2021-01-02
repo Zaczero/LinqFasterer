@@ -158,13 +158,37 @@
             <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the concatenated elements of the two input sequences.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.ConcatF``1(System.Collections.Generic.IList{System.Collections.Generic.IList{``0}},System.Boolean)">
+            <summary>
+            Concatenates multiple sequences.
+            </summary>
+            <param name="sources">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Collections.Generic.IList`1"/> to concatenate.</param>
+            <param name="forceClone">Force clone of <paramref name="sources"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="sources"/>.</typeparam>
+            <returns>A <see cref="T:System.String"/> that contains the concatenated elements of the input sequences.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.ConcatF(System.Collections.Generic.IList{System.String},System.Boolean)">
+            <summary>
+            Concatenates multiple strings.
+            </summary>
+            <param name="sources">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.String"/> to concatenate.</param>
+            <param name="forceClone">Force clone of <paramref name="sources"/> (disable in-place optimization).</param>
+            <returns>A <see cref="T:System.String"/> that contains the concatenated elements of the input sequences.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.ConcatMultipleF``1(System.Collections.Generic.IList{``0}[])">
             <summary>
             Concatenates multiple sequences.
             </summary>
-            <param name="sources">An array of <see cref="T:System.Collections.Generic.IList`1"/> to concatenate.</param>
+            <param name="sources">An <see cref="T:System.Array"/> of <see cref="T:System.Collections.Generic.IList`1"/> to concatenate.</param>
             <typeparam name="TSource">The type of the elements of <paramref name="sources"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the concatenated elements of the input sequences.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.ConcatMultipleF(System.String[])">
+            <summary>
+            Concatenates multiple strings.
+            </summary>
+            <param name="sources">An <see cref="T:System.Array"/> of <see cref="T:System.String"/> to concatenate.</param>
+            <returns>A <see cref="T:System.String"/> that contains the concatenated elements of the input sequences.</returns>
         </member>
         <member name="M:LinqFasterer.EnumerableF.ContainsF``1(System.Collections.Generic.IList{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
             <summary>

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace LinqFasterer
 {
@@ -28,14 +31,45 @@ namespace LinqFasterer
         /// <summary>
         /// Concatenates multiple sequences.
         /// </summary>
-        /// <param name="sources">An array of <see cref="IList{T}"/> to concatenate.</param>
+        /// <param name="sources">An <see cref="IList{T}"/> of <see cref="IList{T}"/> to concatenate.</param>
+        /// <param name="forceClone">Force clone of <paramref name="sources"/> (disable in-place optimization).</param>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="sources"/>.</typeparam>
+        /// <returns>A <see cref="string"/> that contains the concatenated elements of the input sequences.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IList<TSource> ConcatF<TSource>(this IList<IList<TSource>> sources, bool forceClone = false)
+        {
+            return ConcatMultipleF(sources.ToArrayF(forceClone));
+        }
+        
+        /// <summary>
+        /// Concatenates multiple strings.
+        /// </summary>
+        /// <param name="sources">An <see cref="IList{T}"/> of <see cref="string"/> to concatenate.</param>
+        /// <param name="forceClone">Force clone of <paramref name="sources"/> (disable in-place optimization).</param>
+        /// <returns>A <see cref="string"/> that contains the concatenated elements of the input sequences.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string ConcatF(this IList<string> sources, bool forceClone = false)
+        {
+            return ConcatMultipleF(sources.ToArrayF(forceClone));
+        }
+        
+        /// <summary>
+        /// Concatenates multiple sequences.
+        /// </summary>
+        /// <param name="sources">An <see cref="Array"/> of <see cref="IList{T}"/> to concatenate.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="sources"/>.</typeparam>
         /// <returns>An <see cref="IList{T}"/> that contains the concatenated elements of the input sequences.</returns>
         public static IList<TSource> ConcatMultipleF<TSource>(params IList<TSource>[] sources)
         {
             var sourcesLength = sources.Length;
-            if (sourcesLength == 0)
-                return EmptyF<TSource>();
+            switch (sourcesLength)
+            {
+                case 0:
+                    return EmptyF<TSource>();
+                case 1:
+                    // Note: this is unsafe but fast (add support for forceClone?)
+                    return sources[0];
+            }
             
             var resultLength = 0;
 
@@ -52,6 +86,41 @@ namespace LinqFasterer
             }
 
             return result;
+        }
+        
+        /// <summary>
+        /// Concatenates multiple strings.
+        /// </summary>
+        /// <param name="sources">An <see cref="Array"/> of <see cref="string"/> to concatenate.</param>
+        /// <returns>A <see cref="string"/> that contains the concatenated elements of the input sequences.</returns>
+        public static string ConcatMultipleF(params string[] sources)
+        {
+            var sourcesLength = sources.Length;
+            switch (sourcesLength)
+            {
+                case 0:
+                    return string.Empty;
+                case 1:
+                    // Note: this is unsafe but fast (add support for forceClone?)
+                    return sources[0];
+                case 2:
+                    return string.Concat(sources);
+            }
+            
+            var resultLength = 0;
+
+            for (var i = 0; i < sourcesLength; i++)
+                resultLength += sources[i].Length;
+
+            if (resultLength < 32 && sourcesLength < 8)
+                return string.Concat(sources);
+            
+            var resultSb = new StringBuilder(sources[0], resultLength);
+
+            for (var i = 1; i < sourcesLength; i++)
+                resultSb.Append(sources[i]);
+
+            return resultSb.ToString();
         }
     }
 }
