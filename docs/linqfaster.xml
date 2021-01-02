@@ -292,6 +292,46 @@
             <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the elements that form the set intersection of the two input sequences.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.IsOrderedF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Checks whether elements of a sequence are sorted in ascending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to check an order of.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare elements; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>A <see cref="T:System.Boolean"/> which indicates whether elements are sorted in ascending order.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.IsOrderedDescendingF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Checks whether elements of a sequence are sorted in descending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to check an order of.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare elements; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>A <see cref="T:System.Boolean"/> which indicates whether elements are sorted in descending order.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.IsOrderedByF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1})">
+            <summary>
+            Checks whether elements of a sequence are sorted in ascending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to check an order of.</param>
+            <param name="keySelector">A selector function to extract a key from an element.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare keys; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+            <returns>A <see cref="T:System.Boolean"/> which indicates whether elements are sorted in ascending order according to a key.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.IsOrderedByDescendingF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1})">
+            <summary>
+            Checks whether elements of a sequence are sorted in descending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to check an order of.</param>
+            <param name="keySelector">A selector function to extract a key from an element.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare keys; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
+            <returns>A <see cref="T:System.Boolean"/> which indicates whether elements are sorted in descending order according to a key.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.LastF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean})">
             <summary>
             Returns the last element in a sequence that satisfies a specified condition.
@@ -346,6 +386,26 @@
             <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
             <returns>The minimum value in <paramref name="source"/>.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.OrderF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IComparer{``0},System.Boolean)">
+            <summary>
+            Sorts the elements of a sequence in ascending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to order.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare elements; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> whose elements are sorted in ascending order.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.OrderDescendingF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IComparer{``0},System.Boolean)">
+            <summary>
+            Sorts the elements of a sequence in descending order by using a specified comparer.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values to order.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare elements; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> whose elements are sorted in descending order.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.OrderByF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Boolean)">
             <summary>
             Sorts the elements of a sequence in ascending order by using a specified comparer.
@@ -356,7 +416,7 @@
             <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <typeparam name="TKey">The type of the key returned by <paramref name="keySelector"/>.</typeparam>
-            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> whose elements are sorted according to a key.</returns>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> whose elements are sorted in ascending order according to a key.</returns>
         </member>
         <member name="M:LinqFasterer.EnumerableF.OrderByDescendingF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Boolean)">
             <summary>
