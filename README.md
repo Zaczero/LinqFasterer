@@ -126,9 +126,12 @@ var newArray2 = inputArray.ReverseF(forceClone: true);
 
 A full list of methods where the `forceClone` argument is applicable:
 
+* ConcatF
 * DistinctF
 * ExceptF
 * IntersectF
+* OrderF
+* OrderDescendingF
 * OrderByF
 * OrderByDescendingF
 * ReverseF
@@ -212,8 +215,8 @@ However, you also become fully responsible for making sure your code is well-opt
 
 ### Release 2.1
 
-* Additional non-LINQ extension methods
-* .NET Standard 2.0 support
+* **[WIP]** Additional non-LINQ extension methods
+* **[DONE]** .NET Standard 2.0 support
 
 ### Release 2.2
 
