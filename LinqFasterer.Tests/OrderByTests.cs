@@ -8,6 +8,32 @@ namespace LinqFasterer.Tests
     public partial class Test
     {
         [Theory]
+        [Trait(nameof(EnumerableF.OrderF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
+        public void OrderTest_Int(IList<int> source)
+        {
+            var expected = source.OrderBy(v => v).ToArray();
+            var actual = source.OrderF().ToArrayF();
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [Trait(nameof(EnumerableF.OrderDescendingF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 50, 0, 5, MemberType = typeof(Utilities))]
+        public void OrderDescendingTest_Int(IList<int> source)
+        {
+            var expected = source.OrderByDescending(v => v).ToArray();
+            var actual = source.OrderDescendingF().ToArrayF();
+
+            Assert.Equal(expected, actual);
+        }
+        
+        [Theory]
         [Trait(nameof(EnumerableF.OrderByF), null)]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
         [MemberData(nameof(Utilities.TestArray), typeof(int), 10, 0, 2, MemberType = typeof(Utilities))]
