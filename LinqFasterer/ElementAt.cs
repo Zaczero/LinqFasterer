@@ -26,10 +26,10 @@ namespace LinqFasterer
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns><see langword="default"/> if the index is outside the bounds of <paramref name="source"/>; otherwise, the element at <paramref name="index"/> in <paramref name="source"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TSource ElementAtOrDefaultF<TSource>(this IList<TSource> source, int index)
+        public static TSource? ElementAtOrDefaultF<TSource>(this IList<TSource> source, int index)
         {
             if (index < 0 || index >= source.Count)
-                return default!;
+                return default;
 
             return source[index];
         }

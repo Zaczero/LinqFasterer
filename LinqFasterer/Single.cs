@@ -59,11 +59,11 @@ namespace LinqFasterer
         /// <param name="source">An <see cref="IList{T}"/> to return the single element of.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The single element of <paramref name="source"/>, or <see langword="default"/> if <paramref name="source"/> contains no elements.</returns>
-        public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source)
+        public static TSource? SingleOrDefaultF<TSource>(this IList<TSource> source)
         {
             var sourceLength = source.Count;
             if (sourceLength == 0)
-                return default!;
+                return default;
 
             if (sourceLength > 1)
                 throw Error.MoreThanOneElement();
@@ -78,11 +78,11 @@ namespace LinqFasterer
         /// <param name="predicate">A predicate function to test an element for a condition.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The single element of <paramref name="source"/> that satisfies the condition, or <see langword="default"/> if no such element is found.</returns>
-        public static TSource SingleOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+        public static TSource? SingleOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
         {
             var sourceLength = source.Count;
             if (sourceLength == 0)
-                return default!;
+                return default;
 
             var sourceArray = source.ToArrayF();
             var foundAtIndex = -1;
@@ -94,10 +94,7 @@ namespace LinqFasterer
                     else
                         throw Error.MoreThanOneElement();
 
-            if (foundAtIndex == -1)
-                return default!;
-
-            return source[foundAtIndex];
+            return foundAtIndex == -1 ? default : source[foundAtIndex];
         }
     }
 }

@@ -39,10 +39,10 @@ namespace LinqFasterer
         /// <param name="predicate">An optional predicate function to test each element for a condition; when set to <see langword="null"/> the function returns the first element in <paramref name="source"/> or <see langword="default"/> when <paramref name="source"/> is empty.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns><see langword="default" /> if <paramref name="source" /> is empty or if no element passes the test specified by <paramref name="predicate" />; otherwise, the first element in <paramref name="source" /> that passes the test specified by <paramref name="predicate" />.</returns>
-        public static TSource FirstOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool>? predicate = null)
+        public static TSource? FirstOrDefaultF<TSource>(this IList<TSource> source, Func<TSource, bool>? predicate = null)
         {
             if (predicate == null)
-                return source.Count == 0 ? default! : source[0];
+                return source.Count == 0 ? default : source[0];
 
             var sourceArray = source.ToArrayF();
             var sourceLength = sourceArray.Length;
@@ -55,7 +55,7 @@ namespace LinqFasterer
                     return value;
             }
 
-            return default!;
+            return default;
         }
     }
 }
