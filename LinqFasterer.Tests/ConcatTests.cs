@@ -19,5 +19,18 @@ namespace LinqFasterer.Tests
 
             Assert.Equal(expected, actual);
         }
+        
+        [Theory]
+        [Trait(nameof(EnumerableF.ConcatMultipleF), null)]
+        [InlineData(new[] {3, 3, 3, 2, 2, 1, 1, 1}, new [] {3, 3, 3}, new [] {2, 2}, new [] {1, 1, 1,})]
+        [InlineData(new[] {3, 3, 3, 1, 1, 1}, new [] {3, 3, 3}, new int[0], new [] {1, 1, 1,})]
+        [InlineData(new[] {3, 2, 1}, new [] {3}, new [] {2}, new [] {1})]
+        [InlineData(new int[0], new int[0], new int[0], new int[0])]
+        public void ConcatMultipleTest_Int(int[] expected, int[] left, int[] middle, int[] right)
+        {
+            var actual = EnumerableF.ConcatMultipleF(left, middle, right);
+            
+            Assert.Equal(expected, actual);
+        }
     }
 }

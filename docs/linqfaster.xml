@@ -158,6 +158,14 @@
             <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the concatenated elements of the two input sequences.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.ConcatMultipleF``1(System.Collections.Generic.IList{``0}[])">
+            <summary>
+            Concatenates multiple sequences.
+            </summary>
+            <param name="sources">An array of <see cref="T:System.Collections.Generic.IList`1"/> to concatenate.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="sources"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the concatenated elements of the input sequences.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.ContainsF``1(System.Collections.Generic.IList{``0},``0,System.Collections.Generic.IEqualityComparer{``0})">
             <summary>
             Determines whether a sequence contains a specified element by using a specified equality comparer.
