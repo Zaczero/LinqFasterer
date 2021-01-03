@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
@@ -73,6 +74,19 @@ namespace LinqFasterer
             Array.Copy(result, 0, result, filled, resultLength - filled);
 
             return result;
+        }
+        
+        /// <summary>
+        /// Generates a sequence that contains one repeated sequence.
+        /// </summary>
+        /// <param name="source">An <see cref="IList{T}"/> to be repeated.</param>
+        /// <param name="count">The number of times to repeat the <paramref name="source"/> in the generated sequence.</param>
+        /// <typeparam name="TResult">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <returns>An <see cref="IList{T}"/> that contains a repeated <paramref name="source"/>.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IList<TResult> RepeatF<TResult>(this IList<TResult> source, int count)
+        {
+            return RepeatSequenceF(source, count);
         }
     }
 }

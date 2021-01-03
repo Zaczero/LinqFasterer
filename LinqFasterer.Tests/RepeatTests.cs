@@ -33,8 +33,10 @@ namespace LinqFasterer.Tests
         public void RepeatSequenceTest_Int(int[] expected, int[] source, int count)
         {
             var actual = EnumerableF.RepeatSequenceF(source, count).ToArrayF();
+            var actual2 = source.RepeatF(count).ToArrayF();
 
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
         }
     }
 }
