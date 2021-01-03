@@ -18,9 +18,9 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         }
 
         [Benchmark]
-        public int[] OrderFaster()
+        public int[] SortFaster()
         {
-            return Data.OrderF().ToArrayF();
+            return Data.SortF().ToArrayF();
         }
     }
     
@@ -39,9 +39,9 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         }
 
         [Benchmark]
-        public int[] OrderDescendingFaster()
+        public int[] SortDescendingFaster()
         {
-            return Data.OrderDescendingF().ToArrayF();
+            return Data.SortDescendingF().ToArrayF();
         }
     }
 }
