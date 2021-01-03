@@ -149,6 +149,38 @@
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns>The average of the sequence of values.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.BinarySearchF``1(System.Collections.Generic.IList{``0},``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Searches an entire one-dimensional sorted array for a value using the specified comparer.
+            </summary>
+            <param name="source">The sorted one-dimensional, zero-based <see cref="T:System.Collections.Generic.IList`1"/> to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare values; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>
+            The index of the specified <paramref name="value"/> in the specified <paramref name="source"/>, if <paramref name="value"/> is found; otherwise, a negative number.
+            If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="source"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>.
+            If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="source"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1).
+            If this method is called with a non-sorted <paramref name="source"/>, the return value can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="source"/>.
+            </returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.BinarySearchF``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32,``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Searches an entire one-dimensional sorted array for a value using the specified comparer.
+            </summary>
+            <param name="source">The sorted one-dimensional, zero-based <see cref="T:System.Collections.Generic.IList`1"/> to search.</param>
+            <param name="index">The starting index of the range to search.</param>
+            <param name="length">The length of the range to search.</param>
+            <param name="value">The object to search for.</param>
+            <param name="comparer">An optional <see cref="T:System.Collections.Generic.IComparer`1"/> used to compare values; falls back to <see cref="P:System.Collections.Generic.Comparer`1.Default"/> when set to <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>
+            The index of the specified <paramref name="value"/> in the specified <paramref name="source"/>, if <paramref name="value"/> is found; otherwise, a negative number.
+            If <paramref name="value"/> is not found and <paramref name="value"/> is less than one or more elements in <paramref name="source"/>, the negative number returned is the bitwise complement of the index of the first element that is larger than <paramref name="value"/>.
+            If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="source"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1).
+            If this method is called with a non-sorted <paramref name="source"/>, the return value can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="source"/>.
+            </returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.ConcatF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
             <summary>
             Concatenates two sequences.
