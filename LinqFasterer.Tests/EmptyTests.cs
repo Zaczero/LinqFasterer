@@ -14,5 +14,15 @@ namespace LinqFasterer.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        [Trait(nameof(EnumerableF.EmptyF), null)]
+        public void EmptyTest_IntExtension()
+        {
+            var expected = Enumerable.Empty<int>().ToArray();
+            var actual = new int[4].EmptyF().ToArrayF();
+
+            Assert.Equal(expected, actual);
+        }
     }
 }

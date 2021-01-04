@@ -15,9 +15,11 @@ namespace LinqFasterer.Tests
         [InlineData(~2, new [] {5,6,8,9}, 7)]
         public void BinarySearchTest_Int(int expected, int[] source, int value)
         {
-            var actual = source.BinarySearchF(value, Comparer<int>.Default);
+            var actual = source.BinarySearchF(value);
+            var actual2 = source.BinarySearchF(value, Comparer<int>.Default);
 
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
         }
         
         [Theory]
@@ -28,9 +30,11 @@ namespace LinqFasterer.Tests
         [InlineData(~2, new [] {5,6,7,8,9}, 0, 2, 7)]
         public void BinarySearchTest_IntIndexed(int expected, int[] source, int index, int length, int value)
         {
-            var actual = source.BinarySearchF(index, length, value, Comparer<int>.Default);
+            var actual = source.BinarySearchF(index, length, value);
+            var actual2 = source.BinarySearchF(index, length, value, Comparer<int>.Default);
 
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
         }
     }
 }
