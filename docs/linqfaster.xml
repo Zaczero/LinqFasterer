@@ -201,6 +201,14 @@
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> with elements set to <see langword="default"/>.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.CloneF``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Creates a copy of the input sequence.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> to be cloned.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> which is a copy of the input sequence.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.ConcatF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
             <summary>
             Concatenates two sequences.
