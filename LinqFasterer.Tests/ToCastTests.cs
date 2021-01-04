@@ -50,5 +50,16 @@ namespace LinqFasterer.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [Trait(nameof(EnumerableF.ToListF), null)]
+        [MemberData(nameof(Utilities.TestArray), typeof(int), 5, 0, 100, MemberType = typeof(Utilities))]
+        public void ToListTest_IntInPlaceForceClone(IList<int> source)
+        {
+            var expected = source.ToList();
+            var actual = source.ToList().ToListF(true);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
