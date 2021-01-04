@@ -151,7 +151,7 @@
         </member>
         <member name="M:LinqFasterer.EnumerableF.BinarySearchF``1(System.Collections.Generic.IList{``0},``0,System.Collections.Generic.IComparer{``0})">
             <summary>
-            Searches an entire one-dimensional sorted array for a value using the specified comparer.
+            Searches an entire one-dimensional sorted sequence for a value.
             </summary>
             <param name="source">The sorted one-dimensional, zero-based <see cref="T:System.Collections.Generic.IList`1"/> to search.</param>
             <param name="value">The object to search for.</param>
@@ -166,7 +166,7 @@
         </member>
         <member name="M:LinqFasterer.EnumerableF.BinarySearchF``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32,``0,System.Collections.Generic.IComparer{``0})">
             <summary>
-            Searches an entire one-dimensional sorted array for a value using the specified comparer.
+            Searches an entire one-dimensional sorted sequence for a value.
             </summary>
             <param name="source">The sorted one-dimensional, zero-based <see cref="T:System.Collections.Generic.IList`1"/> to search.</param>
             <param name="index">The starting index of the range to search.</param>
@@ -180,6 +180,26 @@
             If <paramref name="value"/> is not found and <paramref name="value"/> is greater than all elements in <paramref name="source"/>, the negative number returned is the bitwise complement of (the index of the last element plus 1).
             If this method is called with a non-sorted <paramref name="source"/>, the return value can be incorrect and a negative number could be returned, even if <paramref name="value"/> is present in <paramref name="source"/>.
             </returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.ClearF``1(System.Collections.Generic.IList{``0},System.Boolean)">
+            <summary>
+            Sets elements in a sequence to the default value of each element type.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> whose elements need to be cleared.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> with elements set to <see langword="default"/>.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.ClearF``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets elements in a sequence to the default value of each element type.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> whose elements need to be cleared.</param>
+            <param name="index">The starting index of the range to clear.</param>
+            <param name="length">The length of the range to clear.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> with elements set to <see langword="default"/>.</returns>
         </member>
         <member name="M:LinqFasterer.EnumerableF.ConcatF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IList{``0})">
             <summary>
@@ -284,6 +304,12 @@
             </summary>
             <returns>An empty sequence.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.EmptyF``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Returns an empty sequence that has the specified type argument.
+            </summary>
+            <returns>An empty sequence.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.ExceptF``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},System.Boolean)">
             <summary>
             Produces the set difference of two sequences by using the specified equality comparer to compare values.
@@ -294,6 +320,28 @@
             <param name="forceClone">Force clone of <paramref name="first"/> (disable in-place optimization).</param>
             <typeparam name="TSource">The type of the elements of <paramref name="first"/> and <paramref name="second"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains the set difference of the elements of the two input sequences.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.FillF``1(System.Collections.Generic.IList{``0},``0,System.Boolean)">
+            <summary>
+            Sets elements in a sequence to the chosen value.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> whose elements need to be filled.</param>
+            <param name="value">A value to set elements to.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> with elements set to the chosen value.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.FillF``1(System.Collections.Generic.IList{``0},``0,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets elements in a sequence to the chosen value.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> whose elements need to be filled.</param>
+            <param name="value">A value to set elements to.</param>
+            <param name="index">The starting index of the range to fill.</param>
+            <param name="length">The length of the range to fill.</param>
+            <param name="forceClone">Force clone of <paramref name="source"/> (disable in-place optimization).</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>An <see cref="T:System.Collections.Generic.IList`1"/> with elements set to the chosen value.</returns>
         </member>
         <member name="M:LinqFasterer.EnumerableF.FirstF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean})">
             <summary>
@@ -505,7 +553,7 @@
             <typeparam name="TResult">The type of the value to be repeated in the result sequence.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains a repeated <paramref name="element"/>.</returns>
         </member>
-        <member name="M:LinqFasterer.EnumerableF.RepeatSequenceF``1(System.Collections.Generic.IList{``0},System.Int32)">
+        <member name="M:LinqFasterer.EnumerableF.RepeatF``1(System.Collections.Generic.IList{``0},System.Int32)">
             <summary>
             Generates a sequence that contains one repeated sequence.
             </summary>
@@ -514,7 +562,7 @@
             <typeparam name="TResult">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns>An <see cref="T:System.Collections.Generic.IList`1"/> that contains a repeated <paramref name="source"/>.</returns>
         </member>
-        <member name="M:LinqFasterer.EnumerableF.RepeatF``1(System.Collections.Generic.IList{``0},System.Int32)">
+        <member name="M:LinqFasterer.EnumerableF.RepeatSequenceF``1(System.Collections.Generic.IList{``0},System.Int32)">
             <summary>
             Generates a sequence that contains one repeated sequence.
             </summary>
