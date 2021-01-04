@@ -6,7 +6,7 @@ namespace LinqFasterer
     public static partial class EnumerableF
     {
         /// <summary>
-        /// Searches an entire one-dimensional sorted array for a value using the specified comparer.
+        /// Searches an entire one-dimensional sorted sequence for a value.
         /// </summary>
         /// <param name="source">The sorted one-dimensional, zero-based <see cref="IList{T}"/> to search.</param>
         /// <param name="value">The object to search for.</param>
@@ -28,7 +28,7 @@ namespace LinqFasterer
         }
         
         /// <summary>
-        /// Searches an entire one-dimensional sorted array for a value using the specified comparer.
+        /// Searches an entire one-dimensional sorted sequence for a value.
         /// </summary>
         /// <param name="source">The sorted one-dimensional, zero-based <see cref="IList{T}"/> to search.</param>
         /// <param name="index">The starting index of the range to search.</param>
