@@ -16,7 +16,7 @@ namespace LinqFasterer
         public static IList<TSource> TakeF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
         {
             if (count <= 0)
-                return EmptyF<TSource>();
+                return Array.Empty<TSource>();
             
             var sourceArray = source.ToArrayF(forceClone);
             var sourceLength = source.Count;
@@ -39,7 +39,7 @@ namespace LinqFasterer
         public static IList<TSource> TakeLastF<TSource>(this IList<TSource> source, int count, bool forceClone = false)
         {
             if (count <= 0)
-                return EmptyF<TSource>();
+                return Array.Empty<TSource>();
             
             var sourceArray = source.ToArrayF(forceClone);
             var sourceLength = source.Count;

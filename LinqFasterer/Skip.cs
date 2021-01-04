@@ -17,7 +17,7 @@ namespace LinqFasterer
         {
             var sourceLength = source.Count;
             if (sourceLength <= count)
-                return EmptyF<TSource>();
+                return Array.Empty<TSource>();
 
             var sourceArray = source.ToArrayF(forceClone);
 
@@ -43,7 +43,7 @@ namespace LinqFasterer
         {
             var sourceLength = source.Count;
             if (sourceLength <= count)
-                return EmptyF<TSource>();
+                return Array.Empty<TSource>();
 
             var sourceArray = source.ToArrayF(forceClone);
 

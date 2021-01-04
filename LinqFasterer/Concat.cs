@@ -65,7 +65,7 @@ namespace LinqFasterer
             switch (sourcesLength)
             {
                 case 0:
-                    return EmptyF<TSource>();
+                    return Array.Empty<TSource>();
                 case 1:
                     // Note: this is unsafe but fast (add support for forceClone?)
                     return sources[0];
