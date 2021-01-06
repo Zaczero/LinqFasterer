@@ -126,18 +126,20 @@ var newArray2 = inputArray.ReverseF(forceClone: true);
 
 A full list of methods where the `forceClone` argument is applicable:
 
+* ClearF
 * ConcatF
 * DistinctF
 * ExceptF
+* FillF
 * IntersectF
-* OrderF
-* OrderDescendingF
 * OrderByF
 * OrderByDescendingF
 * ReverseF
 * SkipF
 * SkipLastF
 * SkipWhileF
+* SortF
+* SortDescendingF
 * TakeF
 * TakeLastF
 * TakeWhileF
@@ -212,11 +214,6 @@ You gain a greater level of control over what happens with a sequence allowing y
 However, you also become fully responsible for making sure your code is well-optimized without any bottlenecks.
 
 ## 🗺️ Roadmap
-
-### Release 2.1
-
-* **[WIP]** Additional non-LINQ extension methods
-* **[DONE]** .NET Standard 2.0 support
 
 ### Release 2.2
 
