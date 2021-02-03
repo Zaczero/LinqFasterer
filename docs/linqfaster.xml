@@ -260,6 +260,14 @@
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns><see langword="true"/> if <paramref name="source"/> contains an element that has the specified <paramref name="value"/>; otherwise, <see langword="false"/>.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.ContainsNullF``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Determines whether a sequence contains a null element.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> in which to check for a null.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns><see langword="true"/> if <paramref name="source"/> contains a null element; otherwise, <see langword="false"/>.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.CountF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean})">
             <summary>
             Returns a number that represents how many elements in the specified sequence satisfy a condition.
