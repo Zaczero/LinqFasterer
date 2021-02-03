@@ -8,9 +8,9 @@ namespace LinqFasterer
         /// <summary>
         /// Determines whether a sequence contains a null element.
         /// </summary>
-        /// <param name="source">An <see cref="IList{T}"/> in which to check for a null.</param>
+        /// <param name="source">An <see cref="IList{T}"/> in which to check for a <see langword="null"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-        /// <returns><see langword="true"/> if <paramref name="source"/> contains a null element; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="source"/> contains a <see langword="null"/> element; otherwise, <see langword="false"/>.</returns>
         public static bool ContainsNullF<TSource>(this IList<TSource> source)
         {
             if (default(TSource) != null)

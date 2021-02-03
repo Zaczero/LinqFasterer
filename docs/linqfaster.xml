@@ -51,6 +51,14 @@
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns><see langword="true"/> if every element of <paramref name="source"/> passes the test in the specified <paramref name="predicate"/>, or if <paramref name="source"/> is empty; otherwise, <see langword="false"/>.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.AllNullF``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Determines whether all elements of a sequence are null.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> in which to check whether every element is <see langword="null"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns><see langword="true"/> if every element of <paramref name="source"/> is <see langword="null"/>, or if <paramref name="source"/> is empty; otherwise, <see langword="false"/>.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.AnyF``1(System.Collections.Generic.IList{``0},System.Predicate{``0})">
             <summary>
             Determines whether any element of a sequence satisfies a condition.
@@ -264,9 +272,9 @@
             <summary>
             Determines whether a sequence contains a null element.
             </summary>
-            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> in which to check for a null.</param>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> in which to check for a <see langword="null"/>.</param>
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
-            <returns><see langword="true"/> if <paramref name="source"/> contains a null element; otherwise, <see langword="false"/>.</returns>
+            <returns><see langword="true"/> if <paramref name="source"/> contains a <see langword="null"/> element; otherwise, <see langword="false"/>.</returns>
         </member>
         <member name="M:LinqFasterer.EnumerableF.CountF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Boolean})">
             <summary>
