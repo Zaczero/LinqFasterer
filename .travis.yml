@@ -1,5 +1,5 @@
 language: csharp
-dotnet: 5.0.100
+dotnet: 5.0.201
 mono: none
 
 before_script:
