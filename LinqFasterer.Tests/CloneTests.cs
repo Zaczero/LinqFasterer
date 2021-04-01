@@ -2,7 +2,7 @@
 
 namespace LinqFasterer.Tests
 {
-    public class CloneTests
+    public partial class Test
     {
         [Theory]
         [Trait(nameof(EnumerableF.CloneF), null)]

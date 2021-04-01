@@ -1,6 +1,5 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
 {
@@ -11,10 +10,20 @@ namespace LinqFasterer
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="int"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this IList<int> source)
+        public static int SumF1(this IList<int> source)
         {
-            return source.SumF4();
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0;
+
+            checked
+            {
+                for (var i = 0; i < sourceLength; i++)
+                    sum += sourceArray[i];
+            }
+
+            return sum;
         }
 
         /// <summary>
@@ -22,10 +31,20 @@ namespace LinqFasterer
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="long"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long SumF(this IList<long> source)
+        public static long SumF1(this IList<long> source)
         {
-            return source.SumF4();
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0L;
+
+            checked
+            {
+                for (var i = 0; i < sourceLength; i++)
+                    sum += sourceArray[i];
+            }
+
+            return sum;
         }
 
         /// <summary>
@@ -33,10 +52,17 @@ namespace LinqFasterer
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="float"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float SumF(this IList<float> source)
+        public static float SumF1(this IList<float> source)
         {
-            return source.SumF4();
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0F;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += sourceArray[i];
+
+            return sum;
         }
 
         /// <summary>
@@ -44,10 +70,17 @@ namespace LinqFasterer
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="double"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double SumF(this IList<double> source)
+        public static double SumF1(this IList<double> source)
         {
-            return source.SumF4();
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0D;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += sourceArray[i];
+
+            return sum;
         }
 
         /// <summary>
@@ -55,10 +88,17 @@ namespace LinqFasterer
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="decimal"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal SumF(this IList<decimal> source)
+        public static decimal SumF1(this IList<decimal> source)
         {
-            return source.SumF4();
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0M;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += sourceArray[i];
+
+            return sum;
         }
 
         /// <summary>
@@ -68,10 +108,20 @@ namespace LinqFasterer
         /// <param name="selector">A transform function to apply to each element which returns <see cref="int"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF<TSource>(this IList<TSource> source, Func<TSource, int> selector)
+        public static int SumF1<TSource>(this IList<TSource> source, Func<TSource, int> selector)
         {
-            return source.SumF4(selector);
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0;
+
+            checked
+            {
+                for (var i = 0; i < sourceLength; i++)
+                    sum += selector(sourceArray[i]);
+            }
+
+            return sum;
         }
 
         /// <summary>
@@ -81,10 +131,20 @@ namespace LinqFasterer
         /// <param name="selector">A transform function to apply to each element which returns <see cref="long"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long SumF<TSource>(this IList<TSource> source, Func<TSource, long> selector)
+        public static long SumF1<TSource>(this IList<TSource> source, Func<TSource, long> selector)
         {
-            return source.SumF4(selector);
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0L;
+
+            checked
+            {
+                for (var i = 0; i < sourceLength; i++)
+                    sum += selector(sourceArray[i]);
+            }
+
+            return sum;
         }
 
         /// <summary>
@@ -94,10 +154,17 @@ namespace LinqFasterer
         /// <param name="selector">A transform function to apply to each element which returns <see cref="float"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float SumF<TSource>(this IList<TSource> source, Func<TSource, float> selector)
+        public static float SumF1<TSource>(this IList<TSource> source, Func<TSource, float> selector)
         {
-            return source.SumF4(selector);
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0F;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += selector(sourceArray[i]);
+
+            return sum;
         }
 
         /// <summary>
@@ -107,10 +174,17 @@ namespace LinqFasterer
         /// <param name="selector">A transform function to apply to each element which returns <see cref="double"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double SumF<TSource>(this IList<TSource> source, Func<TSource, double> selector)
+        public static double SumF1<TSource>(this IList<TSource> source, Func<TSource, double> selector)
         {
-            return source.SumF4(selector);
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0D;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += selector(sourceArray[i]);
+
+            return sum;
         }
 
         /// <summary>
@@ -120,10 +194,17 @@ namespace LinqFasterer
         /// <param name="selector">A transform function to apply to each element which returns <see cref="decimal"/>.</param>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>The sum of the projected values.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal SumF<TSource>(this IList<TSource> source, Func<TSource, decimal> selector)
+        public static decimal SumF1<TSource>(this IList<TSource> source, Func<TSource, decimal> selector)
         {
-            return source.SumF4(selector);
+            var sourceArray = source.ToArrayF();
+            var sourceLength = sourceArray.Length;
+
+            var sum = 0M;
+
+            for (var i = 0; i < sourceLength; i++)
+                sum += selector(sourceArray[i]);
+
+            return sum;
         }
     }
 }

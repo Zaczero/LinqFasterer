@@ -6,7 +6,7 @@ namespace LinqFasterer
     public static partial class EnumerableF
     {
         /// <summary>
-        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{int})"/>.
+        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{int})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="int"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
@@ -55,7 +55,7 @@ namespace LinqFasterer
         }
 
         /// <summary>
-        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{long})"/>.
+        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{long})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="long"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
@@ -104,7 +104,7 @@ namespace LinqFasterer
         }
 
         /// <summary>
-        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{float})"/>.
+        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{float})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="float"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
@@ -153,7 +153,7 @@ namespace LinqFasterer
         }
 
         /// <summary>
-        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{double})"/>.
+        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{double})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="double"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
@@ -202,7 +202,7 @@ namespace LinqFasterer
         }
 
         /// <summary>
-        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{decimal})"/>.
+        /// Computes the sum of a sequence. A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{decimal})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of <see cref="decimal"/> to calculate the sum of.</param>
         /// <returns>The sum of the values in the sequence.</returns>
@@ -252,7 +252,7 @@ namespace LinqFasterer
 
         /// <summary>
         /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
-        /// A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{int})"/>.
+        /// A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{int})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
         /// <param name="selector">A transform function to apply to each element which returns <see cref="int"/>.</param>
@@ -304,7 +304,7 @@ namespace LinqFasterer
 
         /// <summary>
         /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
-        /// A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{int})"/>.
+        /// A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{int})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
         /// <param name="selector">A transform function to apply to each element which returns <see cref="long"/>.</param>
@@ -356,7 +356,7 @@ namespace LinqFasterer
 
         /// <summary>
         /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
-        /// A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{float})"/>.
+        /// A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{float})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
         /// <param name="selector">A transform function to apply to each element which returns <see cref="float"/>.</param>
@@ -408,7 +408,7 @@ namespace LinqFasterer
 
         /// <summary>
         /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
-        /// A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{double})"/>.
+        /// A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{double})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
         /// <param name="selector">A transform function to apply to each element which returns <see cref="double"/>.</param>
@@ -460,7 +460,7 @@ namespace LinqFasterer
 
         /// <summary>
         /// Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
-        /// A 16-times unrolled version of <see cref="SumF(System.Collections.Generic.IList{decimal})"/>.
+        /// A 16-times unrolled version of <see cref="SumF1(System.Collections.Generic.IList{decimal})"/>.
         /// </summary>
         /// <param name="source">An <see cref="IList{T}"/> of values that are used to calculate a sum.</param>
         /// <param name="selector">A transform function to apply to each element which returns <see cref="decimal"/>.</param>

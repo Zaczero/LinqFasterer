@@ -12,9 +12,9 @@ namespace LinqFasterer.Benchmarks.Benchmarks
         }
 
         [Benchmark]
-        public int SumFaster()
+        public int SumFaster1()
         {
-            return Data.SumF();
+            return Data.SumF1();
         }
 
         [Benchmark]
