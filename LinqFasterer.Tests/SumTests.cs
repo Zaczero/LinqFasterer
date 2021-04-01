@@ -16,8 +16,8 @@ namespace LinqFasterer.Tests
             var actual = source.SumF();
             var actualSelector = source.SumF(v => v);
 
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actualSelector);
+            Assert.InRange(expected - actual, -1e-3, 1e-3);
+            Assert.InRange(expected - actualSelector, -1e-3, 1e-3);
         }
 
         [Theory]
@@ -29,8 +29,8 @@ namespace LinqFasterer.Tests
             var actual = source.SumF();
             var actualSelector = source.SumF(v => v);
 
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actualSelector);
+            Assert.InRange(expected - actual, -1e-3, 1e-3);
+            Assert.InRange(expected - actualSelector, -1e-3, 1e-3);
         }
 
         [Theory]
@@ -42,8 +42,8 @@ namespace LinqFasterer.Tests
             var actual = source.SumF();
             var actualSelector = source.SumF(v => v);
 
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actualSelector);
+            Assert.InRange(expected - actual, -1e-3, 1e-3);
+            Assert.InRange(expected - actualSelector, -1e-3, 1e-3);
         }
 
         [Theory]
@@ -55,8 +55,8 @@ namespace LinqFasterer.Tests
             var actual = source.SumF();
             var actualSelector = source.SumF(v => v);
 
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actualSelector);
+            Assert.InRange(expected - actual, -1e-3, 1e-3);
+            Assert.InRange(expected - actualSelector, -1e-3, 1e-3);
         }
 
         [Theory]
@@ -68,8 +68,8 @@ namespace LinqFasterer.Tests
             var actual = source.SumF();
             var actualSelector = source.SumF(v => v);
 
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actualSelector);
+            Assert.InRange(expected - actual, -1e-3M, 1e-3M);
+            Assert.InRange(expected - actualSelector, -1e-3M, 1e-3M);
         }
     }
 }

@@ -120,10 +120,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0; var sum1 = 0.0; var sum2 = 0.0; var sum3 = 0.0;
-            var sum4 = 0.0; var sum5 = 0.0; var sum6 = 0.0; var sum7 = 0.0;
-            var sum8 = 0.0; var sum9 = 0.0; var sumA = 0.0; var sumB = 0.0;
-            var sumC = 0.0; var sumD = 0.0; var sumE = 0.0; var sumF = 0.0;
+            var sum0 = 0F; var sum1 = 0F; var sum2 = 0F; var sum3 = 0F;
+            var sum4 = 0F; var sum5 = 0F; var sum6 = 0F; var sum7 = 0F;
+            var sum8 = 0F; var sum9 = 0F; var sumA = 0F; var sumB = 0F;
+            var sumC = 0F; var sumD = 0F; var sumE = 0F; var sumF = 0F;
 
             checked
             {
@@ -140,8 +140,7 @@ namespace LinqFasterer
                 for (var i = 0; i < residuals; i++)
                     sum0 += sourceArrayPtr[i];
 
-                return (float)
-                (
+                return
                     (
                         ((sum0 + sum1) + (sum2 + sum3)) +
                         ((sum4 + sum5) + (sum6 + sum7))
@@ -149,8 +148,7 @@ namespace LinqFasterer
                     (
                         ((sum8 + sum9) + (sumA + sumB)) +
                         ((sumC + sumD) + (sumE + sumF))
-                    )
-                );
+                    );
             }
         }
 
@@ -171,10 +169,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0; var sum1 = 0.0; var sum2 = 0.0; var sum3 = 0.0;
-            var sum4 = 0.0; var sum5 = 0.0; var sum6 = 0.0; var sum7 = 0.0;
-            var sum8 = 0.0; var sum9 = 0.0; var sumA = 0.0; var sumB = 0.0;
-            var sumC = 0.0; var sumD = 0.0; var sumE = 0.0; var sumF = 0.0;
+            var sum0 = 0D; var sum1 = 0D; var sum2 = 0D; var sum3 = 0D;
+            var sum4 = 0D; var sum5 = 0D; var sum6 = 0D; var sum7 = 0D;
+            var sum8 = 0D; var sum9 = 0D; var sumA = 0D; var sumB = 0D;
+            var sumC = 0D; var sumD = 0D; var sumE = 0D; var sumF = 0D;
 
             checked
             {
@@ -376,10 +374,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0; var sum1 = 0.0; var sum2 = 0.0; var sum3 = 0.0;
-            var sum4 = 0.0; var sum5 = 0.0; var sum6 = 0.0; var sum7 = 0.0;
-            var sum8 = 0.0; var sum9 = 0.0; var sumA = 0.0; var sumB = 0.0;
-            var sumC = 0.0; var sumD = 0.0; var sumE = 0.0; var sumF = 0.0;
+            var sum0 = 0F; var sum1 = 0F; var sum2 = 0F; var sum3 = 0F;
+            var sum4 = 0F; var sum5 = 0F; var sum6 = 0F; var sum7 = 0F;
+            var sum8 = 0F; var sum9 = 0F; var sumA = 0F; var sumB = 0F;
+            var sumC = 0F; var sumD = 0F; var sumE = 0F; var sumF = 0F;
 
             checked
             {
@@ -396,8 +394,7 @@ namespace LinqFasterer
                 for (var i = 0; i < residuals; i++)
                     sum0 += selector(sourceArrayPtr[i]);
 
-                return (float)
-                (
+                return
                     (
                         ((sum0 + sum1) + (sum2 + sum3)) +
                         ((sum4 + sum5) + (sum6 + sum7))
@@ -405,8 +402,7 @@ namespace LinqFasterer
                     (
                         ((sum8 + sum9) + (sumA + sumB)) +
                         ((sumC + sumD) + (sumE + sumF))
-                    )
-                );
+                    );
             }
         }
 
@@ -430,10 +426,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0; var sum1 = 0.0; var sum2 = 0.0; var sum3 = 0.0;
-            var sum4 = 0.0; var sum5 = 0.0; var sum6 = 0.0; var sum7 = 0.0;
-            var sum8 = 0.0; var sum9 = 0.0; var sumA = 0.0; var sumB = 0.0;
-            var sumC = 0.0; var sumD = 0.0; var sumE = 0.0; var sumF = 0.0;
+            var sum0 = 0D; var sum1 = 0D; var sum2 = 0D; var sum3 = 0D;
+            var sum4 = 0D; var sum5 = 0D; var sum6 = 0D; var sum7 = 0D;
+            var sum8 = 0D; var sum9 = 0D; var sumA = 0D; var sumB = 0D;
+            var sumC = 0D; var sumD = 0D; var sumE = 0D; var sumF = 0D;
 
             checked
             {

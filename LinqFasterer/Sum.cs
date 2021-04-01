@@ -57,12 +57,12 @@ namespace LinqFasterer
             var sourceArray = source.ToArrayF();
             var sourceLength = sourceArray.Length;
 
-            var sum = 0.0;
+            var sum = 0F;
 
             for (var i = 0; i < sourceLength; i++)
                 sum += sourceArray[i];
 
-            return (float) sum;
+            return sum;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace LinqFasterer
             var sourceArray = source.ToArrayF();
             var sourceLength = sourceArray.Length;
 
-            var sum = 0.0;
+            var sum = 0D;
 
             for (var i = 0; i < sourceLength; i++)
                 sum += sourceArray[i];
@@ -159,12 +159,12 @@ namespace LinqFasterer
             var sourceArray = source.ToArrayF();
             var sourceLength = sourceArray.Length;
 
-            var sum = 0.0;
+            var sum = 0F;
 
             for (var i = 0; i < sourceLength; i++)
                 sum += selector(sourceArray[i]);
 
-            return (float) sum;
+            return sum;
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace LinqFasterer
             var sourceArray = source.ToArrayF();
             var sourceLength = sourceArray.Length;
 
-            var sum = 0.0;
+            var sum = 0D;
 
             for (var i = 0; i < sourceLength; i++)
                 sum += selector(sourceArray[i]);

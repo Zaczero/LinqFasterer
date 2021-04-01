@@ -106,10 +106,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0;
-            var sum1 = 0.0;
-            var sum2 = 0.0;
-            var sum3 = 0.0;
+            var sum0 = 0F;
+            var sum1 = 0F;
+            var sum2 = 0F;
+            var sum3 = 0F;
 
             checked
             {
@@ -126,11 +126,9 @@ namespace LinqFasterer
                 for (var i = 0; i < residuals; i++)
                     sum0 += sourceArrayPtr[i];
 
-                return (float)
-                (
+                return
                     (sum0 + sum1) +
-                    (sum2 + sum3)
-                );
+                    (sum2 + sum3);
             }
         }
 
@@ -151,10 +149,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0;
-            var sum1 = 0.0;
-            var sum2 = 0.0;
-            var sum3 = 0.0;
+            var sum0 = 0D;
+            var sum1 = 0D;
+            var sum2 = 0D;
+            var sum3 = 0D;
 
             checked
             {
@@ -328,10 +326,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0;
-            var sum1 = 0.0;
-            var sum2 = 0.0;
-            var sum3 = 0.0;
+            var sum0 = 0F;
+            var sum1 = 0F;
+            var sum2 = 0F;
+            var sum3 = 0F;
 
             checked
             {
@@ -348,11 +346,9 @@ namespace LinqFasterer
                 for (var i = 0; i < residuals; i++)
                     sum0 += selector(sourceArrayPtr[i]);
 
-                return (float)
-                (
+                return
                     (sum0 + sum1) +
-                    (sum2 + sum3)
-                );
+                    (sum2 + sum3);
             }
         }
 
@@ -376,10 +372,10 @@ namespace LinqFasterer
             var unrollLength = sourceLength / unrollMultiplier;
             var residuals = sourceLength & unrollMask;
 
-            var sum0 = 0.0;
-            var sum1 = 0.0;
-            var sum2 = 0.0;
-            var sum3 = 0.0;
+            var sum0 = 0D;
+            var sum1 = 0D;
+            var sum2 = 0D;
+            var sum3 = 0D;
 
             checked
             {
