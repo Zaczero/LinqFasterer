@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace LinqFasterer
@@ -18,7 +17,7 @@ namespace LinqFasterer
         {
             return source.ClearF(0, int.MaxValue, forceClone);
         }
-        
+
         /// <summary>
         /// Sets elements in a sequence to the default value of each element type.
         /// </summary>
@@ -31,7 +30,11 @@ namespace LinqFasterer
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IList<TSource> ClearF<TSource>(this IList<TSource> source, int index, int length, bool forceClone = false)
         {
+#pragma warning disable 8620
+#pragma warning disable 8619
             return source.FillF(default!, index, length, forceClone);
+#pragma warning restore 8619
+#pragma warning restore 8620
         }
     }
 }

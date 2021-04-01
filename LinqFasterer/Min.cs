@@ -21,7 +21,7 @@ namespace LinqFasterer
 
             if (default(TSource) == null)
             {
-                TSource result = default;
+                TSource? result = default;
                 
                 for (var i = 0; i < sourceLength; i++)
                 {
@@ -69,7 +69,7 @@ namespace LinqFasterer
 
             if (default(TSource) == null)
             {
-                TResult result = default;
+                TResult? result = default;
                 
                 for (var i = 0; i < sourceLength; i++)
                 {

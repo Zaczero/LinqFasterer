@@ -13,7 +13,7 @@ namespace LinqFasterer
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <returns>An <see cref="IList{T}"/> that contains <paramref name="defaultValue"/> if <paramref name="source"/> is empty; otherwise, <paramref name="source"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IList<TSource> DefaultIfEmptyF<TSource>(this IList<TSource> source, TSource defaultValue = default)
+        public static IList<TSource> DefaultIfEmptyF<TSource>(this IList<TSource> source, TSource? defaultValue = default)
         {
             return source.Count == 0 ? new [] {defaultValue}! : source;
         }
