@@ -23,7 +23,7 @@ namespace LinqFasterer.Benchmarks
 
         private static readonly Regex ResultRegex = new(@"``` ini\s+(?<resultHeader>.*?)\s+```\s+(?<tableHeader>\|.*?\|)\r?\n(?<tableSeparator>\|.*?\|)\r?\n(?<tableData>\|.*\|)", RegexOptions.Singleline);
         private static readonly Regex TableEntryRegex = new(@"[^|]+", RegexOptions.Singleline);
-        
+
         public static int Main()
         {
             var config = ManualConfig.CreateEmpty()
@@ -34,7 +34,7 @@ namespace LinqFasterer.Benchmarks
 
             // Add benchmarks of your choice here.
             var benchmarks = Enumerable.Empty<Type>()
-                .Append(typeof(OrderByDescendingBenchmark));
+                .Append(typeof(SumBenchmark));
 
             // ...or benchmark everything. Please note that this WILL take multiple hours.
             // benchmarks = benchmarks
@@ -50,10 +50,10 @@ namespace LinqFasterer.Benchmarks
 
             using var mergedResultsStream = new FileStream(MergedResultsFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
             using var mergedResultsWriter = new StreamWriter(mergedResultsStream) {AutoFlush = false};
-            
+
             var isResultHeaderCopied = false;
             var tableHeaderFormatted = (string) null;
-            
+
             foreach (var filePath in EnumerateMarkdownFilePaths())
             {
                 // This is overcomplicated, there must be an easier way!
@@ -65,7 +65,7 @@ namespace LinqFasterer.Benchmarks
                 var resultMatch = ResultRegex.Match(fileContent);
                 if (!resultMatch.Success)
                     throw new Exception("Failed to regex-match result file");
-                
+
                 var resultHeader = resultMatch.Groups["resultHeader"].Value;
                 var tableHeader = resultMatch.Groups["tableHeader"].Value;
                 var tableSeparator = resultMatch.Groups["tableSeparator"].Value;
@@ -83,7 +83,7 @@ namespace LinqFasterer.Benchmarks
                 if (tableHeaderFormatted == null)
                 {
                     var matches = TableEntryRegex.Matches(tableHeader);
-                    
+
                     var sb = new StringBuilder("|");
 
                     for (var i = 0; i < matches.Count; i++)
@@ -102,7 +102,7 @@ namespace LinqFasterer.Benchmarks
                         sb.Append(" |");
 
                     tableHeaderFormatted = sb.ToString();
-                    
+
                     mergedResultsWriter.WriteLine(tableHeader);
                     mergedResultsWriter.WriteLine(tableSeparator);
                 }
@@ -110,13 +110,13 @@ namespace LinqFasterer.Benchmarks
                 {
                     mergedResultsWriter.WriteLine(tableHeaderFormatted);
                 }
-                
+
                 mergedResultsWriter.WriteLine(tableData);
             }
-            
+
             return 0;
         }
-        
+
         private static IEnumerable<Type> EnumerateTypes<T>()
         {
             var types = Assembly.GetExecutingAssembly().GetTypes();

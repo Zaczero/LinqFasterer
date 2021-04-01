@@ -865,6 +865,176 @@
             <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
             <returns>The sum of the projected values.</returns>
         </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Computes the sum of a sequence. A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int32})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Int32"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Computes the sum of a sequence. A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int64})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Int64"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Computes the sum of a sequence. A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Single})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Single"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Computes the sum of a sequence. A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Double})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Double"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16(System.Collections.Generic.IList{System.Decimal})">
+            <summary>
+            Computes the sum of a sequence. A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Decimal})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Decimal"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Int32})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int32})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Int32"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Int64})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int32})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Int64"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Single})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Single})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Single"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Double})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Double})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Double"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF16``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Decimal})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 16-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Decimal})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Decimal"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Computes the sum of a sequence. A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int32})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Int32"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Computes the sum of a sequence. A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int64})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Int64"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Computes the sum of a sequence. A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Single})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Single"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Computes the sum of a sequence. A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Double})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Double"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4(System.Collections.Generic.IList{System.Decimal})">
+            <summary>
+            Computes the sum of a sequence. A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Decimal})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of <see cref="T:System.Decimal"/> to calculate the sum of.</param>
+            <returns>The sum of the values in the sequence.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Int32})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int32})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Int32"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Int64})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Int64})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Int64"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Single})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Single})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Single"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Double})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Double})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Double"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
+        <member name="M:LinqFasterer.EnumerableF.SumF4``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Decimal})">
+            <summary>
+            Computes the sum of a sequence that is obtained by invoking a transform function on each element of the input sequence.
+            A 4-times unrolled version of <see cref="M:LinqFasterer.EnumerableF.SumF(System.Collections.Generic.IList{System.Decimal})"/>.
+            </summary>
+            <param name="source">An <see cref="T:System.Collections.Generic.IList`1"/> of values that are used to calculate a sum.</param>
+            <param name="selector">A transform function to apply to each element which returns <see cref="T:System.Decimal"/>.</param>
+            <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+            <returns>The sum of the projected values.</returns>
+        </member>
         <member name="M:LinqFasterer.EnumerableF.TakeF``1(System.Collections.Generic.IList{``0},System.Int32,System.Boolean)">
             <summary>
             Returns a specified number of contiguous elements from the start of a sequence.
