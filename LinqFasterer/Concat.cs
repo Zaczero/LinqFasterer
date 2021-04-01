@@ -27,7 +27,7 @@ namespace LinqFasterer
 
             return result;
         }
-        
+
         /// <summary>
         /// Concatenates multiple sequences.
         /// </summary>
@@ -40,7 +40,7 @@ namespace LinqFasterer
         {
             return ConcatMultipleF(sources.ToArrayF(forceClone));
         }
-        
+
         /// <summary>
         /// Concatenates multiple strings.
         /// </summary>
@@ -52,7 +52,7 @@ namespace LinqFasterer
         {
             return ConcatMultipleF(sources.ToArrayF(forceClone));
         }
-        
+
         /// <summary>
         /// Concatenates multiple sequences.
         /// </summary>
@@ -70,12 +70,12 @@ namespace LinqFasterer
                     // Note: this is unsafe but fast (add support for forceClone?)
                     return sources[0];
             }
-            
+
             var resultLength = 0;
 
             for (var i = 0; i < sourcesLength; i++)
                 resultLength += sources[i].Count;
-            
+
             var result = new TSource[resultLength];
             var resultFilled = 0;
 
@@ -87,7 +87,7 @@ namespace LinqFasterer
 
             return result;
         }
-        
+
         /// <summary>
         /// Concatenates multiple strings.
         /// </summary>
@@ -106,7 +106,7 @@ namespace LinqFasterer
                 case 2:
                     return string.Concat(sources);
             }
-            
+
             var resultLength = 0;
 
             for (var i = 0; i < sourcesLength; i++)
@@ -114,7 +114,7 @@ namespace LinqFasterer
 
             if (resultLength < 32 && sourcesLength < 8)
                 return string.Concat(sources);
-            
+
             var resultSb = new StringBuilder(sources[0], resultLength);
 
             for (var i = 1; i < sourcesLength; i++)

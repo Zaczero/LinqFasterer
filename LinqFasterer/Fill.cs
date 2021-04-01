@@ -19,7 +19,7 @@ namespace LinqFasterer
         {
             return source.FillF(value, 0, int.MaxValue, forceClone);
         }
-        
+
         /// <summary>
         /// Sets elements in a sequence to the chosen value.
         /// </summary>
@@ -40,14 +40,14 @@ namespace LinqFasterer
                 length += index;
                 index = 0;
             }
-            
+
             length = Math.Min(length, sourceLength - index);
 
             if (index >= sourceLength || length < 1)
                 return sourceArray;
-            
+
             var filled = Math.Min(length, 16);
-            
+
             // It's more efficient to fill some initial data by index instead of calling Array.Copy straightaway
             // The magic number is a result of multiple benchmark tests
             var iMax = index + filled;
