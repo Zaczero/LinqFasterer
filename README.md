@@ -231,12 +231,24 @@ However, you also become fully responsible for making sure your code is well-opt
 
 ### ☕ Support me
 
-Making a small donation will enable me to spend even more time towards making this project better.
-Send me an email afterwards and I will make sure to put you in the supporters section of the `README.md` file *(not yet present)*.
+Making a small donation will motivate me to spend even more time towards making this project better and greater.
+You can send me an email afterwards and I will make sure to reply back with a big thank you.
 
-* Bitcoin :: `bc1qvhdxpwzcvfhyzlf5jd3xvm48tm5wm6d0xaq55z`
-* Bitcoin Cash :: `qpclmw8ulcdqd2gd66ryepshn9dq8278tvmkpu6df6`
-* Monero :: `4ABpPJchKYS8Nq9dPb8mr1NEEAHbKDr5aK777QZh2aSD7BJHdhkQn4RFQ3zNW2kytSXHXpimt57L9X9iin3uJjw93pCpKaJ`
+#### Bitcoin
+
+`bc1ql3gx9swg5zsn8ax8w34jw85juc5nqtprcdxrje`
+
+#### Bitcoin Cash
+
+`qrvqsfz2vj6p0zdpg7w7zfah7qag2ygpju7yqh05hu`
+
+#### Litecoin
+
+`ltc1qpjz5rhaas0lxf90re0u65sy5jujxhtuqwwerkd`
+
+#### Monero
+
+`4ABpPJchKYS8Nq9dPb8mr1NEEAHbKDr5aK777QZh2aSD7BJHdhkQn4RFQ3zNW2kytSXHXpimt57L9X9iin3uJjw93pCpKaJ`
 
 ### 📧 Contact
 
