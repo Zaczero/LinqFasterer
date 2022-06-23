@@ -229,31 +229,9 @@ However, you also become fully responsible for making sure your code is well-opt
 
 ## Footer
 
-### ☕ Support me
-
-Making a small donation will motivate me to spend even more time towards making this project better and greater.
-You can send me an email afterwards and I will make sure to reply back with a big thank you.
-
-#### Bitcoin
-
-`bc1ql3gx9swg5zsn8ax8w34jw85juc5nqtprcdxrje`
-
-#### Bitcoin Cash
-
-`qrvqsfz2vj6p0zdpg7w7zfah7qag2ygpju7yqh05hu`
-
-#### Litecoin
-
-`ltc1qpjz5rhaas0lxf90re0u65sy5jujxhtuqwwerkd`
-
-#### Monero
-
-`4ABpPJchKYS8Nq9dPb8mr1NEEAHbKDr5aK777QZh2aSD7BJHdhkQn4RFQ3zNW2kytSXHXpimt57L9X9iin3uJjw93pCpKaJ`
-
 ### 📧 Contact
 
 * Email: [kamil@monicz.pl](mailto:kamil@monicz.pl)
-* PGP: [0x9D7BC5B97BB0A707](https://gist.github.com/Zaczero/158da01bfd5b6d236f2b8ceb62dd9698)
 
 ### 📃 License
 
